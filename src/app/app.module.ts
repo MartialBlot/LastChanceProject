@@ -6,6 +6,7 @@ import { HomeComponent } from './home/home.component';
 import { NesComponent } from './nes/nes.component';
 import { VideoComponent } from './video/video.component';
 import { ChoiceComponent } from './choice/choice.component';
+import { FirstPlanetComponent } from './first-planet/first-planet.component';
 
 @NgModule({
   declarations: [
@@ -13,7 +14,8 @@ import { ChoiceComponent } from './choice/choice.component';
     HomeComponent,
     NesComponent,
     VideoComponent,
-    ChoiceComponent
+    ChoiceComponent,
+    FirstPlanetComponent
   ],
   imports: [
     BrowserModule,
