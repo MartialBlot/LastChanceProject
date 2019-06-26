@@ -42,18 +42,18 @@ export class FirstPlanetComponent implements AfterViewInit {
     player.src = "assets/images/player.png"
 
 // Sprite du vaisseau
-    let playerWidth = 800;
+    let playerWidth = 100;
     let playerHeight = 100;
     let pRows = 1;
-    let pCols = 8;
+    let pCols = 1;
     let pWidth = playerWidth/pCols;
     let pHeight = playerHeight/pRows;
     let pCurFrame = 0;
-    let pFrameCount = 8;
+    let pFrameCount = 1;
     let pX=550;
     let pY=320;
     let pSrcX= 0;
-    let pSrcY= 0;
+    let pSrcY= 800;
 
     canvas.width =  canvasWidth;
     canvas.height = canvasHeight;
