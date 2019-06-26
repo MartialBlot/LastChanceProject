@@ -82,8 +82,25 @@ export class FirstPlanetComponent implements AfterViewInit {
     function gameLoop() {
       //Control droit
       if (keyState[39] || keyState[68]){
+          pX+=3;
           droit();
       }
+      //Control gauche
+      if (keyState[37] || keyState[65]){
+        pX-=3;
+        gauche();
+      }
+      //Control haut
+      if (keyState[38] || keyState[87]){
+        haut();
+        pY-=3;
+      }
+      //Control bas
+      if (keyState[40] || keyState[83]){
+        bas();
+        pY+=3;
+      }
+
       setTimeout(gameLoop, 10);
     }
     gameLoop();
@@ -103,11 +120,32 @@ export class FirstPlanetComponent implements AfterViewInit {
     }
 
     function droit(){
-    playerWidth = 800;
-    pCols = 8;
-    pFrameCount = 8;
-    pSrcY= 200;
+      playerWidth = 800;
+      pCols = 8;
+      pFrameCount = 8;
+      pSrcY= 200;
     }
+
+    function gauche(){
+      playerWidth = 800;
+      pCols = 8;
+      pFrameCount = 8;
+      pSrcY= 100;
+      }
+
+    function haut(){
+      playerWidth = 800;
+      pCols = 8;
+      pFrameCount = 8;
+      pSrcY= 300;
+      }
+
+    function bas(){
+      playerWidth = 800;
+      pCols = 8;
+      pFrameCount = 8;
+      pSrcY= 0;
+      }
 
     function draw(){
       updateFrame();
