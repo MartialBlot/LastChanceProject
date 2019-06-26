@@ -38,6 +38,23 @@ export class FirstPlanetComponent implements AfterViewInit {
     let srcX= 0;
     let srcY= 0;
 
+    let player = new Image();
+    player.src = "assets/images/player.png"
+
+// Sprite du vaisseau
+    let playerWidth = 800;
+    let playerHeight = 100;
+    let pRows = 1;
+    let pCols = 8;
+    let pWidth = playerWidth/pCols;
+    let pHeight = playerHeight/pRows;
+    let pCurFrame = 0;
+    let pFrameCount = 8;
+    let pX=550;
+    let pY=320;
+    let pSrcX= 0;
+    let pSrcY= 0;
+
     canvas.width =  canvasWidth;
     canvas.height = canvasHeight;
 
@@ -45,12 +62,17 @@ export class FirstPlanetComponent implements AfterViewInit {
       curFrame = ++curFrame % frameCount;
       srcX = curFrame * width;
       ctx.clearRect(x,y,width,height);
+
+      pCurFrame = ++pCurFrame % pFrameCount;
+        pSrcX = pCurFrame * pWidth;
+        ctx.clearRect(pX,pY,pWidth,pHeight);
     }
 
     function draw(){
       updateFrame();
       ctx.drawImage(background,bX,bY,1400,bY,0,-100,1200,900);
-      ctx.drawImage(widowMaker,srcX,srcY,width,height,x,y,80,120);
+      ctx.drawImage(widowMaker,srcX,srcY,width,height,x,y,280,320);
+      ctx.drawImage(player,pSrcX,pSrcY,pWidth,pHeight,pX,pY,pWidth,pHeight);
     }
     setInterval(draw,80);
   }
