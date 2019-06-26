@@ -16,7 +16,7 @@ export class FirstPlanetComponent implements AfterViewInit {
 
     let background = new Image();
     background.src = "assets/images/maptest.png";
-    let bX = 300;
+    let bX = 1600;
     let bY = 300;
 
     let widowMaker = new Image();
@@ -33,7 +33,7 @@ export class FirstPlanetComponent implements AfterViewInit {
     let height = spriteHeight/rows;
     let curFrame = 0;
     let frameCount = 3;
-    let x=400;
+    let x=40;
     let y=320;
     let srcX= 0;
     let srcY= 0;
@@ -79,15 +79,25 @@ export class FirstPlanetComponent implements AfterViewInit {
         initBas();
     },true);
 
+    //ShowFPS
+    let baseFps: any = new Date();
+    let valueFPS;
+
     function gameLoop() {
+      //Calcul fps
+      let fpsDiff: any = new Date();
+      let fps = 1000 / (fpsDiff - baseFps);
+      baseFps = fpsDiff;
+      valueFPS = fps;
+
       //Control droit
-      if (keyState[39] || keyState[68] && (bX<2300)){
+      if (keyState[39] || keyState[68] && (bX<4050)){
           bX+=3;
           x-=3;
           droit();
       }
       //Control gauche
-      if (keyState[37] || keyState[65]){
+      if (keyState[37] || keyState[65] && (bX>1030)){
         bX-=3;
         x+=3;
         gauche();
@@ -95,8 +105,10 @@ export class FirstPlanetComponent implements AfterViewInit {
       //Control haut
       if (keyState[38] || keyState[87] && (bY>130)){
         haut();
-        bY-=3;
         y+=3;
+        bY-=3;
+        console.log(y, bY)
+
       }
       //Control bas
       if (keyState[40] || keyState[83] && (bY<1420)){
@@ -208,6 +220,10 @@ export class FirstPlanetComponent implements AfterViewInit {
       ctx.drawImage(background,bX,bY,1400,bY,0,-100,1200,900);
       ctx.drawImage(widowMaker,srcX,srcY,width,height,x,y,280,320);
       ctx.drawImage(player,pSrcX,pSrcY,pWidth,pHeight,pX,pY,pWidth,pHeight);
+
+      //dessine les FPS
+      ctx.font="20px helvetica";
+      ctx.fillText(`FPS: ${valueFPS.toFixed(0)}`, 10, 20);
     }
     setInterval(draw,80);
   }
