@@ -82,6 +82,7 @@ export class FirstPlanetComponent implements AfterViewInit {
     //ShowFPS
     let baseFps: any = new Date();
     let valueFPS;
+    let showFPS = false;
 
     function gameLoop() {
       //Calcul fps
@@ -139,6 +140,10 @@ export class FirstPlanetComponent implements AfterViewInit {
       diagoBasGauche();
       bY+=3;
       y-=3;
+    }
+    //ShowFPS
+    if (keyState[73]){
+      showFPS = !showFPS;
     }
 
       setTimeout(gameLoop, 10);
@@ -222,8 +227,10 @@ export class FirstPlanetComponent implements AfterViewInit {
       ctx.drawImage(player,pSrcX,pSrcY,pWidth,pHeight,pX,pY,pWidth,pHeight);
 
       //dessine les FPS
+      if(showFPS){
       ctx.font="20px helvetica";
       ctx.fillText(`FPS: ${valueFPS.toFixed(0)}`, 10, 20);
+      }
     }
     setInterval(draw,80);
   }
