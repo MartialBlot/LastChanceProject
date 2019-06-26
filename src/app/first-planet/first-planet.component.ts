@@ -54,6 +54,10 @@ export class FirstPlanetComponent implements AfterViewInit {
     let pY=320;
     let pSrcX= 0;
     let pSrcY= 800;
+    let vueInitHaut = false;
+    let vueInitBas = false;
+    let vueInitDroite = false;
+    let vueInitGauche = false;
 
     canvas.width =  canvasWidth;
     canvas.height = canvasHeight;
@@ -76,7 +80,15 @@ export class FirstPlanetComponent implements AfterViewInit {
     },true);
     document.addEventListener('keyup',function(e){
         keyState[e.keyCode || e.which] = false;
+        if(vueInitGauche){
+        initGauche();
+      } else if (vueInitDroite){
+        initDroite();
+      } else if (vueInitHaut){
+        initHaut();
+      } else if (vueInitBas){
         initBas();
+      }
     },true);
 
     //ShowFPS
@@ -96,26 +108,40 @@ export class FirstPlanetComponent implements AfterViewInit {
           bX+=3;
           x-=3;
           droit();
+          vueInitHaut = false;
+          vueInitBas = false;
+          vueInitDroite = true;
+          vueInitGauche = false;
       }
       //Control gauche
       if (keyState[37] || keyState[65] && (bX>1030)){
         bX-=3;
         x+=3;
         gauche();
+        vueInitHaut = false;
+        vueInitBas = false;
+        vueInitDroite = false;
+        vueInitGauche = true;
       }
       //Control haut
       if (keyState[38] || keyState[87] && (bY>130)){
         haut();
         y+=3;
         bY-=3;
-        console.log(y, bY)
-
+        vueInitHaut = true;
+        vueInitBas = false;
+        vueInitDroite = false;
+        vueInitGauche = false;
       }
       //Control bas
       if (keyState[40] || keyState[83] && (bY<1420)){
         bas();
         bY+=3;
         y-=3;
+        vueInitHaut = false;
+        vueInitBas = true;
+        vueInitDroite = false;
+        vueInitGauche = false;
       }
       //diagoDroit
       if ((keyState[38] || keyState[87]) && (keyState[39] || keyState[68]) && (bY>130)){
@@ -163,6 +189,45 @@ export class FirstPlanetComponent implements AfterViewInit {
     pSrcX= 0;
     pSrcY= 800;
     }
+
+    function initHaut(){
+      playerWidth = 100;
+      playerHeight = 100;
+      pRows = 1;
+      pCols = 1;
+      pWidth = playerWidth/pCols;
+      pHeight = playerHeight/pRows;
+      pCurFrame = 0;
+      pFrameCount = 1;
+      pSrcX= 0;
+      pSrcY= 1150;
+      }
+
+      function initDroite(){
+        playerWidth = 100;
+        playerHeight = 100;
+        pRows = 1;
+        pCols = 1;
+        pWidth = playerWidth/pCols;
+        pHeight = playerHeight/pRows;
+        pCurFrame = 0;
+        pFrameCount = 1;
+        pSrcX= 0;
+        pSrcY= 920;
+        }
+
+        function initGauche(){
+          playerWidth = 100;
+          playerHeight = 100;
+          pRows = 1;
+          pCols = 1;
+          pWidth = playerWidth/pCols;
+          pHeight = playerHeight/pRows;
+          pCurFrame = 0;
+          pFrameCount = 1;
+          pSrcX= 0;
+          pSrcY= 1035;
+          }
 
     function droit(){
       playerWidth = 800;
