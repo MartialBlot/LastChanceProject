@@ -6,6 +6,7 @@ import { HomeComponent } from './home/home.component';
 import { VideoComponent } from './video/video.component';
 import { ChoiceComponent } from './choice/choice.component';
 import { FirstPlanetComponent } from './first-planet/first-planet.component';
+import { SpaceRacingComponent } from './space-racing/space-racing.component';
 
 @NgModule({
   declarations: [
@@ -13,7 +14,8 @@ import { FirstPlanetComponent } from './first-planet/first-planet.component';
     HomeComponent,
     VideoComponent,
     ChoiceComponent,
-    FirstPlanetComponent
+    FirstPlanetComponent,
+    SpaceRacingComponent,
   ],
   imports: [
     BrowserModule,
