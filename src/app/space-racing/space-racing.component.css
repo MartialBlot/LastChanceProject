@@ -1,0 +1,23 @@
+.container-fluid{
+   background-image: url("../../assets/images/racingBackground.jpg")
+}
+
+.loader{
+  width: 100%;
+  height: 100%;
+  background: #000000ab;
+  position: absolute;
+  text-align: center;
+  color: #fff;
+}
+
+.message {
+   text-align: center;
+   margin-top: 20%;
+}
+
+.play-ground{
+   display: grid;
+   margin: auto;
+   background-color: #ddd;
+}
