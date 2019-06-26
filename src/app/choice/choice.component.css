@@ -1,0 +1,10 @@
+body{
+    background: transparent url("../../assets/background.jpg") no-repeat scroll 0 0 / 100% auto;
+}
+.card-img-top{
+    width: 40px;
+}
+
+.card-body{
+    border: solid;
+}
