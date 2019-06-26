@@ -50,7 +50,7 @@ export class FirstPlanetComponent implements AfterViewInit {
     let pHeight = playerHeight/pRows;
     let pCurFrame = 0;
     let pFrameCount = 1;
-    let pX=550;
+    let pX=750;
     let pY=320;
     let pSrcX= 0;
     let pSrcY= 800;
@@ -81,7 +81,7 @@ export class FirstPlanetComponent implements AfterViewInit {
 
     function gameLoop() {
       //Control droit
-      if (keyState[39] || keyState[68]){
+      if (keyState[39] || keyState[68] && (bX<2300)){
           bX+=3;
           x-=3;
           droit();
@@ -93,37 +93,37 @@ export class FirstPlanetComponent implements AfterViewInit {
         gauche();
       }
       //Control haut
-      if (keyState[38] || keyState[87]){
+      if (keyState[38] || keyState[87] && (bY>130)){
         haut();
         bY-=3;
         y+=3;
       }
       //Control bas
-      if (keyState[40] || keyState[83]){
+      if (keyState[40] || keyState[83] && (bY<1420)){
         bas();
         bY+=3;
         y-=3;
       }
       //diagoDroit
-      if ((keyState[38] || keyState[87]) && (keyState[39] || keyState[68])){
+      if ((keyState[38] || keyState[87]) && (keyState[39] || keyState[68]) && (bY>130)){
         diagoDroit();
         bY-=3;
         y+=3;
       }
       //diagoGauche
-      if ((keyState[38] || keyState[87]) && (keyState[37] || keyState[65])){
+      if ((keyState[38] || keyState[87]) && (keyState[37] || keyState[65]) && (bY>130)){
         diagoGauche();
         bY-=3;
         y+=3;
       }
     //diagoBasDroit
-    if ((keyState[40] || keyState[83]) && (keyState[39] || keyState[68])){
+    if ((keyState[40] || keyState[83]) && (keyState[39] || keyState[68]) && (bY<1420)){
       diagoBasDroit();
       bY+=3;
       y-=3;
     }
     //diagoBasGauche
-    if ((keyState[40] || keyState[83]) && (keyState[37] || keyState[65])){
+    if ((keyState[40] || keyState[83]) && (keyState[37] || keyState[65]) && (bY<1420)){
       diagoBasGauche();
       bY+=3;
       y-=3;
