@@ -58,6 +58,16 @@ export class FirstPlanetComponent implements AfterViewInit {
     canvas.width =  canvasWidth;
     canvas.height = canvasHeight;
 
+    //Rafraichissement
+    function updateFrame(){
+      curFrame = ++curFrame % frameCount;
+      srcX = curFrame * width;
+      ctx.clearRect(x,y,width,height);
+
+      pCurFrame = ++pCurFrame % pFrameCount;
+        pSrcX = pCurFrame * pWidth;
+        ctx.clearRect(pX,pY,pWidth,pHeight);
+    }
 
     //contrôles
     let keyState = {};
@@ -66,7 +76,7 @@ export class FirstPlanetComponent implements AfterViewInit {
     },true);
     document.addEventListener('keyup',function(e){
         keyState[e.keyCode || e.which] = false;
-        initBas()
+        initBas();
     },true);
 
     function gameLoop() {
@@ -88,34 +98,15 @@ export class FirstPlanetComponent implements AfterViewInit {
     pHeight = playerHeight/pRows;
     pCurFrame = 0;
     pFrameCount = 1;
-    pX=550;
-    pY=320;
     pSrcX= 0;
     pSrcY= 800;
     }
 
     function droit(){
     playerWidth = 800;
-    playerHeight = 100;
-    pRows = 1;
     pCols = 8;
-    pWidth = playerWidth/pCols;
-    pHeight = playerHeight/pRows;
-    pCurFrame = 0;
     pFrameCount = 8;
-    pSrcX= 0;
     pSrcY= 200;
-    }
-
-    //Rafraichissement
-    function updateFrame(){
-      curFrame = ++curFrame % frameCount;
-      srcX = curFrame * width;
-      ctx.clearRect(x,y,width,height);
-
-      pCurFrame = ++pCurFrame % pFrameCount;
-        pSrcX = pCurFrame * pWidth;
-        ctx.clearRect(pX,pY,pWidth,pHeight);
     }
 
     function draw(){
