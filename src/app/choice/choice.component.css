@@ -1,6 +1,10 @@
-body{
-    background-image: url("../../assets/background.jpg")  !important;
-}
+html {
+    background-image: url('../../assets/background.jpg');
+    overflow: hidden;
+    height: 100%;
+    width: 100%;
+  }
+
 .card-img-top{
     width: 40px;
 }
@@ -12,9 +16,12 @@ body{
 .card-img{
     width: 370px;
 }
+
+.card-img1{
+    width:320px;
+}
 .card-body{
-    border: solid;
-    background-color: rgba(59, 36, 121, 0.7);
+    background-color : rgba(59,36,121,0.5);
 }
 
 
@@ -28,12 +35,29 @@ body{
 #007cb2 4px 4px 0,
 #00606e 5px 5px 0,
 #333 5px 5px 10px;color:#4be9ff;
+margin-bottom: 0px;
+border-radius: 2%;
 }
 
 .card1{
-    background-color: rgba(59, 36, 121, 0.4);
+    background-color: transparent;
 }
 
 .bouton{
     z-index: 1;
+    background-color: rgba(59, 36, 121, 1);
+    border-radius: 2%;
+    
+}
+
+.card2{
+    border: solid;
+    border-radius: 2%;
+}
+
+.planet{
+    z-index: 4;
+    width:100px;
+    margin-top: 20px;
+
 }
