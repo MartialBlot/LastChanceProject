@@ -20,7 +20,7 @@ export class FirstPlanetComponent implements AfterViewInit {
     let bY = 300;
 
     let widowMaker = new Image();
-    widowMaker.src = "assets/images/widowMaker1.png"
+    widowMaker.src = "assets/images/widowMaker.png"
 
     let canvasWidth = 1200;
     let canvasHeight = 800;
@@ -41,7 +41,7 @@ export class FirstPlanetComponent implements AfterViewInit {
     let player = new Image();
     player.src = "assets/images/player.png"
 
-// Sprite du vaisseau
+// Sprite de l'heroine
     let playerWidth = 100;
     let playerHeight = 100;
     let pRows = 1;
@@ -58,6 +58,56 @@ export class FirstPlanetComponent implements AfterViewInit {
     canvas.width =  canvasWidth;
     canvas.height = canvasHeight;
 
+
+    //contrôles
+    let keyState = {};
+    document.addEventListener('keydown',function(e){
+        keyState[e.keyCode || e.which] = true;
+    },true);
+    document.addEventListener('keyup',function(e){
+        keyState[e.keyCode || e.which] = false;
+        initBas()
+    },true);
+
+    function gameLoop() {
+      //Control droit
+      if (keyState[39] || keyState[68]){
+          droit();
+      }
+      setTimeout(gameLoop, 10);
+    }
+    gameLoop();
+
+    //Animations
+    function initBas(){
+    playerWidth = 100;
+    playerHeight = 100;
+    pRows = 1;
+    pCols = 1;
+    pWidth = playerWidth/pCols;
+    pHeight = playerHeight/pRows;
+    pCurFrame = 0;
+    pFrameCount = 1;
+    pX=550;
+    pY=320;
+    pSrcX= 0;
+    pSrcY= 800;
+    }
+
+    function droit(){
+    playerWidth = 800;
+    playerHeight = 100;
+    pRows = 1;
+    pCols = 8;
+    pWidth = playerWidth/pCols;
+    pHeight = playerHeight/pRows;
+    pCurFrame = 0;
+    pFrameCount = 8;
+    pSrcX= 0;
+    pSrcY= 200;
+    }
+
+    //Rafraichissement
     function updateFrame(){
       curFrame = ++curFrame % frameCount;
       srcX = curFrame * width;
