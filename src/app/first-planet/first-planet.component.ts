@@ -122,6 +122,7 @@ export class FirstPlanetComponent implements AfterViewInit {
       lCurFrame = ++lCurFrame % lFrameCount;
         lSrcX = lCurFrame * lWidth;
         ctx.clearRect(lX,lY,lWidth,lHeight);
+        animationLoup()
 
       pCurFrame = ++pCurFrame % pFrameCount;
         pSrcX = pCurFrame * pWidth;
@@ -165,6 +166,7 @@ export class FirstPlanetComponent implements AfterViewInit {
           x-=speed;
           aX-=speed;
           oX-=speed;
+          lX-=speed;
           droit();
           vueInitHaut = false;
           vueInitBas = false;
@@ -177,6 +179,7 @@ export class FirstPlanetComponent implements AfterViewInit {
         x+=speed;
         aX+=speed;
         oX+=speed;
+        lX+=speed;
         gauche();
         vueInitHaut = false;
         vueInitBas = false;
@@ -192,6 +195,7 @@ export class FirstPlanetComponent implements AfterViewInit {
         bY+=speed;
         aY+=speed;
         oY+=speed;
+        lY+=speed;
         vueInitHaut = true;
         vueInitBas = false;
         vueInitDroite = false;
@@ -204,6 +208,7 @@ export class FirstPlanetComponent implements AfterViewInit {
         y-=speed;
         aY-=speed;
         oY-=speed;
+        lY-=speed;
         vueInitHaut = false;
         vueInitBas = true;
         vueInitDroite = false;
@@ -376,6 +381,33 @@ export class FirstPlanetComponent implements AfterViewInit {
       }
     }
 
+    //Deplacement Loup
+    let nbDeplacementLoup = 0;
+    let loupDirDroit = true;
+    let loupDirGauche = false;
+    function animationLoup(){
+      if(loupDirDroit){
+        lSrcY= 0;
+        lX+=12;
+        nbDeplacementLoup+=1
+        if(nbDeplacementLoup === 50){
+          loupDirDroit = false;
+          loupDirGauche = true;
+          nbDeplacementLoup = 0;
+        }
+      }
+      if(loupDirGauche){
+        lSrcY= 110;
+        lX-=12
+        nbDeplacementLoup+=1
+        if(nbDeplacementLoup === 50){
+          loupDirDroit = true;
+          loupDirGauche = false;
+          nbDeplacementLoup = 0;
+        }
+      }
+    }
+
     function draw(){
       //Rafraichissement
       updateFrame();
@@ -406,7 +438,9 @@ export class FirstPlanetComponent implements AfterViewInit {
       ctx.drawImage(ours,oSrcX,oSrcY,oWidth,oHeight,oX-1100,oY+200,170,100);
       ctx.drawImage(ours,oSrcX,oSrcY,oWidth,oHeight,oX-200,oY-800,170,100);
       //Loup
-      ctx.drawImage(loup,lSrcX,lSrcY,lWidth,lHeight,lX,lY,110,80);
+      ctx.drawImage(loup,lSrcX,lSrcY,lWidth,lHeight,lX-200,lY-280,110,80);
+      ctx.drawImage(loup,lSrcX,lSrcY,lWidth,lHeight,lX+1100,lY+1200,110,80);
+      ctx.drawImage(loup,lSrcX,lSrcY,lWidth,lHeight,lX-400,lY+1400,110,80);
       //Heroine
       ctx.drawImage(player,pSrcX,pSrcY,pWidth,pHeight,pX,pY,pWidth,pHeight);
       //dessine les FPS
