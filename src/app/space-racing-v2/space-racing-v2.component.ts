@@ -26,8 +26,8 @@ export class SpaceRacingV2Component implements AfterViewInit {
 		let bX = 0;
 		let bY = 0;
 
-		let widowMaker = new Image();
-		widowMaker.src = "assets/images/asteroidKiller.png"
+		let asteroidMaker = new Image();
+		asteroidMaker.src = "assets/images/asteroidKiller.png"
 
 		let canvasWidth = 2000;
 		let canvasHeight = 1000;
@@ -165,7 +165,7 @@ export class SpaceRacingV2Component implements AfterViewInit {
 		function draw() {
 			updateFrame();
 			ctx.drawImage(background, bX, bY);
-			ctx.drawImage(widowMaker, srcX, srcY, width, height, x, y, 280, 320);
+			ctx.drawImage(asteroidMaker, srcX, srcY, width, height, x, y, 250, 300);
 			ctx.drawImage(ennemy, eSrcX, eSrcY, eWidth, eHeight, eX, eY, 200, 200);
 			ctx.drawImage(asteroids, aSrcX, aSrcY, aWidth, aHeight, aX, aY, 80, 70);
 			detectCrash();
@@ -224,60 +224,61 @@ export class SpaceRacingV2Component implements AfterViewInit {
 			eSrcY: 90,
 		}
 
-		//Animations
+    //Animations
+    
 
 		function droit() {
-			spriteWidth = 2400;
-			spriteHeight = 1100;
+      let spriteWidth = 1800;
+      let spriteHeight = 700;
 			rows = 1;
 			cols = 3;
 			width = spriteWidth / cols;
 			height = spriteHeight / rows;
 			frameCount = 3;
 			srcX = 0;
-			srcY = 5300;
+			srcY = 1650;
 		}
 
 		function gauche() {
-			spriteWidth = 2400;
-			spriteHeight = 1100;
+      let spriteWidth = 1800;
+      let spriteHeight = 700;
 			rows = 1;
 			cols = 3;
 			width = spriteWidth / cols;
 			height = spriteHeight / rows;
 			frameCount = 3;
 			srcX = 0;
-			srcY = 5300;
+			srcY = 1650;
     }
     
 
 		function bas() {
-			spriteWidth = 1680;
-			spriteHeight = 680;
+      let spriteWidth = 1800;
+      let spriteHeight = 700;
 			rows = 1;
 			cols = 3;
 			width = spriteWidth / cols;
 			height = spriteHeight / rows;
 			frameCount = 3;
 			srcX = 0;
-			srcY = 1785;
+			srcY = 1650;
 		}
 
 		function haut() {
-			spriteWidth = 1680;
-			spriteHeight = 680;
+      let spriteWidth = 1800;
+      let spriteHeight = 700;
 			rows = 1;
 			cols = 3;
 			width = spriteWidth / cols;
 			height = spriteHeight / rows;
 			frameCount = 3;
 			srcX = 0;
-			srcY = 1785;
+			srcY = 1650;
 		}
 
 		function init() {
-			spriteWidth = 2370;
-			spriteHeight = 1030;
+      let spriteWidth = 1800;
+      let spriteHeight = 700;
 			rows = 1;
 			cols = 3;
 			width = spriteWidth / cols;
