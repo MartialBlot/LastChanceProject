@@ -60,12 +60,14 @@ export class ExitPlanetComponent implements AfterViewInit {
     } else if (this.propulsion) {
       this.propulsion = false;
       this.planet = true;
-    } else if (this.planet && !this.end && !this.dialog9) {
+    } else if (this.planet && !this.end && !this.dialog9 && !this.dialog10) {
       this.dialog9 = true;
     } else if (this.dialog9) {
       this.dialog9 = false;
-      this.end = true;
       this.dialog10 = true;
+    } else if (this.dialog10) {
+      this.end = true;
+      this.dialog10 = false;
       this.continuer = 'Continuer';
     }
   }
