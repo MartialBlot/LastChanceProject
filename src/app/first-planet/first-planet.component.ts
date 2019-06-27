@@ -97,6 +97,7 @@ export class FirstPlanetComponent implements AfterViewInit {
     },true);
     document.addEventListener('keyup',function(e){
         keyState[e.keyCode || e.which] = false;
+        speed = 3;
         if(vueInitGauche){
         initGauche();
       } else if (vueInitDroite){
@@ -121,7 +122,7 @@ export class FirstPlanetComponent implements AfterViewInit {
       valueFPS = fps;
 
       //Control droit
-      if ((keyState[39] || keyState[68])){
+      if ((keyState[39] || keyState[68]) && (bX > -4190)){
           bX-=speed;
           x-=speed;
           aX-=speed;
@@ -132,7 +133,7 @@ export class FirstPlanetComponent implements AfterViewInit {
           vueInitGauche = false;
       }
       //Control gauche
-      if ((keyState[37] || keyState[65])){
+      if ((keyState[37] || keyState[65]) && (bX < -1170)){
         bX+=speed;
         x+=speed;
         aX+=speed;
@@ -141,9 +142,11 @@ export class FirstPlanetComponent implements AfterViewInit {
         vueInitBas = false;
         vueInitDroite = false;
         vueInitGauche = true;
+        console.log(bX)
+
       }
       //Control haut
-      if ((keyState[38] || keyState[87])){
+      if ((keyState[38] || keyState[87]) && (bY < -600)){
         haut();
         y+=speed;
         bY+=speed;
@@ -154,7 +157,7 @@ export class FirstPlanetComponent implements AfterViewInit {
         vueInitGauche = false;
       }
       //Control bas
-      if ((keyState[40] || keyState[83])){
+      if ((keyState[40] || keyState[83]) && (bY > -2612)){
         bas();
         bY-=speed;
         y-=speed;
@@ -176,6 +179,9 @@ export class FirstPlanetComponent implements AfterViewInit {
     if ((keyState[40] || keyState[83]) && (keyState[39] || keyState[68])){
       diagoBasDroit();
     }
+    if ((keyState[16])){
+      speed=9
+    }
     //diagoBasGauche
     if ((keyState[40] || keyState[83]) && (keyState[37] || keyState[65])){
       diagoBasGauche();
@@ -185,7 +191,7 @@ export class FirstPlanetComponent implements AfterViewInit {
       showFPS = !showFPS;
     }
     //Décoller
-    if(keyState[69] && (bX === 1030) && ((y<pY) && ((y+100)>pY))){
+    if(keyState[69] && (bX === -1168) && ((y<pY) && ((y+100)>pY))){
       confirm( "Quitter cette planète et repartir à l'aventure ?" );
     }
 
@@ -302,11 +308,31 @@ export class FirstPlanetComponent implements AfterViewInit {
     }
 
     function draw(){
+      //Rafraichissement
       updateFrame();
+      //Map
       ctx.drawImage(background,bX,bY);
+      //Arbres
       ctx.drawImage(arbre,aSrcX,aSrcY,aWidth,aHeight,aX,aY-400,280,320);
       ctx.drawImage(arbre,aSrcX,aSrcY,aWidth,aHeight,aX+190,aY+580,280,320);
+      ctx.drawImage(arbre,aSrcX,aSrcY,aWidth,aHeight,aX+590,aY+380,280,320);
+      ctx.drawImage(arbre,aSrcX,aSrcY,aWidth,aHeight,aX+290,aY+980,280,320);
+      ctx.drawImage(arbre,aSrcX,aSrcY,aWidth,aHeight,aX+890,aY+280,280,320);
+      ctx.drawImage(arbre,aSrcX,aSrcY,aWidth,aHeight,aX+990,aY-100,280,320);
+      ctx.drawImage(arbre,aSrcX,aSrcY,aWidth,aHeight,aX+790,aY+1200,280,320);
+      ctx.drawImage(arbre,aSrcX,aSrcY,aWidth,aHeight,aX+1000,aY-400,280,320);
+      ctx.drawImage(arbre,aSrcX,aSrcY,aWidth,aHeight,aX+1900,aY+580,280,320);
+      ctx.drawImage(arbre,aSrcX,aSrcY,aWidth,aHeight,aX+1590,aY+380,280,320);
+      ctx.drawImage(arbre,aSrcX,aSrcY,aWidth,aHeight,aX+1290,aY+980,280,320);
+      ctx.drawImage(arbre,aSrcX,aSrcY,aWidth,aHeight,aX+1890,aY+280,280,320);
+      ctx.drawImage(arbre,aSrcX,aSrcY,aWidth,aHeight,aX+1790,aY-100,280,320);
+      ctx.drawImage(arbre,aSrcX,aSrcY,aWidth,aHeight,aX+1290,aY+1200,280,320);
+      ctx.drawImage(arbre,aSrcX,aSrcY,aWidth,aHeight,aX+2190,aY+680,280,320);
+      ctx.drawImage(arbre,aSrcX,aSrcY,aWidth,aHeight,aX+2390,aY-100,280,320);
+      ctx.drawImage(arbre,aSrcX,aSrcY,aWidth,aHeight,aX+2490,aY+1200,280,320);
+      //Vaisseau
       ctx.drawImage(widowMaker,srcX,srcY,width,height,x,y,280,320);
+      //Heroine
       ctx.drawImage(player,pSrcX,pSrcY,pWidth,pHeight,pX,pY,pWidth,pHeight);
 
       //dessine les FPS
@@ -315,7 +341,7 @@ export class FirstPlanetComponent implements AfterViewInit {
       ctx.fillText(`FPS: ${valueFPS.toFixed(0)}`, 10, 20);
       }
       //Invitation à décoller
-      if((bX === 1030) && ((y<pY) && ((y+100)>pY))){
+      if((bX === -1168) && ((y<pY) && ((y+100)>pY))){
         ctx.font="18px helvetica";
         ctx.fillText(`Appuyer sur E pour interagir`, pX + 20, pY - 20);
       }
