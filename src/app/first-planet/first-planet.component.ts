@@ -104,7 +104,7 @@ export class FirstPlanetComponent implements AfterViewInit {
       valueFPS = fps;
 
       //Control droit
-      if (keyState[39] || keyState[68] && (bX<4050)){
+      if ((keyState[39] || keyState[68]) && (bX<4050)){
           bX+=3;
           x-=3;
           droit();
@@ -114,7 +114,7 @@ export class FirstPlanetComponent implements AfterViewInit {
           vueInitGauche = false;
       }
       //Control gauche
-      if (keyState[37] || keyState[65] && (bX>1030)){
+      if ((keyState[37] || keyState[65]) && (bX>1030)){
         bX-=3;
         x+=3;
         gauche();
@@ -124,7 +124,7 @@ export class FirstPlanetComponent implements AfterViewInit {
         vueInitGauche = true;
       }
       //Control haut
-      if (keyState[38] || keyState[87] && (bY>130)){
+      if ((keyState[38] || keyState[87]) && (bY>130)){
         haut();
         y+=3;
         bY-=3;
@@ -134,7 +134,7 @@ export class FirstPlanetComponent implements AfterViewInit {
         vueInitGauche = false;
       }
       //Control bas
-      if (keyState[40] || keyState[83] && (bY<1420)){
+      if ((keyState[40] || keyState[83]) && (bY<1420)){
         bas();
         bY+=3;
         y-=3;
