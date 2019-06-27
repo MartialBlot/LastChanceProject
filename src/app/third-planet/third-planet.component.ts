@@ -77,35 +77,35 @@ export class ThirdPlanetComponent implements AfterViewInit {
 
     //Sprite Ours
     let ours = new Image();
-    ours.src = "assets/images/ours.png"
-    let oursWidth = 540;
-    let oursHeight = 60;
+    ours.src = "assets/images/dragon1.png"
+    let oursWidth = 570;
+    let oursHeight = 160;
     let oRows = 1;
-    let oCols = 6;
+    let oCols = 3;
     let oWidth = oursWidth/oCols;
     let oHeight = oursHeight/oRows;
     let oCurFrame = 0;
-    let oFrameCount = 6;
+    let oFrameCount = 3;
     let oX=2400;
     let oY=840;
     let oSrcX= 0;
-    let oSrcY= 60;
+    let oSrcY= 160;
 
     //Sprite Loup
     let loup = new Image();
-    loup.src = "assets/images/loup.png"
-    let loupWidth = 840;
-    let loupHeight = 110;
+    loup.src = "assets/images/monstre1.png"
+    let loupWidth = 257;
+    let loupHeight = 55;
     let lRows = 1;
-    let lCols = 6;
+    let lCols = 4;
     let lWidth = loupWidth/lCols;
     let lHeight = loupHeight/lRows;
     let lCurFrame = 0;
-    let lFrameCount = 6;
+    let lFrameCount = 4;
     let lX=750;
     let lY=320;
     let lSrcX= 0;
-    let lSrcY= 0;
+    let lSrcY= 115;
 
     canvas.width =  canvasWidth;
     canvas.height = canvasHeight;
@@ -361,7 +361,7 @@ export class ThirdPlanetComponent implements AfterViewInit {
     let oursDirGauche = false;
     function animationOurs(){
       if(oursDirDroit){
-        oSrcY= 60;
+        oSrcY= 160;
         oX+=9;
         nbDeplacementOurs+=1
         if(nbDeplacementOurs === 70){
@@ -371,7 +371,7 @@ export class ThirdPlanetComponent implements AfterViewInit {
         }
       }
       if(oursDirGauche){
-        oSrcY= 135;
+        oSrcY= 480;
         oX-=9
         nbDeplacementOurs+=1
         if(nbDeplacementOurs === 70){
@@ -388,7 +388,7 @@ export class ThirdPlanetComponent implements AfterViewInit {
     let loupDirGauche = false;
     function animationLoup(){
       if(loupDirDroit){
-        lSrcY= 0;
+        lSrcY= 113;
         lX+=12;
         nbDeplacementLoup+=1
         if(nbDeplacementLoup === 50){
@@ -398,7 +398,7 @@ export class ThirdPlanetComponent implements AfterViewInit {
         }
       }
       if(loupDirGauche){
-        lSrcY= 110;
+        lSrcY= 55;
         lX-=12
         nbDeplacementLoup+=1
         if(nbDeplacementLoup === 50){
