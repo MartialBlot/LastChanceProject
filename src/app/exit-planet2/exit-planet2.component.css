@@ -1,0 +1,50 @@
+.cockpit {
+    background-image: url("../../assets/images/cock.png");
+    background-repeat: no-repeat;
+    background-size: cover;
+    height: 977px;
+    width: 1826px;
+    margin-right: 2%;
+}
+
+.space {
+    background-image: url("../../assets/images/space-background2.png");
+    background-repeat: no-repeat;
+    background-size: cover;
+    height: 977px;
+    width: 1826px;
+    z-index: 1;
+}
+
+.propulsion {
+    background-image: url("../../assets/images/space-test.gif");
+    background-repeat: no-repeat;
+    background-size: cover;
+    height: 977px;
+    width: 1826px;
+    z-index: 1;
+}
+
+.passer {
+    position: fixed;
+    margin-top: 8%;
+    margin-left: 46%;
+}
+
+.dialog1, .dialog3, .dialog5 {
+    position: absolute;
+    margin-top: 29%;
+    margin-left: 23%;
+}
+
+.dialog2, .dialog4, .dialog6 {
+    position: absolute;
+    margin-top: 27%;
+    margin-left: 60%;
+}
+
+.dialog7, .dialog8 {
+    position: absolute;
+    margin-top: 27%;
+    margin-left: 65%;
+}
