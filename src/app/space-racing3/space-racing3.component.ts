@@ -17,7 +17,7 @@ export class SpaceRacing3Component implements AfterViewInit {
 	) { }
 
 	public ngAfterViewInit() {
-		// const router = this.router.navigateByUrl('game-over')
+		let nav = this.router
 		let canvas: any = document.getElementById('racing');
 		let ctx = canvas.getContext("2d");
 
@@ -130,7 +130,7 @@ export class SpaceRacing3Component implements AfterViewInit {
 		}
 
 
-		setTimeout(function () { window.location.href = 'http://localhost:4200/exit-planet' }, 20000)
+    setTimeout(function () {nav.navigateByUrl('exit-planet2')}, 20000)
 		var audio = new Audio('assets/sounds/SFB-explosion2.mp3');
 
 		let stopRandom = false;
@@ -300,7 +300,8 @@ export class SpaceRacing3Component implements AfterViewInit {
 			frameCount = 12;
 			srcX = 0;
 			srcY = 6500;
-			explode = true;
+      explode = true;
+      setTimeout(function () {nav.navigateByUrl('game-over')}, 2000)
 		}
 	}
 }
