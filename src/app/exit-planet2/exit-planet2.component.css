@@ -13,6 +13,16 @@
     background-size: cover;
     height: 977px;
     width: 1826px;
+    z-index: 1;
+}
+
+.propulsion {
+    background-image: url("../../assets/images/space-test.gif");
+    background-repeat: no-repeat;
+    background-size: cover;
+    height: 977px;
+    width: 1826px;
+    z-index: 1;
 }
 
 .passer {
@@ -21,32 +31,20 @@
     margin-left: 46%;
 }
 
-.dialog1 {
+.dialog1, .dialog3, .dialog5 {
     position: absolute;
-    margin-top: 31%;
+    margin-top: 29%;
     margin-left: 23%;
 }
 
-.dialog2 {
+.dialog2, .dialog4, .dialog6 {
     position: absolute;
-    margin-top: 31%;
-    margin-left: 19%;
-}
-
-.dialog3, .dialog4, .dialog6 {
-    position: absolute;
-    margin-top: 29%;
+    margin-top: 27%;
     margin-left: 60%;
-}
-
-.dialog5 {
-    position: absolute;
-    margin-top: 30%;
-    margin-left: 19%;
 }
 
 .dialog7, .dialog8 {
     position: absolute;
-    margin-top: 29%;
-    margin-left: 69%;
+    margin-top: 27%;
+    margin-left: 65%;
 }
