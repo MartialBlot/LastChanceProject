@@ -7,8 +7,24 @@
     margin-right: 2%;
 }
 
+.planet {
+    background-image: url('../../assets/images/planet1.gif');
+    background-repeat: no-repeat;
+    background-size: contain;
+    background-position: top 0 left 38%;
+    margin-left: 0px;
+}
+
 .space {
     background-image: url("../../assets/images/space-background.gif");
+    background-repeat: no-repeat;
+    background-size: cover;
+    height: 977px;
+    width: 1826px;
+}
+
+.space2 {
+    background-image: url("../../assets/images/space-background3.jpg");
     background-repeat: no-repeat;
     background-size: cover;
     height: 977px;
@@ -58,4 +74,16 @@
     position: absolute;
     margin-top: 29%;
     margin-left: 69%;
+}
+
+.dialog9 {
+    position: absolute;
+    margin-top: 30%;
+    margin-left: 20%;
+}
+
+.dialog10 {
+    position: absolute;
+    margin-top: 29%;
+    margin-left: 60%;
 }
