@@ -9,6 +9,8 @@ import { FirstPlanetComponent } from './first-planet/first-planet.component';
 import { SpaceRacingComponent } from './space-racing/space-racing.component';
 import { ModalComponent } from './modal/modal.component';
 import { VideofinalComponent } from './videofinal/videofinal.component';
+import { ProgressComponent } from './progress/progress.component';
+import {ProgressBarModule} from 'angular-progress-bar';
 
 @NgModule({
   declarations: [
@@ -20,10 +22,12 @@ import { VideofinalComponent } from './videofinal/videofinal.component';
     SpaceRacingComponent,
     ModalComponent,
     VideofinalComponent,
+    ProgressComponent,
   ],
   imports: [
     BrowserModule,
-    AppRoutingModule
+    AppRoutingModule,
+    ProgressBarModule
   ],
   providers: [],
   bootstrap: [AppComponent]

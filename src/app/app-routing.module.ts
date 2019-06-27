@@ -7,6 +7,7 @@ import { FirstPlanetComponent } from './first-planet/first-planet.component';
 import { SpaceRacingComponent } from './space-racing/space-racing.component';
 import { ModalComponent } from './modal/modal.component';
 import { VideofinalComponent } from './videofinal/videofinal.component';
+import { ProgressComponent } from './progress/progress.component';
 
 const routes: Routes = [
   { path: '', component: HomeComponent },
@@ -15,7 +16,8 @@ const routes: Routes = [
   { path: 'planet1', component: FirstPlanetComponent},
   { path: 'choix/racing', component: SpaceRacingComponent },
   { path: 'amelioration', component: ModalComponent },
-  { path: 'final', component: VideofinalComponent }
+  { path: 'final', component: VideofinalComponent },
+  { path: 'progress', component: ProgressComponent },
 ];
 
 @NgModule({
