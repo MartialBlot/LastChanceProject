@@ -22,12 +22,14 @@ import { HeartComponent } from './heart/heart.component';
 import { Videotransit2Component } from './videotransit2/videotransit2.component';
 import { Videotransit3Component } from './videotransit3/videotransit3.component';
 import { SecondPlanetComponent } from './second-planet/second-planet.component';
+import { ThirdPlanetComponent } from './third-planet/third-planet.component';
 
 
 
 const routes: Routes = [
   { path: 'planet1', component: FirstPlanetComponent },
   { path: 'planet2', component: SecondPlanetComponent },
+  { path: 'planet3', component: ThirdPlanetComponent },
   { path: '', component: HomeComponent },
   { path: 'play', component: VideoComponent },
   { path: 'choix', component: ChoiceComponent },
