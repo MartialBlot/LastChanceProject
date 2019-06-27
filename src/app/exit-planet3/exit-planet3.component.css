@@ -7,16 +7,15 @@
     margin-right: 2%;
 }
 
-.space {
-    background-image: url("../../assets/images/space-background2.png");
+.earth {
+    background-image: url('../../assets/images/earth.gif');
     background-repeat: no-repeat;
-    background-size: cover;
-    height: 977px;
-    width: 1826px;
-    z-index: 1;
+    background-size: contain;
+    background-position: top 0 left 65%;
+    margin-left: 0px;
 }
 
-.space2 {
+.space {
     background-image: url("../../assets/images/space-background3.jpg");
     background-repeat: no-repeat;
     background-size: cover;
@@ -24,21 +23,12 @@
     width: 1826px;
 }
 
-.planet {
-    background-image: url('../../assets/images/planet2.png');
-    background-repeat: no-repeat;
-    background-size: contain;
-    background-position: top 0 left 38%;
-    margin-left: 0px;
-}
-
-.propulsion {
+.atterrissage {
     background-image: url("../../assets/images/space-test.gif");
     background-repeat: no-repeat;
     background-size: 1836px 977px;
     height: 977px;
     width: 1826px;
-    z-index: 1;
 }
 
 .passer {
@@ -47,7 +37,7 @@
     margin-left: 5%;
 }
 
-.dialog1, .dialog3, .dialog5 {
+.dialog1, .dialog5 {
     position: absolute;
     margin-top: 29%;
     margin-left: 23%;
@@ -59,20 +49,8 @@
     margin-left: 60%;
 }
 
-.dialog7, .dialog8 {
+.dialog7, .dialog3, .dialog8 {
     position: absolute;
     margin-top: 27%;
     margin-left: 65%;
-}
-
-.dialog9, .dialog12 {
-    position: absolute;
-    margin-top: 30%;
-    margin-left: 20%;
-}
-
-.dialog10, .dialog11 {
-    position: absolute;
-    margin-top: 29%;
-    margin-left: 60%;
 }
