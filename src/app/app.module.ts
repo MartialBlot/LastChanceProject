@@ -13,6 +13,8 @@ import { ProgressComponent } from './progress/progress.component';
 import {ProgressBarModule} from 'angular-progress-bar';
 import { ExitPlanetComponent } from './exit-planet/exit-planet.component';
 import { ExitPlanet2Component } from './exit-planet2/exit-planet2.component';
+import { VideotransitComponent } from './videotransit/videotransit.component';
+import { HeartComponent } from './heart/heart.component';
 
 @NgModule({
   declarations: [
@@ -26,7 +28,9 @@ import { ExitPlanet2Component } from './exit-planet2/exit-planet2.component';
     VideofinalComponent,
     ProgressComponent,
     ExitPlanetComponent,
-    ExitPlanet2Component
+    ExitPlanet2Component,
+    VideotransitComponent,
+    HeartComponent
   ],
   imports: [
     BrowserModule,

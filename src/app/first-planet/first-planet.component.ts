@@ -17,6 +17,7 @@ export class FirstPlanetComponent implements AfterViewInit {
     background.src = "assets/images/maptest.png";
     let bX = -1720;
     let bY = -1000;
+    'app-modal'
 
     //Sprite Arbre
     let arbre = new Image();
@@ -240,6 +241,7 @@ export class FirstPlanetComponent implements AfterViewInit {
     //Décoller
     if(keyState[69] && (bX === -1168) && ((y<pY) && ((y+100)>pY))){
       confirm( "Quitter cette planète et repartir à l'aventure ?" );
+      
     }
 
       setTimeout(gameLoop, 10);

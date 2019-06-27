@@ -10,21 +10,25 @@ import { VideofinalComponent } from './videofinal/videofinal.component';
 import { ProgressComponent } from './progress/progress.component';
 import { ExitPlanetComponent } from './exit-planet/exit-planet.component';
 import { ExitPlanet2Component } from './exit-planet2/exit-planet2.component';
+import { VideotransitComponent } from './videotransit/videotransit.component';
+import { HeartComponent } from './heart/heart.component';
 
 
 
 const routes: Routes = [
+  { path: 'planet1', component: FirstPlanetComponent },
   { path: '', component: HomeComponent },
-  { path: 'play', component: VideoComponent},
-  { path: 'choix', component: ChoiceComponent},
-  { path: 'planet1', component: FirstPlanetComponent},
+  { path: 'play', component: VideoComponent },
+  { path: 'choix', component: ChoiceComponent },
   { path: 'choix/racing', component: SpaceRacingComponent },
   { path: 'amelioration', component: ModalComponent },
   { path: 'final', component: VideofinalComponent },
   { path: 'progress', component: ProgressComponent },
   { path: 'racing', component: SpaceRacingComponent },
   { path: 'exit-planet', component: ExitPlanetComponent },
-  { path: 'exit-planet2', component: ExitPlanet2Component }
+  { path: 'exit-planet2', component: ExitPlanet2Component },
+  { path: 'arrive', component: VideotransitComponent },
+  { path: 'heart', component: HeartComponent }
 ];
 
 @NgModule({
