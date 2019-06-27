@@ -434,13 +434,30 @@ export class FirstPlanetComponent implements AfterViewInit {
       //Vaisseau
       ctx.drawImage(widowMaker,srcX,srcY,width,height,x,y,280,320);
       //Ours
-      ctx.drawImage(ours,oSrcX,oSrcY,oWidth,oHeight,oX,oY,170,100);
-      ctx.drawImage(ours,oSrcX,oSrcY,oWidth,oHeight,oX-1100,oY+200,170,100);
-      ctx.drawImage(ours,oSrcX,oSrcY,oWidth,oHeight,oX-200,oY-800,170,100);
+      let posXOurs1 = oX;
+      let posXOurs2 = oX-1100;
+      let posXOurs3 = oX-200;
+      let posYOurs1 = oY;
+      let posYOurs2 = oY+200;
+      let posYOurs3 = oY-800;
+      ctx.drawImage(ours,oSrcX,oSrcY,oWidth,oHeight,posXOurs1,posYOurs1,170,100);
+      ctx.drawImage(ours,oSrcX,oSrcY,oWidth,oHeight,posXOurs2,posYOurs2,170,100);
+      ctx.drawImage(ours,oSrcX,oSrcY,oWidth,oHeight,posXOurs3,posYOurs3,170,100);
       //Loup
-      ctx.drawImage(loup,lSrcX,lSrcY,lWidth,lHeight,lX-200,lY-280,110,80);
-      ctx.drawImage(loup,lSrcX,lSrcY,lWidth,lHeight,lX+1100,lY+1200,110,80);
-      ctx.drawImage(loup,lSrcX,lSrcY,lWidth,lHeight,lX-400,lY+1400,110,80);
+      let posXLoup1 = lX-200;
+      let posXLoup2 = lX+1100;
+      let posXLoup3 = lX-400;
+      let posYLoup1 = lY-280;
+      let posYLoup2 = lY+1200;
+      let posYLoup3 = lY+1400;
+      ctx.drawImage(loup,lSrcX,lSrcY,lWidth,lHeight,posXLoup1,posYLoup1,110,80);
+      ctx.drawImage(loup,lSrcX,lSrcY,lWidth,lHeight,posXLoup2,posYLoup2,110,80);
+      ctx.drawImage(loup,lSrcX,lSrcY,lWidth,lHeight,posXLoup3,posYLoup3,110,80);
+
+      if(((bX-1000<=posXLoup1)&&(bX-1000>=posXLoup1+70))){
+        alert('Aie')
+      }
+      console.log(bX,bY,posXLoup1,posYLoup1)
       //Heroine
       ctx.drawImage(player,pSrcX,pSrcY,pWidth,pHeight,pX,pY,pWidth,pHeight);
       //dessine les FPS
