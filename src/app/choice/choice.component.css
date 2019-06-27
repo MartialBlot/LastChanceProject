@@ -1,0 +1,78 @@
+html {
+    background-image: url('../../assets/nebula10.png');
+    overflow: hidden;
+    height: 100%;
+    width: 100%;
+  }
+
+.card-img-top{
+    width: 40px;
+}
+.card{
+    border-radius: 2%;
+    border: solid;
+    box-shadow: 5px 10px 8px #2B263C;
+    
+}
+
+.card-img{
+    width: 370px;
+}
+
+.card-img3{
+    width: 370px;
+}
+
+.card-img4{
+    width:320px;
+    height: 190px;
+}
+
+.card-img1{
+    width:320px;
+}
+.card-body{
+    background-image: url('../../assets/stars.png');
+}
+
+.card-body1{
+    color: white;
+}
+
+
+.card-title{
+    background-color: rgba(14, 11, 192, 0.4);
+    padding: 15px;
+    text-shadow:#e7f6ff 0 -1px 0,
+#4de8ff 1px 1px 0,
+#00b5ff 2px 2px 0,
+#007ec2 3px 3px 0,
+#007cb2 4px 4px 0,
+#00606e 5px 5px 0,
+#333 5px 5px 10px;color:#4be9ff;
+margin-bottom: 0px;
+border-radius: 2%;
+}
+
+.card1{
+    background-color: transparent;
+}
+
+.bouton{
+    z-index: 1;
+    background-color: rgba(14, 11, 192, 0.4);
+    border-radius: 2%;
+    
+}
+
+.card2{
+    border: solid white;
+    border-radius: 2%;
+}
+
+.planet{
+    z-index: 4;
+    width:100px;
+    margin-top: 20px;
+
+}
