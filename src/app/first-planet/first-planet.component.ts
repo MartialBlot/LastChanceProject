@@ -97,6 +97,7 @@ export class FirstPlanetComponent implements AfterViewInit {
     },true);
     document.addEventListener('keyup',function(e){
         keyState[e.keyCode || e.which] = false;
+        speed = 3;
         if(vueInitGauche){
         initGauche();
       } else if (vueInitDroite){
@@ -177,6 +178,9 @@ export class FirstPlanetComponent implements AfterViewInit {
     //diagoBasDroit
     if ((keyState[40] || keyState[83]) && (keyState[39] || keyState[68])){
       diagoBasDroit();
+    }
+    if ((keyState[16])){
+      speed=9
     }
     //diagoBasGauche
     if ((keyState[40] || keyState[83]) && (keyState[37] || keyState[65])){
@@ -304,11 +308,31 @@ export class FirstPlanetComponent implements AfterViewInit {
     }
 
     function draw(){
+      //Rafraichissement
       updateFrame();
+      //Map
       ctx.drawImage(background,bX,bY);
+      //Arbres
       ctx.drawImage(arbre,aSrcX,aSrcY,aWidth,aHeight,aX,aY-400,280,320);
       ctx.drawImage(arbre,aSrcX,aSrcY,aWidth,aHeight,aX+190,aY+580,280,320);
+      ctx.drawImage(arbre,aSrcX,aSrcY,aWidth,aHeight,aX+590,aY+380,280,320);
+      ctx.drawImage(arbre,aSrcX,aSrcY,aWidth,aHeight,aX+290,aY+980,280,320);
+      ctx.drawImage(arbre,aSrcX,aSrcY,aWidth,aHeight,aX+890,aY+280,280,320);
+      ctx.drawImage(arbre,aSrcX,aSrcY,aWidth,aHeight,aX+990,aY-100,280,320);
+      ctx.drawImage(arbre,aSrcX,aSrcY,aWidth,aHeight,aX+790,aY+1200,280,320);
+      ctx.drawImage(arbre,aSrcX,aSrcY,aWidth,aHeight,aX+1000,aY-400,280,320);
+      ctx.drawImage(arbre,aSrcX,aSrcY,aWidth,aHeight,aX+1900,aY+580,280,320);
+      ctx.drawImage(arbre,aSrcX,aSrcY,aWidth,aHeight,aX+1590,aY+380,280,320);
+      ctx.drawImage(arbre,aSrcX,aSrcY,aWidth,aHeight,aX+1290,aY+980,280,320);
+      ctx.drawImage(arbre,aSrcX,aSrcY,aWidth,aHeight,aX+1890,aY+280,280,320);
+      ctx.drawImage(arbre,aSrcX,aSrcY,aWidth,aHeight,aX+1790,aY-100,280,320);
+      ctx.drawImage(arbre,aSrcX,aSrcY,aWidth,aHeight,aX+1290,aY+1200,280,320);
+      ctx.drawImage(arbre,aSrcX,aSrcY,aWidth,aHeight,aX+2190,aY+680,280,320);
+      ctx.drawImage(arbre,aSrcX,aSrcY,aWidth,aHeight,aX+2390,aY-100,280,320);
+      ctx.drawImage(arbre,aSrcX,aSrcY,aWidth,aHeight,aX+2490,aY+1200,280,320);
+      //Vaisseau
       ctx.drawImage(widowMaker,srcX,srcY,width,height,x,y,280,320);
+      //Heroine
       ctx.drawImage(player,pSrcX,pSrcY,pWidth,pHeight,pX,pY,pWidth,pHeight);
 
       //dessine les FPS
