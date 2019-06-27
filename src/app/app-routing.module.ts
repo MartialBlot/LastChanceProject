@@ -34,7 +34,7 @@ const routes: Routes = [
   { path: 'exit-planet', component: ExitPlanetComponent },
   { path: 'exit-planet2', component: ExitPlanet2Component },
   { path: 'exit-planet3', component: ExitPlanet3Component},
-  { path: 'game-over', component: GameOverComponent}
+  { path: 'game-over', component: GameOverComponent},
   { path: 'arrive', component: VideotransitComponent },
   { path: 'heart', component: HeartComponent }
 ];

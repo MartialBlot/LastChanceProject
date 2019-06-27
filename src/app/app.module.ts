@@ -10,7 +10,7 @@ import { SpaceRacingComponent } from './space-racing/space-racing.component';
 import { ModalComponent } from './modal/modal.component';
 import { VideofinalComponent } from './videofinal/videofinal.component';
 import { ProgressComponent } from './progress/progress.component';
-import {ProgressBarModule} from 'angular-progress-bar';
+import { ProgressBarModule } from 'angular-progress-bar';
 import { ExitPlanetComponent } from './exit-planet/exit-planet.component';
 import { ExitPlanet2Component } from './exit-planet2/exit-planet2.component';
 import { ExitPlanet3Component } from './exit-planet3/exit-planet3.component';
