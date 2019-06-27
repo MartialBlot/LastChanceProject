@@ -15,6 +15,15 @@
     width: 1826px;
 }
 
+.propulsion {
+    background-image: url("../../assets/images/space-test.gif");
+    background-repeat: no-repeat;
+    background-size: cover;
+    height: 977px;
+    width: 1826px;
+    z-index: 1;
+}
+
 .passer {
     position: fixed;
     margin-top: 8%;

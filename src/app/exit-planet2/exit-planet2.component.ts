@@ -6,16 +6,17 @@ import { Component, AfterViewInit } from '@angular/core';
   styleUrls: ['./exit-planet2.component.css']
 })
 export class ExitPlanet2Component implements AfterViewInit {
-  public dialog1: boolean = false;
-  public dialog2: boolean = false;
-  public dialog3: boolean = false;
-  public dialog4: boolean = false;
-  public dialog5: boolean = false;
-  public dialog6: boolean = false;
-  public dialog7: boolean = false;
-  public dialog8: boolean = false;
-  public end: boolean = false;
-  public continuer: string = "Passer";
+  public dialog1 = false;
+  public dialog2 = false;
+  public dialog3 = false;
+  public dialog4 = false;
+  public dialog5 = false;
+  public dialog6 = false;
+  public dialog7 = false;
+  public dialog8 = false;
+  public end = false;
+  public continuer = 'Passer';
+  public space = true;
 
   ngAfterViewInit(): void {
   }
@@ -23,7 +24,9 @@ export class ExitPlanet2Component implements AfterViewInit {
   constructor() { }
 
   continue() {
-    if (!this.end && !this.dialog1 && !this.dialog2 && !this.dialog3 && !this.dialog4 && !this.dialog5 && !this.dialog6 && !this.dialog7 && !this.dialog8) {
+    if (!this.end && !this.dialog1 && !this.dialog2
+      && !this.dialog3 && !this.dialog4 && !this.dialog5
+      && !this.dialog6 && !this.dialog7 && !this.dialog8) {
       this.dialog1 = true;
     } else if (this.dialog1) {
       this.dialog1 = false;
@@ -49,8 +52,10 @@ export class ExitPlanet2Component implements AfterViewInit {
     } else if (this.dialog8) {
       this.dialog8 = false;
       this.end = true;
-      this.continuer = "Continuer";
+      this.continuer = 'Continuer';
+      this.space = false;
+
     }
-  };
+  }
 
 }
