@@ -1,3 +1,4 @@
+<div *ngIf="!gameOver">
 <div class="planet">
     <div class="container-fluid">
       <div class="d-flex justify-content-center">
@@ -5,4 +6,6 @@
       </div>
     </div>
   </div>
-  
+  <div *ngIf="gameOver">
+    Test 
+  </div>

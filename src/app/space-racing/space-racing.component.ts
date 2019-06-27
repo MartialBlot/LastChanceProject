@@ -1,6 +1,5 @@
 import { Component, OnInit, ViewChild, ElementRef, HostListener, AfterViewInit } from '@angular/core';
-import { AppService } from '../services/app.service';
-import { GameService } from '../services/game.service';
+import { Router } from '@angular/router';
 
 
 @Component({
@@ -13,16 +12,16 @@ export class SpaceRacingComponent implements AfterViewInit {
 	@ViewChild('canvas') public canvas: ElementRef;
 	subscription: any;
 	showLoader = true;
-
 	constructor(
-		private appService: AppService,
-		private gameService: GameService
+		public router: Router,
 	) { }
 
-
 	public ngAfterViewInit() {
+		let nav = this.router
 		let canvas: any = document.getElementById('racing');
 		let ctx = canvas.getContext("2d");
+		let explode = false;
+
 
 		let background = new Image();
 		background.src = "assets/images/racingBackgound.png";
@@ -30,7 +29,7 @@ export class SpaceRacingComponent implements AfterViewInit {
 		let bY = 0;
 
 		let widowMaker = new Image();
-		widowMaker.src = "assets/images/widowMaker.png"
+		widowMaker.src = "assets/images/widowMaker1.png"
 
 		let canvasWidth = 2000;
 		let canvasHeight = 1000;
@@ -43,8 +42,8 @@ export class SpaceRacingComponent implements AfterViewInit {
 		let height = spriteHeight / rows;
 		let curFrame = 0;
 		let frameCount = 3;
-		let x = 400;
-		let y = 320;
+		let x = 800;
+		let y = 700;
 		let srcX = 0;
 		let srcY = 0;
 		let vueInit = false;
@@ -61,7 +60,7 @@ export class SpaceRacingComponent implements AfterViewInit {
 		let eHeight = ennemyHeight / eRows;
 		let eCurFrame = 0;
 		let eFrameCount = 3;
-		let eX = 0;
+		let eX = 800;
 		let eY = 0;
 		let eSrcX = 0;
 		let eSrcY = 90;
@@ -85,8 +84,8 @@ export class SpaceRacingComponent implements AfterViewInit {
 		let aY = 0;
 		let aSrcX = 0;
 		let aSrcY = 0;
-		randomEnnemy(4);
-		randomAsteroids(5);
+		randomEnnemy(15);
+		randomAsteroids(15);
 
 
 		function updateFrame() {
@@ -105,49 +104,74 @@ export class SpaceRacingComponent implements AfterViewInit {
 		}
 
 		function randomEnnemy(max) {
+			if (stopRandom) return;
 			if (max < 0) return;
 			setInterval(function () {
 				eY += 10
 			}, 50);
 			setTimeout(function () {
-					eY = 0;
-					eX = Math.floor(Math.random() * 1000);
-					max-=1;
-					randomEnnemy(max);
+				eY = 0;
+				eX = Math.floor(Math.random() * (500 - 1500) + 1500);
+				max -= 1;
+				randomEnnemy(max);
 			}, 3000);
 		}
 
 		function randomAsteroids(max) {
+			if (stopRandom) return;
 			if (max < 0) return;
 			setInterval(function () {
 				aY += 20
 			}, 50);
 			setTimeout(function () {
-					aY = 0;
-					aX = Math.floor(Math.random() * 500);
-					max-=1;
-					randomAsteroids(max);
-			}, 5000);
+				aY = 0;
+				aX = Math.floor(Math.random() * (500 - 1500) + 1500);
+				max -= 1;
+				randomAsteroids(max);
+			}, 2000);
 		}
 
 
-		// 	function randomEnnemy() {
-		// 		setTimeout(function () {
-		// 			setInterval(function () {
-		// 				eY += 3
-		// 			}, 500);
-		// 			randomEnnemy();
-		// 		}, 1000);
-		//   }
+		setTimeout(function () {nav.navigateByUrl('exit-planet')}, 20000)
+		var audio = new Audio('assets/sounds/SFB-explosion2.mp3');
+
+		let stopRandom = false;
+
+		function detectCrash() {
+			const H = canvasHeight;
+			const eBottom = eY;
+			const eTop = eBottom + eHeight - H;
+			const mBottom = y;
+			const mTop = mBottom + height - H;
+			const eLeft = eX;
+			const mLeft = x;
+			const mRight = mLeft + width;
+			if (Math.abs(mBottom) < Math.abs(eBottom) && Math.abs(mTop) > Math.abs(eTop) &&
+				((Math.abs(mLeft) < Math.abs(eX + 50)) && (Math.abs(mRight) > Math.abs(eX + 50))) &&
+				((Math.abs(x + 200) > Math.abs(eX)) && (Math.abs(x) < Math.abs(eX)))) {
+				audio.play();
+				explosion();
+				stopRandom = true;
+			}
+			if (Math.abs(mBottom) < Math.abs(aY) && Math.abs(mTop) > Math.abs((aY + aHeight - H)) &&
+				((Math.abs(mLeft) < Math.abs(aX + 50)) && (Math.abs(mRight) > Math.abs(aX + 50))) &&
+				((Math.abs(x + 200) > Math.abs(aX)) && (Math.abs(x) < Math.abs(aX)))) {
+				audio.play();
+				explosion();
+				stopRandom = true;
+			}
+		}
+
 
 		function draw() {
 			updateFrame();
 			ctx.drawImage(background, bX, bY);
 			ctx.drawImage(widowMaker, srcX, srcY, width, height, x, y, 280, 320);
-			ctx.drawImage(ennemy, eSrcX, eSrcY, eWidth, eHeight, eX, eY, eWidth, eHeight);
-			ctx.drawImage(asteroids, aSrcX, aSrcY, aWidth, aHeight, aX, aY, 50, 40);
+			ctx.drawImage(ennemy, eSrcX, eSrcY, eWidth, eHeight, eX, eY, 200, 200);
+			ctx.drawImage(asteroids, aSrcX, aSrcY, aWidth, aHeight, aX, aY, 80, 70);
+			detectCrash();
 		}
-		setInterval(draw, 60);
+		setInterval(draw, 50);
 		//contrôles
 		let keyState = {};
 		document.addEventListener('keydown', function (e) {
@@ -161,29 +185,31 @@ export class SpaceRacingComponent implements AfterViewInit {
 		}, true);
 
 		function gameLoop() {
-			if (keyState[39] || keyState[68]) {
+			if ((keyState[39] || keyState[68]) && (x < 1800) && (!explode)) {
 				droit();
-				x += 2;
+				x += 8;
 				vueInit = true;
 			}
 			setTimeout(gameLoop, 10);
-			if (keyState[37] || keyState[65] && (bX > 1030)) {
-				x -= 3;
+			if ((keyState[37] || keyState[65]) && (x > 0) && (!explode)) {
+				x -= 8;
 				gauche();
 				vueInit = true;
 			}
-			if (keyState[38] || keyState[87] && (bX > 0)) {
+			if ((keyState[38] || keyState[87]) && (y > 0) && (!explode)) {
 				haut();
 				y -= 3;
 				vueInit = true;
 			}
-			if (keyState[40] || keyState[83] && (bY < 300)) {
+			if ((keyState[40] || keyState[83]) && (y < 850) && (!explode)) {
+				console.log(y)
 				bas();
 				y += 3;
 				vueInit = true;
 			}
 		}
 		gameLoop();
+
 
 		let ennemy1 = {
 			ennemyWidth: 600,
@@ -262,5 +288,21 @@ export class SpaceRacingComponent implements AfterViewInit {
 			srcX = 0;
 			srcY = 0;
 		}
+
+
+		function explosion(){
+			spriteWidth = 12000;
+			spriteHeight = 1000;
+			rows = 1;
+			cols = 12;
+			width = spriteWidth / cols;
+			height = spriteHeight / rows;
+			curFrame = 0;
+			frameCount = 12;
+			srcX = 0;
+			srcY = 6500;
+			setTimeout(function () {nav.navigateByUrl('game-over')}, 3000);
+		}
 	}
 }
+

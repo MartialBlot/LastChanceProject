@@ -16,10 +16,26 @@
     z-index: 1;
 }
 
+.space2 {
+    background-image: url("../../assets/images/space-background3.jpg");
+    background-repeat: no-repeat;
+    background-size: cover;
+    height: 977px;
+    width: 1826px;
+}
+
+.planet {
+    background-image: url('../../assets/images/planet2.png');
+    background-repeat: no-repeat;
+    background-size: contain;
+    background-position: top 0 left 38%;
+    margin-left: 0px;
+}
+
 .propulsion {
     background-image: url("../../assets/images/space-test.gif");
     background-repeat: no-repeat;
-    background-size: cover;
+    background-size: 1836px 977px;
     height: 977px;
     width: 1826px;
     z-index: 1;
@@ -27,8 +43,8 @@
 
 .passer {
     position: fixed;
-    margin-top: 8%;
-    margin-left: 46%;
+    margin-top: 45%;
+    margin-left: 5%;
 }
 
 .dialog1, .dialog3, .dialog5 {
@@ -47,4 +63,16 @@
     position: absolute;
     margin-top: 27%;
     margin-left: 65%;
+}
+
+.dialog9, .dialog12 {
+    position: absolute;
+    margin-top: 30%;
+    margin-left: 20%;
+}
+
+.dialog10, .dialog11 {
+    position: absolute;
+    margin-top: 29%;
+    margin-left: 60%;
 }

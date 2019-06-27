@@ -14,9 +14,15 @@ export class ExitPlanet2Component implements AfterViewInit {
   public dialog6 = false;
   public dialog7 = false;
   public dialog8 = false;
+  public dialog9 = false;
+  public dialog10 = false;
+  public dialog11 = false;
+  public dialog12 = false;
   public end = false;
   public continuer = 'Passer';
   public space = true;
+  public planet = false;
+  public propulsion = false;
 
   ngAfterViewInit(): void {
   }
@@ -26,7 +32,9 @@ export class ExitPlanet2Component implements AfterViewInit {
   continue() {
     if (!this.end && !this.dialog1 && !this.dialog2
       && !this.dialog3 && !this.dialog4 && !this.dialog5
-      && !this.dialog6 && !this.dialog7 && !this.dialog8) {
+      && !this.dialog6 && !this.dialog7 && !this.dialog8
+      && !this.dialog9 && !this.dialog10 && !this.planet
+      && !this.propulsion) {
       this.dialog1 = true;
     } else if (this.dialog1) {
       this.dialog1 = false;
@@ -51,11 +59,29 @@ export class ExitPlanet2Component implements AfterViewInit {
       this.dialog8 = true;
     } else if (this.dialog8) {
       this.dialog8 = false;
-      this.end = true;
-      this.continuer = 'Continuer';
       this.space = false;
-
+      this.propulsion = true;
+    } else if (this.propulsion) {
+      this.propulsion = false;
+      this.planet = true;
+    } else if (this.planet && !this.end && !this.dialog9
+      && !this.dialog10 && !this.dialog11 && !this.dialog12) {
+      this.dialog9 = true;
+    } else if (this.dialog9) {
+      this.dialog9 = false;
+      this.dialog10 = true;
+    } else if (this.dialog10) {
+      this.dialog10 = false;
+      this.dialog11 = true;
+    } else if (this.dialog11) {
+      this.dialog11 = false;
+      this.dialog12 = true;
+    } else if (this.dialog12) {
+      this.dialog12 = false;
+      this.continuer = 'Continuer';
+      this.end = true;
     }
   }
-
 }
+
+
