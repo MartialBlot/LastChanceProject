@@ -22,7 +22,7 @@ export class SecondPlanetComponent implements AfterViewInit {
 
     //Sprite Arbre
     let arbre = new Image();
-    arbre.src = "assets/images/tree1.png";
+    arbre.src = "assets/images/iceBerg.png";
     let arbreWidth = 700;
     let arbreHeight = 750;
     let aRows = 1;
@@ -33,7 +33,7 @@ export class SecondPlanetComponent implements AfterViewInit {
     let aFrameCount = 1;
     let aX=260;
     let aY=320;
-    let aSrcX= 110;
+    let aSrcX= 0;
     let aSrcY= 0;
 
     // Sprite du vaisseau
@@ -415,23 +415,23 @@ export class SecondPlanetComponent implements AfterViewInit {
       //Map
       ctx.drawImage(background,bX,bY);
       //Arbres
-      ctx.drawImage(arbre,aSrcX,aSrcY,aWidth,aHeight,aX,aY-400,280,320);
-      ctx.drawImage(arbre,aSrcX,aSrcY,aWidth,aHeight,aX+190,aY+580,280,320);
-      ctx.drawImage(arbre,aSrcX,aSrcY,aWidth,aHeight,aX+590,aY+380,280,320);
-      ctx.drawImage(arbre,aSrcX,aSrcY,aWidth,aHeight,aX+290,aY+980,280,320);
-      ctx.drawImage(arbre,aSrcX,aSrcY,aWidth,aHeight,aX+890,aY+280,280,320);
-      ctx.drawImage(arbre,aSrcX,aSrcY,aWidth,aHeight,aX+990,aY-100,280,320);
-      ctx.drawImage(arbre,aSrcX,aSrcY,aWidth,aHeight,aX+790,aY+1200,280,320);
-      ctx.drawImage(arbre,aSrcX,aSrcY,aWidth,aHeight,aX+1000,aY-400,280,320);
-      ctx.drawImage(arbre,aSrcX,aSrcY,aWidth,aHeight,aX+1900,aY+580,280,320);
-      ctx.drawImage(arbre,aSrcX,aSrcY,aWidth,aHeight,aX+1590,aY+380,280,320);
-      ctx.drawImage(arbre,aSrcX,aSrcY,aWidth,aHeight,aX+1290,aY+980,280,320);
-      ctx.drawImage(arbre,aSrcX,aSrcY,aWidth,aHeight,aX+1890,aY+280,280,320);
-      ctx.drawImage(arbre,aSrcX,aSrcY,aWidth,aHeight,aX+1790,aY-100,280,320);
-      ctx.drawImage(arbre,aSrcX,aSrcY,aWidth,aHeight,aX+1290,aY+1200,280,320);
-      ctx.drawImage(arbre,aSrcX,aSrcY,aWidth,aHeight,aX+2190,aY+680,280,320);
-      ctx.drawImage(arbre,aSrcX,aSrcY,aWidth,aHeight,aX+2390,aY-100,280,320);
-      ctx.drawImage(arbre,aSrcX,aSrcY,aWidth,aHeight,aX+2490,aY+1200,280,320);
+      ctx.drawImage(arbre,aSrcX,aSrcY,aWidth,aHeight,aX,aY-400,480,520);
+      ctx.drawImage(arbre,aSrcX,aSrcY,aWidth,aHeight,aX+190,aY+580,480,520);
+      ctx.drawImage(arbre,aSrcX,aSrcY,aWidth,aHeight,aX+590,aY+380,480,520);
+      ctx.drawImage(arbre,aSrcX,aSrcY,aWidth,aHeight,aX+290,aY+980,480,520);
+      ctx.drawImage(arbre,aSrcX,aSrcY,aWidth,aHeight,aX+890,aY+280,480,520);
+      ctx.drawImage(arbre,aSrcX,aSrcY,aWidth,aHeight,aX+990,aY-100,480,520);
+      ctx.drawImage(arbre,aSrcX,aSrcY,aWidth,aHeight,aX+790,aY+1200,480,520);
+      ctx.drawImage(arbre,aSrcX,aSrcY,aWidth,aHeight,aX+1000,aY-400,480,520);
+      ctx.drawImage(arbre,aSrcX,aSrcY,aWidth,aHeight,aX+1900,aY+580,480,520);
+      ctx.drawImage(arbre,aSrcX,aSrcY,aWidth,aHeight,aX+1590,aY+380,480,520);
+      ctx.drawImage(arbre,aSrcX,aSrcY,aWidth,aHeight,aX+1290,aY+980,480,520);
+      ctx.drawImage(arbre,aSrcX,aSrcY,aWidth,aHeight,aX+1890,aY+280,480,520);
+      ctx.drawImage(arbre,aSrcX,aSrcY,aWidth,aHeight,aX+1790,aY-100,480,520);
+      ctx.drawImage(arbre,aSrcX,aSrcY,aWidth,aHeight,aX+1290,aY+1200,480,520);
+      ctx.drawImage(arbre,aSrcX,aSrcY,aWidth,aHeight,aX+2190,aY+680,480,520);
+      ctx.drawImage(arbre,aSrcX,aSrcY,aWidth,aHeight,aX+2390,aY-100,480,520);
+      ctx.drawImage(arbre,aSrcX,aSrcY,aWidth,aHeight,aX+2490,aY+1200,480,520);
       //Vaisseau
       ctx.drawImage(widowMaker,srcX,srcY,width,height,x,y,280,320);
       //Ours
