@@ -121,7 +121,7 @@ export class FirstPlanetComponent implements AfterViewInit {
       valueFPS = fps;
 
       //Control droit
-      if ((keyState[39] || keyState[68])){
+      if ((keyState[39] || keyState[68]) && (bX > -4190)){
           bX-=speed;
           x-=speed;
           aX-=speed;
@@ -132,7 +132,7 @@ export class FirstPlanetComponent implements AfterViewInit {
           vueInitGauche = false;
       }
       //Control gauche
-      if ((keyState[37] || keyState[65])){
+      if ((keyState[37] || keyState[65]) && (bX < -1170)){
         bX+=speed;
         x+=speed;
         aX+=speed;
@@ -141,9 +141,11 @@ export class FirstPlanetComponent implements AfterViewInit {
         vueInitBas = false;
         vueInitDroite = false;
         vueInitGauche = true;
+        console.log(bX)
+
       }
       //Control haut
-      if ((keyState[38] || keyState[87])){
+      if ((keyState[38] || keyState[87]) && (bY < -600)){
         haut();
         y+=speed;
         bY+=speed;
@@ -154,7 +156,7 @@ export class FirstPlanetComponent implements AfterViewInit {
         vueInitGauche = false;
       }
       //Control bas
-      if ((keyState[40] || keyState[83])){
+      if ((keyState[40] || keyState[83]) && (bY > -2612)){
         bas();
         bY-=speed;
         y-=speed;
@@ -185,7 +187,7 @@ export class FirstPlanetComponent implements AfterViewInit {
       showFPS = !showFPS;
     }
     //Décoller
-    if(keyState[69] && (bX === 1030) && ((y<pY) && ((y+100)>pY))){
+    if(keyState[69] && (bX === -1168) && ((y<pY) && ((y+100)>pY))){
       confirm( "Quitter cette planète et repartir à l'aventure ?" );
     }
 
@@ -315,7 +317,7 @@ export class FirstPlanetComponent implements AfterViewInit {
       ctx.fillText(`FPS: ${valueFPS.toFixed(0)}`, 10, 20);
       }
       //Invitation à décoller
-      if((bX === 1030) && ((y<pY) && ((y+100)>pY))){
+      if((bX === -1168) && ((y<pY) && ((y+100)>pY))){
         ctx.font="18px helvetica";
         ctx.fillText(`Appuyer sur E pour interagir`, pX + 20, pY - 20);
       }
