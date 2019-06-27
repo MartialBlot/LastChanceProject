@@ -289,8 +289,8 @@ export class SpaceRacing2V2Component implements AfterViewInit {
 		let explode = false;
 
 		function explosion(){
-			spriteWidth = 12000;
-			spriteHeight = 1000;
+			spriteWidth = 4680;
+			spriteHeight = 420;
 			rows = 1;
 			cols = 12;
 			width = spriteWidth / cols;
@@ -298,7 +298,7 @@ export class SpaceRacing2V2Component implements AfterViewInit {
 			curFrame = 0;
 			frameCount = 12;
 			srcX = 0;
-			srcY = 6500;
+			srcY = 2800;
       explode = true;
       setTimeout(function () {nav.navigateByUrl('game-over')}, 2000)
 		}

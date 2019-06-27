@@ -4,9 +4,9 @@ import { Router } from '@angular/router';
 
 
 @Component({
-  selector: 'app-space-racing-v2',
-  templateUrl: './space-racing-v2.component.html',
-  styleUrls: ['./space-racing-v2.component.css']
+	selector: 'app-space-racing-v2',
+	templateUrl: './space-racing-v2.component.html',
+	styleUrls: ['./space-racing-v2.component.css']
 })
 export class SpaceRacingV2Component implements AfterViewInit {
 	@ViewChild('canvas') public canvas: ElementRef;
@@ -128,12 +128,21 @@ export class SpaceRacingV2Component implements AfterViewInit {
 				randomAsteroids(max);
 			}, 2000);
 		}
+		let exit;
+		function win() {
+			exit = setTimeout(function () { nav.navigateByUrl('exit-planet3') }, 10000);
+		}
+
+		function loose() {
+			window.clearTimeout(exit);
+		}
+
+		win()
 
 
-    setTimeout(function () {nav.navigateByUrl('exit-planet3')}, 30000)
 		let audio = new Audio('assets/sounds/SFB-explosion2.mp3');
-    let fire = new Audio('assets/sounds/fire.mp3');
-    
+		let fire = new Audio('assets/sounds/fire.mp3');
+
 		let stopRandom = false;
 
 		function detectCrash() {
@@ -183,9 +192,9 @@ export class SpaceRacingV2Component implements AfterViewInit {
 			}
 		}, true);
 
-    function gameLoop() {
+		function gameLoop() {
 			if ((keyState[39] || keyState[68]) && (x < 1800) && (!explode)) {
-        droit();
+				droit();
 				x += 8;
 				vueInit = true;
 			}
@@ -224,12 +233,12 @@ export class SpaceRacingV2Component implements AfterViewInit {
 			eSrcY: 90,
 		}
 
-    //Animations
-    
+		//Animations
+
 
 		function droit() {
-      let spriteWidth = 1800;
-      let spriteHeight = 700;
+			let spriteWidth = 1800;
+			let spriteHeight = 700;
 			rows = 1;
 			cols = 3;
 			width = spriteWidth / cols;
@@ -240,8 +249,8 @@ export class SpaceRacingV2Component implements AfterViewInit {
 		}
 
 		function gauche() {
-      let spriteWidth = 1800;
-      let spriteHeight = 700;
+			let spriteWidth = 1800;
+			let spriteHeight = 700;
 			rows = 1;
 			cols = 3;
 			width = spriteWidth / cols;
@@ -249,12 +258,12 @@ export class SpaceRacingV2Component implements AfterViewInit {
 			frameCount = 3;
 			srcX = 0;
 			srcY = 1650;
-    }
-    
+		}
+
 
 		function bas() {
-      let spriteWidth = 1800;
-      let spriteHeight = 700;
+			let spriteWidth = 1800;
+			let spriteHeight = 700;
 			rows = 1;
 			cols = 3;
 			width = spriteWidth / cols;
@@ -265,8 +274,8 @@ export class SpaceRacingV2Component implements AfterViewInit {
 		}
 
 		function haut() {
-      let spriteWidth = 1800;
-      let spriteHeight = 700;
+			let spriteWidth = 1800;
+			let spriteHeight = 700;
 			rows = 1;
 			cols = 3;
 			width = spriteWidth / cols;
@@ -277,8 +286,8 @@ export class SpaceRacingV2Component implements AfterViewInit {
 		}
 
 		function init() {
-      let spriteWidth = 1800;
-      let spriteHeight = 700;
+			let spriteWidth = 1800;
+			let spriteHeight = 700;
 			rows = 1;
 			cols = 3;
 			width = spriteWidth / cols;
@@ -290,9 +299,9 @@ export class SpaceRacingV2Component implements AfterViewInit {
 		}
 		let explode = false;
 
-		function explosion(){
-			spriteWidth = 12000;
-			spriteHeight = 1000;
+		function explosion() {
+			spriteWidth = 4680;
+			spriteHeight = 420;
 			rows = 1;
 			cols = 12;
 			width = spriteWidth / cols;
@@ -300,9 +309,10 @@ export class SpaceRacingV2Component implements AfterViewInit {
 			curFrame = 0;
 			frameCount = 12;
 			srcX = 0;
-			srcY = 6500;
-      explode = true;
-      setTimeout(function () {nav.navigateByUrl('game-over')}, 2000)
+			srcY = 2800;
+			explode = true;
+			loose();
+			setTimeout(function () { nav.navigateByUrl('game-over') }, 2000)
 		}
 	}
 }
