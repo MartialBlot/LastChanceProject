@@ -22,18 +22,18 @@ export class SpaceRacing3V2Component implements AfterViewInit {
 		let ctx = canvas.getContext("2d");
 
 		let background = new Image();
-		background.src = "assets/images/star-wars-star-backgrounds-9.png";
+		background.src = "assets/images/racingBackgound.png";
 		let bX = 0;
 		let bY = 0;
 
-		let widowMaker = new Image();
-		widowMaker.src = "assets/images/widowMaker1.png"
+		let asteroidMaker = new Image();
+		asteroidMaker.src = "assets/images/asteroidKiller.png"
 
 		let canvasWidth = 2000;
 		let canvasHeight = 1000;
 		// Sprite du vaisseau
-		let spriteWidth = 2370;
-		let spriteHeight = 1030;
+		let spriteWidth = 1800;
+		let spriteHeight = 700;
 		let rows = 1;
 		let cols = 3;
 		let width = spriteWidth / cols;
@@ -128,12 +128,21 @@ export class SpaceRacing3V2Component implements AfterViewInit {
 				randomAsteroids(max);
 			}, 2000);
 		}
+		let exit;
+		function win() {
+			exit = setTimeout(function () { nav.navigateByUrl('exit-planet3') }, 10000);
+		}
+
+		function loose() {
+			clearTimeout(exit);
+		}
+
+		win()
 
 
-    setTimeout(function () {nav.navigateByUrl('exit-planet3')}, 30000)
 		let audio = new Audio('assets/sounds/SFB-explosion2.mp3');
-    let fire = new Audio('assets/sounds/fire.mp3');
-    
+		let fire = new Audio('assets/sounds/fire.mp3');
+
 		let stopRandom = false;
 
 		function detectCrash() {
@@ -165,7 +174,7 @@ export class SpaceRacing3V2Component implements AfterViewInit {
 		function draw() {
 			updateFrame();
 			ctx.drawImage(background, bX, bY);
-			ctx.drawImage(widowMaker, srcX, srcY, width, height, x, y, 280, 320);
+			ctx.drawImage(asteroidMaker, srcX, srcY, width, height, x, y, 250, 300);
 			ctx.drawImage(ennemy, eSrcX, eSrcY, eWidth, eHeight, eX, eY, 200, 200);
 			ctx.drawImage(asteroids, aSrcX, aSrcY, aWidth, aHeight, aX, aY, 80, 70);
 			detectCrash();
@@ -183,9 +192,9 @@ export class SpaceRacing3V2Component implements AfterViewInit {
 			}
 		}, true);
 
-    function gameLoop() {
+		function gameLoop() {
 			if ((keyState[39] || keyState[68]) && (x < 1800) && (!explode)) {
-        droit();
+				droit();
 				x += 8;
 				vueInit = true;
 			}
@@ -226,57 +235,59 @@ export class SpaceRacing3V2Component implements AfterViewInit {
 
 		//Animations
 
+
 		function droit() {
-			spriteWidth = 2400;
-			spriteHeight = 1100;
+			let spriteWidth = 1800;
+			let spriteHeight = 700;
 			rows = 1;
 			cols = 3;
 			width = spriteWidth / cols;
 			height = spriteHeight / rows;
 			frameCount = 3;
 			srcX = 0;
-			srcY = 5300;
+			srcY = 1650;
 		}
 
 		function gauche() {
-			spriteWidth = 2400;
-			spriteHeight = 1100;
+			let spriteWidth = 1800;
+			let spriteHeight = 700;
 			rows = 1;
 			cols = 3;
 			width = spriteWidth / cols;
 			height = spriteHeight / rows;
 			frameCount = 3;
 			srcX = 0;
-			srcY = 5300;
+			srcY = 1650;
 		}
 
+
 		function bas() {
-			spriteWidth = 2400;
-			spriteHeight = 1100;
+			let spriteWidth = 1800;
+			let spriteHeight = 700;
 			rows = 1;
 			cols = 3;
 			width = spriteWidth / cols;
 			height = spriteHeight / rows;
 			frameCount = 3;
 			srcX = 0;
-			srcY = 5300;
+			srcY = 1650;
 		}
 
 		function haut() {
-			spriteWidth = 2400;
-			spriteHeight = 1100;
+			let spriteWidth = 1800;
+			let spriteHeight = 700;
 			rows = 1;
 			cols = 3;
 			width = spriteWidth / cols;
 			height = spriteHeight / rows;
 			frameCount = 3;
 			srcX = 0;
-			srcY = 5300;
+			srcY = 1650;
 		}
 
 		function init() {
-			spriteWidth = 2370;
-			spriteHeight = 1030;
+			let spriteWidth = 1800;
+			let spriteHeight = 700;
 			rows = 1;
 			cols = 3;
 			width = spriteWidth / cols;
@@ -287,8 +298,8 @@ export class SpaceRacing3V2Component implements AfterViewInit {
 			srcY = 0;
 		}
 		let explode = false;
-		
-		function explosion(){
+
+		function explosion() {
 			spriteWidth = 4680;
 			spriteHeight = 420;
 			rows = 1;
@@ -299,8 +310,9 @@ export class SpaceRacing3V2Component implements AfterViewInit {
 			frameCount = 12;
 			srcX = 0;
 			srcY = 2800;
-      explode = true;
-      setTimeout(function () {nav.navigateByUrl('game-over')}, 2000)
+			explode = true;
+			loose();
+			setTimeout(function () { nav.navigateByUrl('game-over') }, 2000)
 		}
 	}
 }

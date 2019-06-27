@@ -34,6 +34,7 @@ const routes: Routes = [
   { path: 'play', component: VideoComponent },
   { path: 'choix', component: ChoiceComponent },
   { path: 'choix/racing', component: SpaceRacingComponent },
+  { path: 'choix/racingV2', component: SpaceRacingV2Component },
   { path: 'amelioration', component: ModalComponent },
   { path: 'final', component: VideofinalComponent },
   { path: 'progress', component: ProgressComponent },
