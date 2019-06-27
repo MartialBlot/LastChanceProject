@@ -8,6 +8,7 @@ import { NesComponent } from './nes/nes.component';
 import { FirstPlanetComponent } from './first-planet/first-planet.component';
 import { SpaceRacingComponent } from './space-racing/space-racing.component';
 import { ExitPlanetComponent } from './exit-planet/exit-planet.component';
+import { ExitPlanet2Component } from './exit-planet2/exit-planet2.component';
 
 @NgModule({
   declarations: [
@@ -16,7 +17,8 @@ import { ExitPlanetComponent } from './exit-planet/exit-planet.component';
     NesComponent,
     FirstPlanetComponent,
     SpaceRacingComponent,
-    ExitPlanetComponent
+    ExitPlanetComponent,
+    ExitPlanet2Component
   ],
   imports: [
     BrowserModule,
