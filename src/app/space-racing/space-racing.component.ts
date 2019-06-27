@@ -17,9 +17,11 @@ export class SpaceRacingComponent implements AfterViewInit {
 	) { }
 
 	public ngAfterViewInit() {
-		// const router = this.router.navigateByUrl('game-over')
+		let nav = this.router
 		let canvas: any = document.getElementById('racing');
 		let ctx = canvas.getContext("2d");
+		let explode = false;
+
 
 		let background = new Image();
 		background.src = "assets/images/racingBackgound.png";
@@ -130,7 +132,7 @@ export class SpaceRacingComponent implements AfterViewInit {
 		}
 
 
-		setTimeout(function () { window.location.href = 'http://localhost:4200/exit-planet' }, 20000)
+		setTimeout(function () {nav.navigateByUrl('exit-planet')}, 20000)
 		var audio = new Audio('assets/sounds/SFB-explosion2.mp3');
 
 		let stopRandom = false;
@@ -149,7 +151,6 @@ export class SpaceRacingComponent implements AfterViewInit {
 				((Math.abs(x + 200) > Math.abs(eX)) && (Math.abs(x) < Math.abs(eX)))) {
 				audio.play();
 				explosion();
-				setTimeout(function () { window.location.href = 'http://localhost:4200/game-over' }, 2000)
 				stopRandom = true;
 			}
 			if (Math.abs(mBottom) < Math.abs(aY) && Math.abs(mTop) > Math.abs((aY + aHeight - H)) &&
@@ -157,7 +158,6 @@ export class SpaceRacingComponent implements AfterViewInit {
 				((Math.abs(x + 200) > Math.abs(aX)) && (Math.abs(x) < Math.abs(aX)))) {
 				audio.play();
 				explosion();
-				setTimeout(function () { window.location.href = 'http://localhost:4200/game-over' }, 2000)
 				stopRandom = true;
 			}
 		}
@@ -288,7 +288,7 @@ export class SpaceRacingComponent implements AfterViewInit {
 			srcX = 0;
 			srcY = 0;
 		}
-		let explode = false;
+
 
 		function explosion(){
 			spriteWidth = 12000;
@@ -301,7 +301,8 @@ export class SpaceRacingComponent implements AfterViewInit {
 			frameCount = 12;
 			srcX = 0;
 			srcY = 6500;
-			explode = true;
+			setTimeout(function () {nav.navigateByUrl('game-over')}, 3000);
 		}
 	}
 }
+
