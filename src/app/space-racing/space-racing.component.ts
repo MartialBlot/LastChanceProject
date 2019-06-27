@@ -25,7 +25,7 @@ export class SpaceRacingComponent implements AfterViewInit {
 		let ctx = canvas.getContext("2d");
 
 		let background = new Image();
-		background.src = "assets/images/racingBackground2.jpg";
+		background.src = "assets/images/racingBackgound.png";
 		let bX = 0;
 		let bY = 0;
 
@@ -47,6 +47,7 @@ export class SpaceRacingComponent implements AfterViewInit {
 		let y = 320;
 		let srcX = 0;
 		let srcY = 0;
+		let vueInit = false;
 
 		let ennemy = new Image();
 		ennemy.src = "assets/images/vaisseauennemi.png"
@@ -110,20 +111,38 @@ export class SpaceRacingComponent implements AfterViewInit {
 		setInterval(draw, 80);
 		//contrôles
 		let keyState = {};
-		document.addEventListener('keydown', function (e) {
-			keyState[e.keyCode || e.which] = true;
-		}, true);
-		document.addEventListener('keyup', function (e) {
-			keyState[e.keyCode || e.which] = false;
-		}, true);
+		document.addEventListener('keydown',function(e){
+			 keyState[e.keyCode || e.which] = true;
+		},true);
+		document.addEventListener('keyup',function(e){
+			 keyState[e.keyCode || e.which] = false;
+			 if(vueInit){
+			 init();
+		  }
+		},true);
 
 		function gameLoop() {
-			//Control droit
 			if (keyState[39] || keyState[68]) {
 				droit();
 				x += 2;
+				vueInit = true;
 			}
 			setTimeout(gameLoop, 10);
+			if (keyState[37] || keyState[65] && (bX > 1030)) {
+				x -= 3;
+				gauche();
+				vueInit = true;
+			}
+			if (keyState[38] || keyState[87] && (bY > 130)) {
+				haut();
+				y -= 3;
+				vueInit = true;
+			}
+			if (keyState[40] || keyState[83] && (bY < 1420)) {
+				bas();
+				y += 3;
+				vueInit = true;
+			}
 		}
 		gameLoop();
 
@@ -136,10 +155,58 @@ export class SpaceRacingComponent implements AfterViewInit {
 			cols = 3;
 			width = spriteWidth / cols;
 			height = spriteHeight / rows;
-			curFrame = 0;
 			frameCount = 3;
 			srcX = 0;
 			srcY = 5300;
+		}
+
+		function gauche() {
+			spriteWidth = 2400;
+			spriteHeight = 1100;
+			rows = 1;
+			cols = 3;
+			width = spriteWidth / cols;
+			height = spriteHeight / rows;
+			frameCount = 3;
+			srcX = 0;
+			srcY = 5300;
+		}
+
+		function bas() {
+			spriteWidth = 2400;
+			spriteHeight = 1100;
+			rows = 1;
+			cols = 3;
+			width = spriteWidth / cols;
+			height = spriteHeight / rows;
+			frameCount = 3;
+			srcX = 0;
+			srcY = 5300;
+		}
+
+		function haut() {
+			spriteWidth = 2400;
+			spriteHeight = 1100;
+			rows = 1;
+			cols = 3;
+			width = spriteWidth / cols;
+			height = spriteHeight / rows;
+			frameCount = 3;
+			srcX = 0;
+			srcY = 5300;
+		}
+
+		function init(){
+			spriteWidth = 2370;
+			spriteHeight = 1030;
+			rows = 1;
+			cols = 3;
+			width = spriteWidth / cols;
+			height = spriteHeight / rows;
+			curFrame = 0;
+			frameCount = 3;
+			srcX = 0;
+			srcY = 0;
 		}
 	}
 }
