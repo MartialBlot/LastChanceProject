@@ -2,13 +2,13 @@ import { Component, OnInit, ViewChild, ElementRef, HostListener, AfterViewInit }
 import { Router } from '@angular/router';
 
 
-@Component({
-  selector: 'app-space-racing3',
-  templateUrl: './space-racing3.component.html',
-  styleUrls: ['./space-racing3.component.css']
-})
-export class SpaceRacing3Component implements AfterViewInit {
 
+@Component({
+  selector: 'app-space-racing-v2',
+  templateUrl: './space-racing-v2.component.html',
+  styleUrls: ['./space-racing-v2.component.css']
+})
+export class SpaceRacingV2Component implements AfterViewInit {
 	@ViewChild('canvas') public canvas: ElementRef;
 	subscription: any;
 	showLoader = true;
@@ -22,18 +22,18 @@ export class SpaceRacing3Component implements AfterViewInit {
 		let ctx = canvas.getContext("2d");
 
 		let background = new Image();
-		background.src = "assets/images/star-wars-star-backgrounds-9.png";
+		background.src = "assets/images/racingBackgound.png";
 		let bX = 0;
 		let bY = 0;
 
 		let widowMaker = new Image();
-		widowMaker.src = "assets/images/widowMaker1.png"
+		widowMaker.src = "assets/images/asteroidKiller.png"
 
 		let canvasWidth = 2000;
 		let canvasHeight = 1000;
 		// Sprite du vaisseau
-		let spriteWidth = 2370;
-		let spriteHeight = 1030;
+		let spriteWidth = 1800;
+		let spriteHeight = 700;
 		let rows = 1;
 		let cols = 3;
 		let width = spriteWidth / cols;
@@ -248,30 +248,31 @@ export class SpaceRacing3Component implements AfterViewInit {
 			frameCount = 3;
 			srcX = 0;
 			srcY = 5300;
-		}
+    }
+    
 
 		function bas() {
-			spriteWidth = 2400;
-			spriteHeight = 1100;
+			spriteWidth = 1680;
+			spriteHeight = 680;
 			rows = 1;
 			cols = 3;
 			width = spriteWidth / cols;
 			height = spriteHeight / rows;
 			frameCount = 3;
 			srcX = 0;
-			srcY = 5300;
+			srcY = 1785;
 		}
 
 		function haut() {
-			spriteWidth = 2400;
-			spriteHeight = 1100;
+			spriteWidth = 1680;
+			spriteHeight = 680;
 			rows = 1;
 			cols = 3;
 			width = spriteWidth / cols;
 			height = spriteHeight / rows;
 			frameCount = 3;
 			srcX = 0;
-			srcY = 5300;
+			srcY = 1785;
 		}
 
 		function init() {
