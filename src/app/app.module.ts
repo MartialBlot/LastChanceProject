@@ -21,6 +21,10 @@ import { SpaceRacing2V2Component } from './space-racing2-v2/space-racing2-v2.com
 import { SpaceRacing3V2Component } from './space-racing3-v2/space-racing3-v2.component';
 import { VideotransitComponent } from './videotransit/videotransit.component';
 import { HeartComponent } from './heart/heart.component';
+import { Videotransit2Component } from './videotransit2/videotransit2.component';
+import { Videotransit3Component } from './videotransit3/videotransit3.component';
+import { SecondPlanetComponent } from './second-planet/second-planet.component';
+import { ThirdPlanetComponent } from './third-planet/third-planet.component';
 
 @NgModule({
   declarations: [
@@ -43,7 +47,11 @@ import { HeartComponent } from './heart/heart.component';
     SpaceRacing2V2Component,
     SpaceRacing3V2Component,
     VideotransitComponent,
-    HeartComponent
+    HeartComponent,
+    Videotransit2Component,
+    Videotransit3Component,
+    SecondPlanetComponent,
+    ThirdPlanetComponent
   ],
   imports: [
     BrowserModule,
