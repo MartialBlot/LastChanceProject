@@ -1,0 +1,19 @@
+
+.loader{
+   width: 100%;
+   height: 100%;
+   background: #000000ab;
+   position: absolute;
+   text-align: center;
+   color: #fff;
+ }
+ 
+ #racing{
+    width: 100%;
+    height: 100%;
+ }
+ .play-ground{
+    display: grid;
+    margin: auto;
+    background-color: #ddd;
+ }
