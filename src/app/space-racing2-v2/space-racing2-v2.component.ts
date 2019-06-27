@@ -2,13 +2,13 @@ import { Component, OnInit, ViewChild, ElementRef, HostListener, AfterViewInit }
 import { Router } from '@angular/router';
 
 
-@Component({
-  selector: 'app-space-racing3',
-  templateUrl: './space-racing3.component.html',
-  styleUrls: ['./space-racing3.component.css']
-})
-export class SpaceRacing3Component implements AfterViewInit {
 
+@Component({
+  selector: 'app-space-racing2-v2',
+  templateUrl: './space-racing2-v2.component.html',
+  styleUrls: ['./space-racing2-v2.component.css']
+})
+export class SpaceRacing2V2Component implements AfterViewInit {
 	@ViewChild('canvas') public canvas: ElementRef;
 	subscription: any;
 	showLoader = true;
