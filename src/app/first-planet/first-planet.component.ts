@@ -1,6 +1,4 @@
 import { Component, AfterViewInit } from '@angular/core';
-import { by } from 'protractor';
-
 @Component({
   selector: 'app-first-planet',
   templateUrl: './first-planet.component.html',
@@ -14,11 +12,13 @@ export class FirstPlanetComponent implements AfterViewInit {
     let canvas : any= document.getElementById('map');
     let ctx = canvas.getContext("2d");
 
+    //Background
     let background = new Image();
     background.src = "assets/images/maptest.png";
     let bX = -1720;
     let bY = -1000;
 
+    //Sprite Arbre
     let arbre = new Image();
     arbre.src = "assets/images/tree1.png";
     let arbreWidth = 700;
@@ -34,12 +34,11 @@ export class FirstPlanetComponent implements AfterViewInit {
     let aSrcX= 110;
     let aSrcY= 0;
 
+    // Sprite du vaisseau
     let widowMaker = new Image();
     widowMaker.src = "assets/images/widowMaker.png"
-
     let canvasWidth = 1200;
     let canvasHeight = 800;
-// Sprite du vaisseau
     let spriteWidth = 2370;
     let spriteHeight = 1030;
     let rows = 1;
@@ -53,10 +52,9 @@ export class FirstPlanetComponent implements AfterViewInit {
     let srcX= 0;
     let srcY= 0;
 
+    // Sprite de l'heroine
     let player = new Image();
     player.src = "assets/images/player.png"
-
-// Sprite de l'heroine
     let playerWidth = 100;
     let playerHeight = 100;
     let pRows = 1;
@@ -73,8 +71,39 @@ export class FirstPlanetComponent implements AfterViewInit {
     let vueInitBas = false;
     let vueInitDroite = false;
     let vueInitGauche = false;
-
     let speed = 3;
+
+    //Sprite Ours
+    let ours = new Image();
+    ours.src = "assets/images/ours.png"
+    let oursWidth = 540;
+    let oursHeight = 60;
+    let oRows = 1;
+    let oCols = 6;
+    let oWidth = oursWidth/oCols;
+    let oHeight = oursHeight/oRows;
+    let oCurFrame = 0;
+    let oFrameCount = 6;
+    let oX=2400;
+    let oY=840;
+    let oSrcX= 0;
+    let oSrcY= 60;
+
+    //Sprite Loup
+    let loup = new Image();
+    loup.src = "assets/images/loup.png"
+    let loupWidth = 840;
+    let loupHeight = 110;
+    let lRows = 1;
+    let lCols = 6;
+    let lWidth = loupWidth/lCols;
+    let lHeight = loupHeight/lRows;
+    let lCurFrame = 0;
+    let lFrameCount = 6;
+    let lX=750;
+    let lY=320;
+    let lSrcX= 0;
+    let lSrcY= 0;
 
     canvas.width =  canvasWidth;
     canvas.height = canvasHeight;
@@ -84,6 +113,15 @@ export class FirstPlanetComponent implements AfterViewInit {
       curFrame = ++curFrame % frameCount;
       srcX = curFrame * width;
       ctx.clearRect(x,y,width,height);
+
+      oCurFrame = ++oCurFrame % oFrameCount;
+        oSrcX = oCurFrame * oWidth;
+        ctx.clearRect(oX,oY,oWidth,oHeight);
+        animationOurs();
+
+      lCurFrame = ++lCurFrame % lFrameCount;
+        lSrcX = lCurFrame * lWidth;
+        ctx.clearRect(lX,lY,lWidth,lHeight);
 
       pCurFrame = ++pCurFrame % pFrameCount;
         pSrcX = pCurFrame * pWidth;
@@ -126,6 +164,7 @@ export class FirstPlanetComponent implements AfterViewInit {
           bX-=speed;
           x-=speed;
           aX-=speed;
+          oX-=speed;
           droit();
           vueInitHaut = false;
           vueInitBas = false;
@@ -137,6 +176,7 @@ export class FirstPlanetComponent implements AfterViewInit {
         bX+=speed;
         x+=speed;
         aX+=speed;
+        oX+=speed;
         gauche();
         vueInitHaut = false;
         vueInitBas = false;
@@ -151,6 +191,7 @@ export class FirstPlanetComponent implements AfterViewInit {
         y+=speed;
         bY+=speed;
         aY+=speed;
+        oY+=speed;
         vueInitHaut = true;
         vueInitBas = false;
         vueInitDroite = false;
@@ -162,6 +203,7 @@ export class FirstPlanetComponent implements AfterViewInit {
         bY-=speed;
         y-=speed;
         aY-=speed;
+        oY-=speed;
         vueInitHaut = false;
         vueInitBas = true;
         vueInitDroite = false;
@@ -307,6 +349,33 @@ export class FirstPlanetComponent implements AfterViewInit {
       pSrcY= 400;
     }
 
+    //Deplacement ours
+    let nbDeplacementOurs = 0;
+    let oursDirDroit = true;
+    let oursDirGauche = false;
+    function animationOurs(){
+      if(oursDirDroit){
+        oSrcY= 60;
+        oX+=9;
+        nbDeplacementOurs+=1
+        if(nbDeplacementOurs === 70){
+          oursDirDroit = false;
+          oursDirGauche = true;
+          nbDeplacementOurs = 0;
+        }
+      }
+      if(oursDirGauche){
+        oSrcY= 135;
+        oX-=9
+        nbDeplacementOurs+=1
+        if(nbDeplacementOurs === 70){
+          oursDirDroit = true;
+          oursDirGauche = false;
+          nbDeplacementOurs = 0;
+        }
+      }
+    }
+
     function draw(){
       //Rafraichissement
       updateFrame();
@@ -332,9 +401,14 @@ export class FirstPlanetComponent implements AfterViewInit {
       ctx.drawImage(arbre,aSrcX,aSrcY,aWidth,aHeight,aX+2490,aY+1200,280,320);
       //Vaisseau
       ctx.drawImage(widowMaker,srcX,srcY,width,height,x,y,280,320);
+      //Ours
+      ctx.drawImage(ours,oSrcX,oSrcY,oWidth,oHeight,oX,oY,170,100);
+      ctx.drawImage(ours,oSrcX,oSrcY,oWidth,oHeight,oX-1100,oY+200,170,100);
+      ctx.drawImage(ours,oSrcX,oSrcY,oWidth,oHeight,oX-200,oY-800,170,100);
+      //Loup
+      ctx.drawImage(loup,lSrcX,lSrcY,lWidth,lHeight,lX,lY,110,80);
       //Heroine
       ctx.drawImage(player,pSrcX,pSrcY,pWidth,pHeight,pX,pY,pWidth,pHeight);
-
       //dessine les FPS
       if(showFPS){
       ctx.font="20px helvetica";
@@ -346,6 +420,6 @@ export class FirstPlanetComponent implements AfterViewInit {
         ctx.fillText(`Appuyer sur E pour interagir`, pX + 20, pY - 20);
       }
     }
-    setInterval(draw,60);
+    setInterval(draw,70);
   }
 }
