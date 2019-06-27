@@ -22,7 +22,7 @@ export class ThirdPlanetComponent implements AfterViewInit {
 
     //Sprite Arbre
     let arbre = new Image();
-    arbre.src = "assets/images/tree1.png";
+    arbre.src = "assets/images/volcan.png";
     let arbreWidth = 700;
     let arbreHeight = 750;
     let aRows = 1;
@@ -33,7 +33,7 @@ export class ThirdPlanetComponent implements AfterViewInit {
     let aFrameCount = 1;
     let aX=260;
     let aY=320;
-    let aSrcX= 110;
+    let aSrcX= 0;
     let aSrcY= 0;
 
     // Sprite du vaisseau
