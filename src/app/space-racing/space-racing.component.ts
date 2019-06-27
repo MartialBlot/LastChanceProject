@@ -32,8 +32,8 @@ export class SpaceRacingComponent implements AfterViewInit {
 		let widowMaker = new Image();
 		widowMaker.src = "assets/images/widowMaker.png"
 
-		let canvasWidth = 1200;
-		let canvasHeight = 800;
+		let canvasWidth = 2000;
+		let canvasHeight = 1000;
 		// Sprite du vaisseau
 		let spriteWidth = 2370;
 		let spriteHeight = 1030;
@@ -61,8 +61,8 @@ export class SpaceRacingComponent implements AfterViewInit {
 		let eHeight = ennemyHeight / eRows;
 		let eCurFrame = 0;
 		let eFrameCount = 3;
-		let eX = 145;
-		let eY = 280;
+		let eX = 0;
+		let eY = 0;
 		let eSrcX = 0;
 		let eSrcY = 90;
 
@@ -82,9 +82,11 @@ export class SpaceRacingComponent implements AfterViewInit {
 		let aCurFrame = 0;
 		let aFrameCount = 3;
 		let aX = 500;
-		let aY = 200;
+		let aY = 0;
 		let aSrcX = 0;
 		let aSrcY = 0;
+		randomEnnemy(4);
+		randomAsteroids(5);
 
 
 		function updateFrame() {
@@ -99,27 +101,64 @@ export class SpaceRacingComponent implements AfterViewInit {
 			aCurFrame = ++aCurFrame % aFrameCount;
 			aSrcX = aCurFrame * aWidth;
 			ctx.clearRect(aX, aY, aWidth, aHeight);
+
 		}
+
+		function randomEnnemy(max) {
+			if (max < 0) return;
+			setInterval(function () {
+				eY += 10
+			}, 50);
+			setTimeout(function () {
+					eY = 0;
+					eX = Math.floor(Math.random() * 1000);
+					max-=1;
+					randomEnnemy(max);
+			}, 3000);
+		}
+
+		function randomAsteroids(max) {
+			if (max < 0) return;
+			setInterval(function () {
+				aY += 20
+			}, 50);
+			setTimeout(function () {
+					aY = 0;
+					aX = Math.floor(Math.random() * 500);
+					max-=1;
+					randomAsteroids(max);
+			}, 5000);
+		}
+
+
+		// 	function randomEnnemy() {
+		// 		setTimeout(function () {
+		// 			setInterval(function () {
+		// 				eY += 3
+		// 			}, 500);
+		// 			randomEnnemy();
+		// 		}, 1000);
+		//   }
 
 		function draw() {
 			updateFrame();
-			ctx.drawImage(background, bX, bY, 1400, 800, 0, 0, 2000, 2000);
+			ctx.drawImage(background, bX, bY);
 			ctx.drawImage(widowMaker, srcX, srcY, width, height, x, y, 280, 320);
 			ctx.drawImage(ennemy, eSrcX, eSrcY, eWidth, eHeight, eX, eY, eWidth, eHeight);
 			ctx.drawImage(asteroids, aSrcX, aSrcY, aWidth, aHeight, aX, aY, 50, 40);
 		}
-		setInterval(draw, 80);
+		setInterval(draw, 60);
 		//contrôles
 		let keyState = {};
-		document.addEventListener('keydown',function(e){
-			 keyState[e.keyCode || e.which] = true;
-		},true);
-		document.addEventListener('keyup',function(e){
-			 keyState[e.keyCode || e.which] = false;
-			 if(vueInit){
-			 init();
-		  }
-		},true);
+		document.addEventListener('keydown', function (e) {
+			keyState[e.keyCode || e.which] = true;
+		}, true);
+		document.addEventListener('keyup', function (e) {
+			keyState[e.keyCode || e.which] = false;
+			if (vueInit) {
+				init();
+			}
+		}, true);
 
 		function gameLoop() {
 			if (keyState[39] || keyState[68]) {
@@ -133,18 +172,33 @@ export class SpaceRacingComponent implements AfterViewInit {
 				gauche();
 				vueInit = true;
 			}
-			if (keyState[38] || keyState[87] && (bY > 130)) {
+			if (keyState[38] || keyState[87] && (bX > 0)) {
 				haut();
 				y -= 3;
 				vueInit = true;
 			}
-			if (keyState[40] || keyState[83] && (bY < 1420)) {
+			if (keyState[40] || keyState[83] && (bY < 300)) {
 				bas();
 				y += 3;
 				vueInit = true;
 			}
 		}
 		gameLoop();
+
+		let ennemy1 = {
+			ennemyWidth: 600,
+			ennemyHeight: 260,
+			eRows: 1,
+			eCols: 3,
+			eWidth: ennemyWidth / eCols,
+			eHeight: ennemyHeight / eRows,
+			eCurFrame: 0,
+			eFrameCount: 3,
+			eX: 145,
+			eY: 280,
+			eSrcX: 0,
+			eSrcY: 90,
+		}
 
 		//Animations
 
@@ -196,7 +250,7 @@ export class SpaceRacingComponent implements AfterViewInit {
 			srcY = 5300;
 		}
 
-		function init(){
+		function init() {
 			spriteWidth = 2370;
 			spriteHeight = 1030;
 			rows = 1;
