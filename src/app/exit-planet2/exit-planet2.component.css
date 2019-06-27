@@ -1,0 +1,52 @@
+.cockpit {
+    background-image: url("../../assets/images/cock.png");
+    background-repeat: no-repeat;
+    background-size: cover;
+    height: 977px;
+    width: 1826px;
+    margin-right: 2%;
+}
+
+.space {
+    background-image: url("../../assets/images/space-background2.png");
+    background-repeat: no-repeat;
+    background-size: cover;
+    height: 977px;
+    width: 1826px;
+}
+
+.passer {
+    position: fixed;
+    margin-top: 8%;
+    margin-left: 46%;
+}
+
+.dialog1 {
+    position: absolute;
+    margin-top: 31%;
+    margin-left: 23%;
+}
+
+.dialog2 {
+    position: absolute;
+    margin-top: 31%;
+    margin-left: 19%;
+}
+
+.dialog3, .dialog4, .dialog6 {
+    position: absolute;
+    margin-top: 29%;
+    margin-left: 60%;
+}
+
+.dialog5 {
+    position: absolute;
+    margin-top: 30%;
+    margin-left: 19%;
+}
+
+.dialog7, .dialog8 {
+    position: absolute;
+    margin-top: 29%;
+    margin-left: 69%;
+}
