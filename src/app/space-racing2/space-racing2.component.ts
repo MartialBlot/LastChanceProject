@@ -129,8 +129,18 @@ export class SpaceRacing2Component implements AfterViewInit {
 			}, 2000);
 		}
 
+		let exit;
+		function win() {
+			exit = setTimeout(function () { nav.navigateByUrl('exit-planet3') }, 10000);
+		}
 
-    setTimeout(function () {nav.navigateByUrl('exit-planet2')}, 20000)
+		function loose() {
+			clearTimeout(exit);
+		}
+
+		win()
+
+
 		var audio = new Audio('assets/sounds/SFB-explosion2.mp3');
 
 		let stopRandom = false;
@@ -298,7 +308,8 @@ export class SpaceRacing2Component implements AfterViewInit {
 			frameCount = 12;
 			srcX = 0;
 			srcY = 6500;
-      explode = true;
+		explode = true;
+		loose();
       setTimeout(function () {nav.navigateByUrl('game-over')}, 2000)
 		}
 	}

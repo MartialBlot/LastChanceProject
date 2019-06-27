@@ -134,7 +134,7 @@ export class SpaceRacingV2Component implements AfterViewInit {
 		}
 
 		function loose() {
-			window.clearTimeout(exit);
+			clearTimeout(exit);
 		}
 
 		win()

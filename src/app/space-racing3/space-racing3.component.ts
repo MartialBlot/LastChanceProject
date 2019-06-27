@@ -130,7 +130,16 @@ export class SpaceRacing3Component implements AfterViewInit {
 		}
 
 
-    setTimeout(function () {nav.navigateByUrl('exit-planet3')}, 30000)
+		let exit;
+		function win() {
+			exit = setTimeout(function () { nav.navigateByUrl('exit-planet3') }, 10000);
+		}
+
+		function loose() {
+			clearTimeout(exit);
+		}
+
+		win()
 		let audio = new Audio('assets/sounds/SFB-explosion2.mp3');
     let fire = new Audio('assets/sounds/fire.mp3');
     
@@ -299,7 +308,8 @@ export class SpaceRacing3Component implements AfterViewInit {
 			frameCount = 12;
 			srcX = 0;
 			srcY = 6500;
-      explode = true;
+		explode = true;
+		loose();
       setTimeout(function () {nav.navigateByUrl('game-over')}, 2000)
 		}
 	}
