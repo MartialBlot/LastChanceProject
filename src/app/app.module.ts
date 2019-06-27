@@ -19,6 +19,8 @@ import { SpaceRacing2Component } from './space-racing2/space-racing2.component';
 import { SpaceRacing3Component } from './space-racing3/space-racing3.component';
 import { VideotransitComponent } from './videotransit/videotransit.component';
 import { HeartComponent } from './heart/heart.component';
+import { Videotransit2Component } from './videotransit2/videotransit2.component';
+import { Videotransit3Component } from './videotransit3/videotransit3.component';
 
 @NgModule({
   declarations: [
@@ -38,7 +40,9 @@ import { HeartComponent } from './heart/heart.component';
     SpaceRacing2Component,
     SpaceRacing3Component,
     VideotransitComponent,
-    HeartComponent
+    HeartComponent,
+    Videotransit2Component,
+    Videotransit3Component
   ],
   imports: [
     BrowserModule,

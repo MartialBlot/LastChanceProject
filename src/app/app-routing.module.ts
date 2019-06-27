@@ -16,6 +16,8 @@ import { SpaceRacing2Component } from './space-racing2/space-racing2.component';
 import { SpaceRacing3Component } from './space-racing3/space-racing3.component';
 import { VideotransitComponent } from './videotransit/videotransit.component';
 import { HeartComponent } from './heart/heart.component';
+import { Videotransit2Component } from './videotransit2/videotransit2.component';
+import { Videotransit3Component } from './videotransit3/videotransit3.component';
 
 
 
@@ -34,8 +36,10 @@ const routes: Routes = [
   { path: 'exit-planet', component: ExitPlanetComponent },
   { path: 'exit-planet2', component: ExitPlanet2Component },
   { path: 'exit-planet3', component: ExitPlanet3Component},
-  { path: 'game-over', component: GameOverComponent}
+  { path: 'game-over', component: GameOverComponent},
   { path: 'arrive', component: VideotransitComponent },
+  { path: 'arrive2', component: Videotransit2Component },
+  { path: 'arrive3', component: Videotransit3Component },
   { path: 'heart', component: HeartComponent }
 ];
 
