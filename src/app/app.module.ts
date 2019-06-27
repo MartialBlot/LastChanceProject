@@ -8,6 +8,7 @@ import { ChoiceComponent } from './choice/choice.component';
 import { FirstPlanetComponent } from './first-planet/first-planet.component';
 import { SpaceRacingComponent } from './space-racing/space-racing.component';
 import { ModalComponent } from './modal/modal.component';
+import { VideofinalComponent } from './videofinal/videofinal.component';
 
 @NgModule({
   declarations: [
@@ -18,6 +19,7 @@ import { ModalComponent } from './modal/modal.component';
     FirstPlanetComponent,
     SpaceRacingComponent,
     ModalComponent,
+    VideofinalComponent,
   ],
   imports: [
     BrowserModule,
