@@ -16,8 +16,8 @@ export class FirstPlanetComponent implements AfterViewInit {
 
     let background = new Image();
     background.src = "assets/images/maptest.png";
-    let bX = 1600;
-    let bY = 300;
+    let bX = -1720;
+    let bY = -1000;
 
     let arbre = new Image();
     arbre.src = "assets/images/tree1.png";
@@ -121,8 +121,8 @@ export class FirstPlanetComponent implements AfterViewInit {
       valueFPS = fps;
 
       //Control droit
-      if ((keyState[39] || keyState[68]) && (bX<4050)){
-          bX+=speed;
+      if ((keyState[39] || keyState[68])){
+          bX-=speed;
           x-=speed;
           aX-=speed;
           droit();
@@ -132,8 +132,8 @@ export class FirstPlanetComponent implements AfterViewInit {
           vueInitGauche = false;
       }
       //Control gauche
-      if ((keyState[37] || keyState[65]) && (bX>1030)){
-        bX-=speed;
+      if ((keyState[37] || keyState[65])){
+        bX+=speed;
         x+=speed;
         aX+=speed;
         gauche();
@@ -143,10 +143,10 @@ export class FirstPlanetComponent implements AfterViewInit {
         vueInitGauche = true;
       }
       //Control haut
-      if ((keyState[38] || keyState[87]) && (bY>130)){
+      if ((keyState[38] || keyState[87])){
         haut();
         y+=speed;
-        bY-=speed;
+        bY+=speed;
         aY+=speed;
         vueInitHaut = true;
         vueInitBas = false;
@@ -154,9 +154,9 @@ export class FirstPlanetComponent implements AfterViewInit {
         vueInitGauche = false;
       }
       //Control bas
-      if ((keyState[40] || keyState[83]) && (bY<1420)){
+      if ((keyState[40] || keyState[83])){
         bas();
-        bY+=speed;
+        bY-=speed;
         y-=speed;
         aY-=speed;
         vueInitHaut = false;
@@ -165,19 +165,19 @@ export class FirstPlanetComponent implements AfterViewInit {
         vueInitGauche = false;
       }
       //diagoDroit
-      if ((keyState[38] || keyState[87]) && (keyState[39] || keyState[68]) && (bY>130)){
+      if ((keyState[38] || keyState[87]) && (keyState[39] || keyState[68])){
         diagoDroit();
       }
       //diagoGauche
-      if ((keyState[38] || keyState[87]) && (keyState[37] || keyState[65]) && (bY>130)){
+      if ((keyState[38] || keyState[87]) && (keyState[37] || keyState[65])){
         diagoGauche();
       }
     //diagoBasDroit
-    if ((keyState[40] || keyState[83]) && (keyState[39] || keyState[68]) && (bY<1420)){
+    if ((keyState[40] || keyState[83]) && (keyState[39] || keyState[68])){
       diagoBasDroit();
     }
     //diagoBasGauche
-    if ((keyState[40] || keyState[83]) && (keyState[37] || keyState[65]) && (bY<1420)){
+    if ((keyState[40] || keyState[83]) && (keyState[37] || keyState[65])){
       diagoBasGauche();
     }
     //ShowFPS
@@ -303,7 +303,7 @@ export class FirstPlanetComponent implements AfterViewInit {
 
     function draw(){
       updateFrame();
-      ctx.drawImage(background,bX,bY,1400,bY,0,-100,1200,900);
+      ctx.drawImage(background,bX,bY);
       ctx.drawImage(arbre,aSrcX,aSrcY,aWidth,aHeight,aX,aY-400,280,320);
       ctx.drawImage(arbre,aSrcX,aSrcY,aWidth,aHeight,aX+190,aY+580,280,320);
       ctx.drawImage(widowMaker,srcX,srcY,width,height,x,y,280,320);
