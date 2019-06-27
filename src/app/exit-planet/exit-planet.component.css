@@ -3,7 +3,6 @@
     background-repeat: no-repeat;
     background-size: cover;
     height: 977px;
-    width: auto;
 }
 
 .container {
@@ -11,7 +10,6 @@
     background-repeat: no-repeat;
     background-size: cover;
     height: 977px;
-    width: auto;
 }
 
 .player {
@@ -43,13 +41,7 @@
     margin-left: 19%;
 }
 
-.dialog3 {
-    position: absolute;
-    margin-top: 29%;
-    margin-left: 60%;
-}
-
-.dialog4 {
+.dialog3, .dialog4, .dialog6 {
     position: absolute;
     margin-top: 29%;
     margin-left: 60%;
@@ -59,12 +51,6 @@
     position: absolute;
     margin-top: 30%;
     margin-left: 19%;
-}
-
-.dialog6 {
-    position: absolute;
-    margin-top: 29%;
-    margin-left: 60%;
 }
 
 .dialog7, .dialog8 {
