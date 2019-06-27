@@ -1,6 +1,7 @@
 import { Component, OnInit, ViewChild, ElementRef, HostListener, AfterViewInit } from '@angular/core';
 import { AppService } from '../services/app.service';
 import { GameService } from '../services/game.service';
+import { Router } from '@angular/router';
 
 
 @Component({
@@ -13,14 +14,12 @@ export class SpaceRacingComponent implements AfterViewInit {
 	@ViewChild('canvas') public canvas: ElementRef;
 	subscription: any;
 	showLoader = true;
-
 	constructor(
-		private appService: AppService,
-		private gameService: GameService
+		public router: Router,
 	) { }
 
-
 	public ngAfterViewInit() {
+		// const router = this.router.navigateByUrl('game-over')
 		let canvas: any = document.getElementById('racing');
 		let ctx = canvas.getContext("2d");
 
@@ -134,36 +133,27 @@ export class SpaceRacingComponent implements AfterViewInit {
 			setInterval(function () {
 				eY += 10
 			}, 50);
-		
+			var audio = new Audio('assets/sounds/explosion.mp3');
+			
 		function detectCrash() {
-			// if (((x) < (eX + eWidth - 100)) &&
-			// 	(x + width) > (eX) &&
-			// 	(y < (eY + eHeight)) &&
-			// 	((height + y) > eY)) {
-			// 	//console.error(`y=${y} x=${x} width=${width} height=${height} eX=${eX} eY=${eY} eHeight=${eHeight} eWidth=${eWidth}`)
-			// }
-			
+
 			const H = canvasHeight;
-			
 			const eBottom = eY;
 			const eTop = eBottom + eHeight - H;
-	
-
 			const mBottom = y;
 			const mTop = mBottom + height - H;
-
 			const eLeft = eX;
 			const eRight = eLeft + eWidth;
-
 			const mLeft = x;
 			const mRight = mLeft + width;
-
 			if (Math.abs(mBottom) < Math.abs(eBottom) && Math.abs(mTop) > Math.abs(eTop) &&
 				((Math.abs(mLeft) < Math.abs(eX+50)) && (Math.abs(mRight) > Math.abs(eX+50))) &&
 				((Math.abs(x+200) > Math.abs(eX)) && (Math.abs(x) < Math.abs(eX))))
 				// bX === -1168
 				{
-				console.log(`mBottom=${mBottom} eBottom=${eBottom} mTop=${mTop} eTop=${eTop} Colision !!!!!!!!!`)
+				audio.play();
+				setTimeout(function () {window.location.href = 'http://localhost:4200/game-over'}, 5000)	
+				
 			}
 
 			// if ((y < (eY + eHeight)) &&
