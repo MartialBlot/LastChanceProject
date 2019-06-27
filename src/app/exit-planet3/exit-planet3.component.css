@@ -15,6 +15,15 @@
     margin-left: 0px;
 }
 
+.eject {
+    position: absolute;
+    height: 35px;
+    width: 35px;
+    margin-left: 77%;
+    margin-top: 29.5%;
+    cursor: pointer;
+}
+
 .space {
     background-image: url("../../assets/images/space-background3.jpg");
     background-repeat: no-repeat;

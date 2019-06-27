@@ -186,8 +186,6 @@ export class FirstPlanetComponent implements AfterViewInit {
         vueInitBas = false;
         vueInitDroite = false;
         vueInitGauche = true;
-        console.log(bX)
-
       }
       //Control haut
       if ((keyState[38] || keyState[87]) && (bY < -600)){
@@ -456,10 +454,10 @@ export class FirstPlanetComponent implements AfterViewInit {
       ctx.drawImage(loup,lSrcX,lSrcY,lWidth,lHeight,posXLoup2,posYLoup2,110,80);
       ctx.drawImage(loup,lSrcX,lSrcY,lWidth,lHeight,posXLoup3,posYLoup3,110,80);
 
-      if(((bX===posXLoup1) )){
-        alert('Aie')
+      if((((Math.abs(bX)-1000)>posXLoup1) && ((Math.abs(bX)-920)<posXLoup1+150)) && (((Math.abs(bX)-1000)<posXLoup1+150) && ((Math.abs(bX)-920)>posXLoup1)) && ((bY < -646)&&(bY > -716))){
+        alert('collision')
       }
-      console.log(pX,pY,posXLoup1,posYLoup1)
+
       //Heroine
       ctx.drawImage(player,pSrcX,pSrcY,pWidth,pHeight,pX,pY,pWidth,pHeight);
       //dessine les FPS
