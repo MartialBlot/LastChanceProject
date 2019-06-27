@@ -130,9 +130,10 @@ export class SpaceRacing3Component implements AfterViewInit {
 		}
 
 
-    setTimeout(function () {nav.navigateByUrl('exit-planet2')}, 20000)
-		var audio = new Audio('assets/sounds/SFB-explosion2.mp3');
-
+    setTimeout(function () {nav.navigateByUrl('exit-planet3')}, 30000)
+		let audio = new Audio('assets/sounds/SFB-explosion2.mp3');
+    let fire = new Audio('assets/sounds/fire.mp3');
+    
 		let stopRandom = false;
 
 		function detectCrash() {
@@ -149,7 +150,6 @@ export class SpaceRacing3Component implements AfterViewInit {
 				((Math.abs(x + 200) > Math.abs(eX)) && (Math.abs(x) < Math.abs(eX)))) {
 				audio.play();
 				explosion();
-				setTimeout(function () { window.location.href = 'http://localhost:4200/game-over' }, 2000)
 				stopRandom = true;
 			}
 			if (Math.abs(mBottom) < Math.abs(aY) && Math.abs(mTop) > Math.abs((aY + aHeight - H)) &&
@@ -157,7 +157,6 @@ export class SpaceRacing3Component implements AfterViewInit {
 				((Math.abs(x + 200) > Math.abs(aX)) && (Math.abs(x) < Math.abs(aX)))) {
 				audio.play();
 				explosion();
-				setTimeout(function () { window.location.href = 'http://localhost:4200/game-over' }, 2000)
 				stopRandom = true;
 			}
 		}
@@ -186,7 +185,7 @@ export class SpaceRacing3Component implements AfterViewInit {
 
     function gameLoop() {
 			if ((keyState[39] || keyState[68]) && (x < 1800) && (!explode)) {
-				droit();
+        droit();
 				x += 8;
 				vueInit = true;
 			}
