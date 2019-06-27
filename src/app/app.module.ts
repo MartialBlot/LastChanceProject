@@ -11,6 +11,8 @@ import { ModalComponent } from './modal/modal.component';
 import { VideofinalComponent } from './videofinal/videofinal.component';
 import { ProgressComponent } from './progress/progress.component';
 import {ProgressBarModule} from 'angular-progress-bar';
+import { ExitPlanetComponent } from './exit-planet/exit-planet.component';
+import { ExitPlanet2Component } from './exit-planet2/exit-planet2.component';
 
 @NgModule({
   declarations: [
@@ -23,6 +25,8 @@ import {ProgressBarModule} from 'angular-progress-bar';
     ModalComponent,
     VideofinalComponent,
     ProgressComponent,
+    ExitPlanetComponent,
+    ExitPlanet2Component
   ],
   imports: [
     BrowserModule,

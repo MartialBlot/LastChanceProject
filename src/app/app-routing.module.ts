@@ -8,6 +8,10 @@ import { SpaceRacingComponent } from './space-racing/space-racing.component';
 import { ModalComponent } from './modal/modal.component';
 import { VideofinalComponent } from './videofinal/videofinal.component';
 import { ProgressComponent } from './progress/progress.component';
+import { ExitPlanetComponent } from './exit-planet/exit-planet.component';
+import { ExitPlanet2Component } from './exit-planet2/exit-planet2.component';
+
+
 
 const routes: Routes = [
   { path: '', component: HomeComponent },
@@ -18,6 +22,9 @@ const routes: Routes = [
   { path: 'amelioration', component: ModalComponent },
   { path: 'final', component: VideofinalComponent },
   { path: 'progress', component: ProgressComponent },
+  { path: 'racing', component: SpaceRacingComponent },
+  { path: 'exit-planet', component: ExitPlanetComponent },
+  { path: 'exit-planet2', component: ExitPlanet2Component }
 ];
 
 @NgModule({
