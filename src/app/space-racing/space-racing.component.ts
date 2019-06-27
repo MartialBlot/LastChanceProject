@@ -84,8 +84,8 @@ export class SpaceRacingComponent implements AfterViewInit {
 		let aY = 0;
 		let aSrcX = 0;
 		let aSrcY = 0;
-		randomEnnemy(4);
-		randomAsteroids(10);
+		randomEnnemy(15);
+		randomAsteroids(15);
 
 
 		function updateFrame() {
@@ -104,19 +104,21 @@ export class SpaceRacingComponent implements AfterViewInit {
 		}
 
 		function randomEnnemy(max) {
+			if (stopRandom) return;
 			if (max < 0) return;
 			setInterval(function () {
 				eY += 10
 			}, 50);
 			setTimeout(function () {
 				eY = 0;
-				eX =Math.floor(Math.random() * (500 - 1500) + 1500);
+				eX = Math.floor(Math.random() * (500 - 1500) + 1500);
 				max -= 1;
 				randomEnnemy(max);
 			}, 3000);
 		}
 
 		function randomAsteroids(max) {
+			if (stopRandom) return;
 			if (max < 0) return;
 			setInterval(function () {
 				aY += 20
@@ -127,40 +129,38 @@ export class SpaceRacingComponent implements AfterViewInit {
 				max -= 1;
 				randomAsteroids(max);
 			}, 2000);
-
 		}
 
-			setInterval(function () {
-				eY += 10
-			}, 50);
-			var audio = new Audio('assets/sounds/explosion.mp3');
-			
-		function detectCrash() {
 
+		setTimeout(function () { window.location.href = 'http://localhost:4200/exit-planet' }, 20000)
+		var audio = new Audio('assets/sounds/explosion.mp3');
+
+		let stopRandom = false;
+
+		function detectCrash() {
 			const H = canvasHeight;
 			const eBottom = eY;
 			const eTop = eBottom + eHeight - H;
 			const mBottom = y;
 			const mTop = mBottom + height - H;
 			const eLeft = eX;
-			const eRight = eLeft + eWidth;
 			const mLeft = x;
 			const mRight = mLeft + width;
 			if (Math.abs(mBottom) < Math.abs(eBottom) && Math.abs(mTop) > Math.abs(eTop) &&
-				((Math.abs(mLeft) < Math.abs(eX+50)) && (Math.abs(mRight) > Math.abs(eX+50))) &&
-				((Math.abs(x+200) > Math.abs(eX)) && (Math.abs(x) < Math.abs(eX))))
-				// bX === -1168
-				{
+				((Math.abs(mLeft) < Math.abs(eX + 50)) && (Math.abs(mRight) > Math.abs(eX + 50))) &&
+				((Math.abs(x + 200) > Math.abs(eX)) && (Math.abs(x) < Math.abs(eX)))) {
 				audio.play();
-				setTimeout(function () {window.location.href = 'http://localhost:4200/game-over'}, 5000)	
-				
+				setTimeout(function () { window.location.href = 'http://localhost:4200/game-over' }, 2000)
+				stopRandom = true;
 			}
-
-			// if ((y < (eY + eHeight)) &&
-			// 	((height + y) > eY)) {
-			// 	// console.error(`y=${y} x=${x} width=${width} eYHeight=${eY + eHeight} height=${height} eX=${eX} eY=${eY} eHeight=${eHeight} eWidth=${eWidth}`)
-			// }
-	}
+			if (Math.abs(mBottom) < Math.abs(aY) && Math.abs(mTop) > Math.abs((aY + aHeight - H)) &&
+				((Math.abs(mLeft) < Math.abs(aX + 50)) && (Math.abs(mRight) > Math.abs(aX + 50))) &&
+				((Math.abs(x + 200) > Math.abs(aX)) && (Math.abs(x) < Math.abs(aX)))) {
+				audio.play();
+				setTimeout(function () { window.location.href = 'http://localhost:4200/game-over' }, 2000)
+				stopRandom = true;
+			}
+		}
 
 
 		function draw() {
