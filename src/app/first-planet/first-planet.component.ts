@@ -16,8 +16,23 @@ export class FirstPlanetComponent implements AfterViewInit {
 
     let background = new Image();
     background.src = "assets/images/maptest.png";
-    let bX = 1600;
-    let bY = 300;
+    let bX = -1720;
+    let bY = -1000;
+
+    let arbre = new Image();
+    arbre.src = "assets/images/tree1.png";
+    let arbreWidth = 700;
+    let arbreHeight = 750;
+    let aRows = 1;
+    let aCols = 1;
+    let aWidth = arbreWidth/aCols;
+    let aHeight = arbreHeight/aRows;
+    let aCurFrame = 0;
+    let aFrameCount = 1;
+    let aX=260;
+    let aY=320;
+    let aSrcX= 110;
+    let aSrcY= 0;
 
     let widowMaker = new Image();
     widowMaker.src = "assets/images/widowMaker.png"
@@ -58,6 +73,8 @@ export class FirstPlanetComponent implements AfterViewInit {
     let vueInitBas = false;
     let vueInitDroite = false;
     let vueInitGauche = false;
+
+    let speed = 3;
 
     canvas.width =  canvasWidth;
     canvas.height = canvasHeight;
@@ -104,9 +121,10 @@ export class FirstPlanetComponent implements AfterViewInit {
       valueFPS = fps;
 
       //Control droit
-      if ((keyState[39] || keyState[68]) && (bX<4050)){
-          bX+=3;
-          x-=3;
+      if ((keyState[39] || keyState[68])){
+          bX-=speed;
+          x-=speed;
+          aX-=speed;
           droit();
           vueInitHaut = false;
           vueInitBas = false;
@@ -114,9 +132,10 @@ export class FirstPlanetComponent implements AfterViewInit {
           vueInitGauche = false;
       }
       //Control gauche
-      if ((keyState[37] || keyState[65]) && (bX>1030)){
-        bX-=3;
-        x+=3;
+      if ((keyState[37] || keyState[65])){
+        bX+=speed;
+        x+=speed;
+        aX+=speed;
         gauche();
         vueInitHaut = false;
         vueInitBas = false;
@@ -124,39 +143,41 @@ export class FirstPlanetComponent implements AfterViewInit {
         vueInitGauche = true;
       }
       //Control haut
-      if ((keyState[38] || keyState[87]) && (bY>130)){
+      if ((keyState[38] || keyState[87])){
         haut();
-        y+=3;
-        bY-=3;
+        y+=speed;
+        bY+=speed;
+        aY+=speed;
         vueInitHaut = true;
         vueInitBas = false;
         vueInitDroite = false;
         vueInitGauche = false;
       }
       //Control bas
-      if ((keyState[40] || keyState[83]) && (bY<1420)){
+      if ((keyState[40] || keyState[83])){
         bas();
-        bY+=3;
-        y-=3;
+        bY-=speed;
+        y-=speed;
+        aY-=speed;
         vueInitHaut = false;
         vueInitBas = true;
         vueInitDroite = false;
         vueInitGauche = false;
       }
       //diagoDroit
-      if ((keyState[38] || keyState[87]) && (keyState[39] || keyState[68]) && (bY>130)){
+      if ((keyState[38] || keyState[87]) && (keyState[39] || keyState[68])){
         diagoDroit();
       }
       //diagoGauche
-      if ((keyState[38] || keyState[87]) && (keyState[37] || keyState[65]) && (bY>130)){
+      if ((keyState[38] || keyState[87]) && (keyState[37] || keyState[65])){
         diagoGauche();
       }
     //diagoBasDroit
-    if ((keyState[40] || keyState[83]) && (keyState[39] || keyState[68]) && (bY<1420)){
+    if ((keyState[40] || keyState[83]) && (keyState[39] || keyState[68])){
       diagoBasDroit();
     }
     //diagoBasGauche
-    if ((keyState[40] || keyState[83]) && (keyState[37] || keyState[65]) && (bY<1420)){
+    if ((keyState[40] || keyState[83]) && (keyState[37] || keyState[65])){
       diagoBasGauche();
     }
     //ShowFPS
@@ -171,7 +192,6 @@ export class FirstPlanetComponent implements AfterViewInit {
       setTimeout(gameLoop, 10);
     }
     gameLoop();
-
     //Animations
     function initBas(){
     playerWidth = 100;
@@ -283,7 +303,9 @@ export class FirstPlanetComponent implements AfterViewInit {
 
     function draw(){
       updateFrame();
-      ctx.drawImage(background,bX,bY,1400,bY,0,-100,1200,900);
+      ctx.drawImage(background,bX,bY);
+      ctx.drawImage(arbre,aSrcX,aSrcY,aWidth,aHeight,aX,aY-400,280,320);
+      ctx.drawImage(arbre,aSrcX,aSrcY,aWidth,aHeight,aX+190,aY+580,280,320);
       ctx.drawImage(widowMaker,srcX,srcY,width,height,x,y,280,320);
       ctx.drawImage(player,pSrcX,pSrcY,pWidth,pHeight,pX,pY,pWidth,pHeight);
 
@@ -298,6 +320,6 @@ export class FirstPlanetComponent implements AfterViewInit {
         ctx.fillText(`Appuyer sur E pour interagir`, pX + 20, pY - 20);
       }
     }
-    setInterval(draw,80);
+    setInterval(draw,60);
   }
 }
