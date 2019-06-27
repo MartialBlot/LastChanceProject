@@ -171,6 +171,10 @@ export class FirstPlanetComponent implements AfterViewInit {
     if (keyState[73]){
       showFPS = !showFPS;
     }
+    //Décoller
+    if(keyState[69] && (bX === 1030) && ((y<pY) && ((y+100)>pY))){
+      confirm( "Quitter cette planète et repartir à l'aventure ?" );
+    }
 
       setTimeout(gameLoop, 10);
     }
@@ -295,6 +299,11 @@ export class FirstPlanetComponent implements AfterViewInit {
       if(showFPS){
       ctx.font="20px helvetica";
       ctx.fillText(`FPS: ${valueFPS.toFixed(0)}`, 10, 20);
+      }
+      //Invitation à décoller
+      if((bX === 1030) && ((y<pY) && ((y+100)>pY))){
+        ctx.font="18px helvetica";
+        ctx.fillText(`Appuyer sur E pour interagir`, pX + 20, pY - 20);
       }
     }
     setInterval(draw,80);
