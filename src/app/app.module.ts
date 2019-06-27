@@ -23,6 +23,7 @@ import { VideotransitComponent } from './videotransit/videotransit.component';
 import { HeartComponent } from './heart/heart.component';
 import { Videotransit2Component } from './videotransit2/videotransit2.component';
 import { Videotransit3Component } from './videotransit3/videotransit3.component';
+import { SecondPlanetComponent } from './second-planet/second-planet.component';
 
 @NgModule({
   declarations: [
@@ -47,7 +48,8 @@ import { Videotransit3Component } from './videotransit3/videotransit3.component'
     VideotransitComponent,
     HeartComponent,
     Videotransit2Component,
-    Videotransit3Component
+    Videotransit3Component,
+    SecondPlanetComponent
   ],
   imports: [
     BrowserModule,
