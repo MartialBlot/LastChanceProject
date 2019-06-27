@@ -3,11 +3,11 @@ import { Router } from '@angular/router';
 
 
 @Component({
-	selector: 'app-space-racing',
-	templateUrl: './space-racing.component.html',
-	styleUrls: ['./space-racing.component.css']
+  selector: 'app-space-racing2',
+  templateUrl: './space-racing2.component.html',
+  styleUrls: ['./space-racing2.component.css']
 })
-export class SpaceRacingComponent implements AfterViewInit {
+export class SpaceRacing2Component implements AfterViewInit {
 
 	@ViewChild('canvas') public canvas: ElementRef;
 	subscription: any;
@@ -22,7 +22,7 @@ export class SpaceRacingComponent implements AfterViewInit {
 		let ctx = canvas.getContext("2d");
 
 		let background = new Image();
-		background.src = "assets/images/racingBackgound.png";
+		background.src = "assets/images/star-wars-star-backgrounds-9.png";
 		let bX = 0;
 		let bY = 0;
 
@@ -201,8 +201,7 @@ export class SpaceRacingComponent implements AfterViewInit {
 				y -= 3;
 				vueInit = true;
 			}
-			if ((keyState[40] || keyState[83]) && (y < 850) && (!explode)) {
-				console.log(y)
+			if ((keyState[40] || keyState[83]) && (y < 300) && (!explode)) {
 				bas();
 				y += 3;
 				vueInit = true;
