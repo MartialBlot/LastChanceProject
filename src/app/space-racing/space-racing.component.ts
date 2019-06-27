@@ -43,8 +43,8 @@ export class SpaceRacingComponent implements AfterViewInit {
 		let height = spriteHeight / rows;
 		let curFrame = 0;
 		let frameCount = 3;
-		let x = 400;
-		let y = 320;
+		let x = 800;
+		let y = 700;
 		let srcX = 0;
 		let srcY = 0;
 		let vueInit = false;
@@ -61,7 +61,7 @@ export class SpaceRacingComponent implements AfterViewInit {
 		let eHeight = ennemyHeight / eRows;
 		let eCurFrame = 0;
 		let eFrameCount = 3;
-		let eX = 0;
+		let eX = 800;
 		let eY = 0;
 		let eSrcX = 0;
 		let eSrcY = 90;
@@ -86,7 +86,7 @@ export class SpaceRacingComponent implements AfterViewInit {
 		let aSrcX = 0;
 		let aSrcY = 0;
 		randomEnnemy(4);
-		randomAsteroids(5);
+		randomAsteroids(10);
 
 
 		function updateFrame() {
@@ -110,10 +110,10 @@ export class SpaceRacingComponent implements AfterViewInit {
 				eY += 10
 			}, 50);
 			setTimeout(function () {
-					eY = 0;
-					eX = Math.floor(Math.random() * 1000);
-					max-=1;
-					randomEnnemy(max);
+				eY = 0;
+				eX =Math.floor(Math.random() * (500 - 1500) + 1500);
+				max -= 1;
+				randomEnnemy(max);
 			}, 3000);
 		}
 
@@ -123,31 +123,65 @@ export class SpaceRacingComponent implements AfterViewInit {
 				aY += 20
 			}, 50);
 			setTimeout(function () {
-					aY = 0;
-					aX = Math.floor(Math.random() * 500);
-					max-=1;
-					randomAsteroids(max);
-			}, 5000);
+				aY = 0;
+				aX = Math.floor(Math.random() * (500 - 1500) + 1500);
+				max -= 1;
+				randomAsteroids(max);
+			}, 2000);
+
 		}
 
+			setInterval(function () {
+				eY += 10
+			}, 50);
+		
+		function detectCrash() {
+			// if (((x) < (eX + eWidth - 100)) &&
+			// 	(x + width) > (eX) &&
+			// 	(y < (eY + eHeight)) &&
+			// 	((height + y) > eY)) {
+			// 	//console.error(`y=${y} x=${x} width=${width} height=${height} eX=${eX} eY=${eY} eHeight=${eHeight} eWidth=${eWidth}`)
+			// }
+			
+			const H = canvasHeight;
+			
+			const eBottom = eY;
+			const eTop = eBottom + eHeight - H;
+	
 
-		// 	function randomEnnemy() {
-		// 		setTimeout(function () {
-		// 			setInterval(function () {
-		// 				eY += 3
-		// 			}, 500);
-		// 			randomEnnemy();
-		// 		}, 1000);
-		//   }
+			const mBottom = y;
+			const mTop = mBottom + height - H;
+
+			const eLeft = eX;
+			const eRight = eLeft + eWidth;
+
+			const mLeft = x;
+			const mRight = mLeft + width;
+
+			if (Math.abs(mBottom) < Math.abs(eBottom) && Math.abs(mTop) > Math.abs(eTop) &&
+				((Math.abs(mLeft) < Math.abs(eX+50)) && (Math.abs(mRight) > Math.abs(eX+50))) &&
+				((Math.abs(x+200) > Math.abs(eX)) && (Math.abs(x) < Math.abs(eX))))
+				// bX === -1168
+				{
+				console.log(`mBottom=${mBottom} eBottom=${eBottom} mTop=${mTop} eTop=${eTop} Colision !!!!!!!!!`)
+			}
+
+			// if ((y < (eY + eHeight)) &&
+			// 	((height + y) > eY)) {
+			// 	// console.error(`y=${y} x=${x} width=${width} eYHeight=${eY + eHeight} height=${height} eX=${eX} eY=${eY} eHeight=${eHeight} eWidth=${eWidth}`)
+			// }
+	}
+
 
 		function draw() {
 			updateFrame();
 			ctx.drawImage(background, bX, bY);
 			ctx.drawImage(widowMaker, srcX, srcY, width, height, x, y, 280, 320);
-			ctx.drawImage(ennemy, eSrcX, eSrcY, eWidth, eHeight, eX, eY, eWidth, eHeight);
-			ctx.drawImage(asteroids, aSrcX, aSrcY, aWidth, aHeight, aX, aY, 50, 40);
+			ctx.drawImage(ennemy, eSrcX, eSrcY, eWidth, eHeight, eX, eY, 200, 200);
+			ctx.drawImage(asteroids, aSrcX, aSrcY, aWidth, aHeight, aX, aY, 80, 70);
+			detectCrash();
 		}
-		setInterval(draw, 60);
+		setInterval(draw, 50);
 		//contrôles
 		let keyState = {};
 		document.addEventListener('keydown', function (e) {
@@ -163,12 +197,12 @@ export class SpaceRacingComponent implements AfterViewInit {
 		function gameLoop() {
 			if (keyState[39] || keyState[68]) {
 				droit();
-				x += 2;
+				x += 8;
 				vueInit = true;
 			}
 			setTimeout(gameLoop, 10);
 			if (keyState[37] || keyState[65] && (bX > 1030)) {
-				x -= 3;
+				x -= 8;
 				gauche();
 				vueInit = true;
 			}
@@ -184,6 +218,7 @@ export class SpaceRacingComponent implements AfterViewInit {
 			}
 		}
 		gameLoop();
+
 
 		let ennemy1 = {
 			ennemyWidth: 600,
