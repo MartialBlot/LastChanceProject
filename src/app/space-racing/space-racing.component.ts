@@ -1,6 +1,4 @@
 import { Component, OnInit, ViewChild, ElementRef, HostListener, AfterViewInit } from '@angular/core';
-import { AppService } from '../services/app.service';
-import { GameService } from '../services/game.service';
 import { Router } from '@angular/router';
 
 
@@ -19,9 +17,11 @@ export class SpaceRacingComponent implements AfterViewInit {
 	) { }
 
 	public ngAfterViewInit() {
-		// const router = this.router.navigateByUrl('game-over')
+		let nav = this.router
 		let canvas: any = document.getElementById('racing');
 		let ctx = canvas.getContext("2d");
+		let explode = false;
+
 
 		let background = new Image();
 		background.src = "assets/images/racingBackgound.png";
@@ -29,7 +29,7 @@ export class SpaceRacingComponent implements AfterViewInit {
 		let bY = 0;
 
 		let widowMaker = new Image();
-		widowMaker.src = "assets/images/widowMaker.png"
+		widowMaker.src = "assets/images/widowMaker1.png"
 
 		let canvasWidth = 2000;
 		let canvasHeight = 1000;
@@ -132,8 +132,8 @@ export class SpaceRacingComponent implements AfterViewInit {
 		}
 
 
-		setTimeout(function () { window.location.href = 'http://localhost:4200/exit-planet' }, 20000)
-		var audio = new Audio('assets/sounds/explosion.mp3');
+		setTimeout(function () {nav.navigateByUrl('exit-planet')}, 20000)
+		var audio = new Audio('assets/sounds/SFB-explosion2.mp3');
 
 		let stopRandom = false;
 
@@ -150,14 +150,14 @@ export class SpaceRacingComponent implements AfterViewInit {
 				((Math.abs(mLeft) < Math.abs(eX + 50)) && (Math.abs(mRight) > Math.abs(eX + 50))) &&
 				((Math.abs(x + 200) > Math.abs(eX)) && (Math.abs(x) < Math.abs(eX)))) {
 				audio.play();
-				setTimeout(function () { window.location.href = 'http://localhost:4200/game-over' }, 2000)
+				explosion();
 				stopRandom = true;
 			}
 			if (Math.abs(mBottom) < Math.abs(aY) && Math.abs(mTop) > Math.abs((aY + aHeight - H)) &&
 				((Math.abs(mLeft) < Math.abs(aX + 50)) && (Math.abs(mRight) > Math.abs(aX + 50))) &&
 				((Math.abs(x + 200) > Math.abs(aX)) && (Math.abs(x) < Math.abs(aX)))) {
 				audio.play();
-				setTimeout(function () { window.location.href = 'http://localhost:4200/game-over' }, 2000)
+				explosion();
 				stopRandom = true;
 			}
 		}
@@ -185,23 +185,24 @@ export class SpaceRacingComponent implements AfterViewInit {
 		}, true);
 
 		function gameLoop() {
-			if (keyState[39] || keyState[68]) {
+			if ((keyState[39] || keyState[68]) && (x < 1800) && (!explode)) {
 				droit();
 				x += 8;
 				vueInit = true;
 			}
 			setTimeout(gameLoop, 10);
-			if (keyState[37] || keyState[65] && (bX > 1030)) {
+			if ((keyState[37] || keyState[65]) && (x > 0) && (!explode)) {
 				x -= 8;
 				gauche();
 				vueInit = true;
 			}
-			if (keyState[38] || keyState[87] && (bX > 0)) {
+			if ((keyState[38] || keyState[87]) && (y > 0) && (!explode)) {
 				haut();
 				y -= 3;
 				vueInit = true;
 			}
-			if (keyState[40] || keyState[83] && (bY < 300)) {
+			if ((keyState[40] || keyState[83]) && (y < 850) && (!explode)) {
+				console.log(y)
 				bas();
 				y += 3;
 				vueInit = true;
@@ -287,5 +288,21 @@ export class SpaceRacingComponent implements AfterViewInit {
 			srcX = 0;
 			srcY = 0;
 		}
+
+
+		function explosion(){
+			spriteWidth = 12000;
+			spriteHeight = 1000;
+			rows = 1;
+			cols = 12;
+			width = spriteWidth / cols;
+			height = spriteHeight / rows;
+			curFrame = 0;
+			frameCount = 12;
+			srcX = 0;
+			srcY = 6500;
+			setTimeout(function () {nav.navigateByUrl('game-over')}, 3000);
+		}
 	}
 }
+

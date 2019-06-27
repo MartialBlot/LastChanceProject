@@ -6,6 +6,11 @@ html {
   position: fixed;
 }
 
+a{
+  color:#d8d8d8;
+  text-decoration: none;
+}
+
 #stars {
   width: 1px;
   height: 1px;
