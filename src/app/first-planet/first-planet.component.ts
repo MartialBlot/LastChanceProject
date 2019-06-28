@@ -1,5 +1,6 @@
 import { Component, AfterViewInit } from '@angular/core';
 import { Router } from '@angular/router';
+import { GameplayService } from '../gameplay.service';
 @Component({
   selector: 'app-first-planet',
   templateUrl: './first-planet.component.html',
@@ -7,13 +8,14 @@ import { Router } from '@angular/router';
 })
 export class FirstPlanetComponent implements AfterViewInit {
 
-  constructor(public route: Router) { }
+  constructor(public route: Router,
+              private service:GameplayService ) { }
 
   public ngAfterViewInit() {
     let canvas : any= document.getElementById('map');
     let ctx = canvas.getContext("2d");
     let nav = this.route;
-
+    let service = this.service;
 
     //Background
     let background = new Image();
@@ -338,8 +340,12 @@ export class FirstPlanetComponent implements AfterViewInit {
         }
       } else {
         ctx.font="18px helvetica";
-        ctx.fillText(`"Vous n'avez pas tout découvert"`, pX + 20, pY - 50);
+        ctx.fillText(`"Vous n'avez pas tout découvert"`, pX + 20, pY - 80);
       }
+    }
+    //Recharge oxygene
+    if(keyState[88] && (bX === -1168) && ((y<pY) && ((y+100)>pY))){
+      service.i.next(100);
     }
     //Action ramasser Metal
     if(showMetal){
@@ -615,6 +621,7 @@ export class FirstPlanetComponent implements AfterViewInit {
       if((bX === -1168) && ((y<pY) && ((y+100)>pY))){
         ctx.font="18px helvetica";
         ctx.fillText(`Appuyer sur E pour interagir`, pX + 20, pY - 20);
+        ctx.fillText(`Appuyer sur X recharger oxygène`, pX + 20, pY - 50);
       }
       //Ramasser Metal
       if(showMetal){
