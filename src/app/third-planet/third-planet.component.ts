@@ -244,91 +244,91 @@ export class ThirdPlanetComponent implements AfterViewInit {
 
       //Control droit
       if ((keyState[39] || keyState[68]) && (bX > -4190)){
-          bX-=speed;
-          x-=speed;
-          aX-=speed;
-          oX-=speed;
-          lX-=speed;
-          mX-=speed;
-          uX-=speed;
-          mtX-=speed;
-          boX-=speed;
-          droit();
-          vueInitHaut = false;
-          vueInitBas = false;
-          vueInitDroite = true;
-          vueInitGauche = false;
-      }
-      //Control gauche
-      if ((keyState[37] || keyState[65]) && (bX < -1170)){
-        bX+=speed;
-        x+=speed;
-        aX+=speed;
-        oX+=speed;
-        lX+=speed;
-        mX+=speed;
-        uX+=speed;
-        mtX+=speed;
-        boX+=speed;
-        gauche();
+        bX-=speed;
+        x-=speed;
+        aX-=speed;
+        oX-=speed;
+        lX-=speed;
+        mX-=speed;
+        uX-=speed;
+        mtX-=speed;
+        boX-=speed;
+        droit();
         vueInitHaut = false;
         vueInitBas = false;
-        vueInitDroite = false;
-        vueInitGauche = true;
-      }
-      //Control haut
-      if ((keyState[38] || keyState[87]) && (bY < -600)){
-        haut();
-        y+=speed;
-        bY+=speed;
-        aY+=speed;
-        oY+=speed;
-        lY+=speed;
-        mY+=speed;
-        uY+=speed;
-        mtY+=speed;
-        boY+=speed;
-        vueInitHaut = true;
-        vueInitBas = false;
-        vueInitDroite = false;
+        vueInitDroite = true;
         vueInitGauche = false;
-      }
-      //Control bas
-      if ((keyState[40] || keyState[83]) && (bY > -2612)){
-        bas();
-        bY-=speed;
-        y-=speed;
-        aY-=speed;
-        oY-=speed;
-        lY-=speed;
-        mY-=speed;
-        uY-=speed;
-        mtY-=speed;
-        boY-=speed;
-        vueInitHaut = false;
-        vueInitBas = true;
-        vueInitDroite = false;
-        vueInitGauche = false;
-      }
-      //diagoDroit
-      if ((keyState[38] || keyState[87]) && (keyState[39] || keyState[68])){
-        diagoDroit();
-      }
-      //diagoGauche
-      if ((keyState[38] || keyState[87]) && (keyState[37] || keyState[65])){
-        diagoGauche();
-      }
-    //diagoBasDroit
-    if ((keyState[40] || keyState[83]) && (keyState[39] || keyState[68])){
-      diagoBasDroit();
     }
-    if ((keyState[16])){
-      speed=9
+    //Control gauche
+    if ((keyState[37] || keyState[65] || keyState[81]) && (bX < -1170)){
+      bX+=speed;
+      x+=speed;
+      aX+=speed;
+      oX+=speed;
+      lX+=speed;
+      mX+=speed;
+      uX+=speed;
+      mtX+=speed;
+      boX+=speed;
+      gauche();
+      vueInitHaut = false;
+      vueInitBas = false;
+      vueInitDroite = false;
+      vueInitGauche = true;
     }
-    //diagoBasGauche
-    if ((keyState[40] || keyState[83]) && (keyState[37] || keyState[65])){
-      diagoBasGauche();
+    //Control haut
+    if ((keyState[38] || keyState[87] || keyState[90]) && (bY < -600)){
+      haut();
+      y+=speed;
+      bY+=speed;
+      aY+=speed;
+      oY+=speed;
+      lY+=speed;
+      mY+=speed;
+      uY+=speed;
+      mtY+=speed;
+      boY+=speed;
+      vueInitHaut = true;
+      vueInitBas = false;
+      vueInitDroite = false;
+      vueInitGauche = false;
     }
+    //Control bas
+    if ((keyState[40] || keyState[83]) && (bY > -2612)){
+      bas();
+      bY-=speed;
+      y-=speed;
+      aY-=speed;
+      oY-=speed;
+      lY-=speed;
+      mY-=speed;
+      uY-=speed;
+      mtY-=speed;
+      boY-=speed;
+      vueInitHaut = false;
+      vueInitBas = true;
+      vueInitDroite = false;
+      vueInitGauche = false;
+    }
+    //diagoDroit
+    if ((keyState[38] || keyState[87]|| keyState[90]) && (keyState[39] || keyState[68])){
+      diagoDroit();
+    }
+    //diagoGauche
+    if ((keyState[38] || keyState[87] || keyState[90]) && (keyState[37] || keyState[65] || keyState[81])){
+      diagoGauche();
+    }
+  //diagoBasDroit
+  if ((keyState[40] || keyState[83]) && (keyState[39] || keyState[68])){
+    diagoBasDroit();
+  }
+  if ((keyState[16])){
+    speed=9
+  }
+  //diagoBasGauche
+  if ((keyState[40] || keyState[83]) && (keyState[37] || keyState[65] || keyState[81])){
+    diagoBasGauche();
+  }
     //ShowFPS
     if (keyState[73]){
       showFPS = !showFPS;
