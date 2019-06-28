@@ -23,7 +23,7 @@ export class SpaceRacing3Component implements AfterViewInit {
 		let explode = false;
 
 		let background = new Image();
-		background.src = "assets/images/star-wars-star-backgrounds-9.png";
+		background.src = "assets/images/backRacing3.png";
 		let bX = 0;
 		let bY = 0;
 

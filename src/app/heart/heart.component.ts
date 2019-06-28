@@ -9,13 +9,15 @@ import { GameplayService } from '../gameplay.service';
 export class HeartComponent implements OnInit {
 
   heart1 = false;
-  heart2 = this.service.heart2;
-  heart3 = this.service.heart3;
+  heart2 = false;
+  heart3 = false;
 
   constructor(private service: GameplayService) {}
 
   ngOnInit() {
     this.service.heart1.subscribe(res => this.heart1 = res);
+    this.service.heart2.subscribe(res => this.heart2 = res);
+    this.service.heart3.subscribe(res => this.heart3 = res);
     console.log(this.service)
   }
 

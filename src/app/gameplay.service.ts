@@ -7,8 +7,8 @@ import { BehaviorSubject } from 'rxjs';
 export class GameplayService {
 
   public heart1 = new BehaviorSubject<boolean>(false);
-  public heart2 = false;
-  public heart3 = false;
+  public heart2 = new BehaviorSubject<boolean>(false);
+  public heart3 = new BehaviorSubject<boolean>(false);;
 
   constructor() { }
 }
