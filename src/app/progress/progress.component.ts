@@ -1,5 +1,6 @@
 import { Component, OnInit, Input } from '@angular/core';
 import { Router } from '@angular/router';
+import { GameplayService } from '../gameplay.service';
 
 @Component({
   selector: 'app-progress',
@@ -9,8 +10,11 @@ import { Router } from '@angular/router';
 export class ProgressComponent implements OnInit {
 
 
-  constructor(public router: Router, ) { }
+  constructor(public router: Router,
+              private service: GameplayService) { }
+
   ngOnInit() {
+    this.service.i.subscribe(res => i = res);
     document.getElementById('theBar').style.width = '100%';
     document.getElementById('theBar').innerHTML = '100%';
     const alertBox = document.getElementById('completed-alert');

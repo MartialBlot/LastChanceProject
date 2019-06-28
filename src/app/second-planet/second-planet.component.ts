@@ -354,7 +354,7 @@ export class SecondPlanetComponent implements AfterViewInit {
       }
       //Recharge oxygene
       if(keyState[88] && (bX === -1168) && ((y<pY) && ((y+100)>pY))){
-
+        hearts.i.next(100);
       }
       //Action ramasser Metal
       if(showMetal){
@@ -794,10 +794,6 @@ export class SecondPlanetComponent implements AfterViewInit {
           ctx.drawImage(loup,lSrcX,lSrcY,lWidth,lHeight,posXLoup2,posYLoup2,120,90);
           ctx.drawImage(loup,lSrcX,lSrcY,lWidth,lHeight,posXLoup3,posYLoup3,120,90);
 
-          //Essai Collision loup
-          // if((((Math.abs(bX)-1000)>posXLoup1) && ((Math.abs(bX)-920)<posXLoup1+150)) && (((Math.abs(bX)-1000)<posXLoup1+150) && ((Math.abs(bX)-920)>posXLoup1)) && ((bY < -646)&&(bY > -716))){
-          //   alert('collision')
-          // }
           //Meat
           if(showMeat){
             ctx.drawImage(meat,mSrcX,mSrcY,mWidth,mHeight,mX,mY,40,20);
@@ -860,6 +856,13 @@ export class SecondPlanetComponent implements AfterViewInit {
           }
           if(GameOver){
             nav.navigateByUrl('/game-over')
+            hearts.heart1.next(false);
+            hearts.heart2.next(false);
+            hearts.heart3.next(false);
+            hideHeart1 = false;
+            hideHart2 = false;
+            Death = false;
+            GameOver = false;
           }
         }
         setInterval(draw,70);
