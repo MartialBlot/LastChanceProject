@@ -349,8 +349,12 @@ export class SecondPlanetComponent implements AfterViewInit {
           }
         } else {
           ctx.font="18px helvetica";
-          ctx.fillText(`"Vous n'avez pas tout découvert"`, pX + 20, pY - 50);
+          ctx.fillText(`"Vous n'avez pas tout découvert"`, pX + 20, pY - 80);
         }
+      }
+      //Recharge oxygene
+      if(keyState[88] && (bX === -1168) && ((y<pY) && ((y+100)>pY))){
+
       }
       //Action ramasser Metal
       if(showMetal){
@@ -823,7 +827,8 @@ export class SecondPlanetComponent implements AfterViewInit {
           //Invitation à décoller
           if((bX === -1168) && ((y<pY) && ((y+100)>pY))){
             ctx.font="18px helvetica";
-            ctx.fillText(`Appuyer sur E pour interagir`, pX + 20, pY - 20);
+            ctx.fillText(`Appuyer sur E pour partir`, pX + 20, pY - 20);
+            ctx.fillText(`Appuyer sur X recharger oxygène`, pX + 20, pY - 50);
           }
           //Ramasser Metal
           if(showMetal){
@@ -854,7 +859,7 @@ export class SecondPlanetComponent implements AfterViewInit {
             }
           }
           if(GameOver){
-            nav.navigateByUrl('game-over')
+            nav.navigateByUrl('/game-over')
           }
         }
         setInterval(draw,70);
