@@ -196,7 +196,7 @@ export class SpaceRacing2V2Component implements AfterViewInit {
 		}, true);
 
 		function gameLoop() {
-			if ((keyState[39] || keyState[68]) && (x < 1800) && (!explode)) {
+			if ((keyState[39] || keyState[68]) && (x < 1600) && (!explode)) {
 				droit();
 				x += 8;
 				vueInit = true;
