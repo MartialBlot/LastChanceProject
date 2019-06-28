@@ -1,5 +1,6 @@
 import { Component, AfterViewInit } from '@angular/core';
 import { GameplayService } from '../gameplay.service';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-second-planet',
@@ -8,11 +9,13 @@ import { GameplayService } from '../gameplay.service';
 })
 export class SecondPlanetComponent implements AfterViewInit {
 
-  constructor(private service: GameplayService) { }
+  constructor(private service: GameplayService,
+              public route: Router) { }
 
   public ngAfterViewInit() {
     let canvas : any= document.getElementById('map');
     let ctx = canvas.getContext("2d");
+    let nav = this.route;
 
     //Background
     let background = new Image();
@@ -340,8 +343,12 @@ export class SecondPlanetComponent implements AfterViewInit {
       if(keyState[69] && (bX === -1168) && ((y<pY) && ((y+100)>pY))){
         if(ressource===4){
           confirm( "Quitter cette planète et repartir à l'aventure ?" );
+          if(confirm){
+            return nav.navigateByUrl('racing3')
+          }
         } else {
-          alert("Vous n'avez pas encore découvert toutes les ressources")
+          ctx.font="18px helvetica";
+          ctx.fillText(`"Vous n'avez pas tout découvert"`, pX + 20, pY - 50);
         }
       }
       //Action ramasser Metal
