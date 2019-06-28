@@ -84,8 +84,8 @@ export class SpaceRacingV2Component implements AfterViewInit {
 		let aY = 0;
 		let aSrcX = 0;
 		let aSrcY = 0;
-		randomEnnemy(7);
-		randomAsteroids(10);
+		randomEnnemy(6);
+		randomAsteroids(9);
 
 
 		function updateFrame() {
