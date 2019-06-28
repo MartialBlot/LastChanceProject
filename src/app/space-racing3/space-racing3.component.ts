@@ -259,7 +259,6 @@ export class SpaceRacing3Component implements AfterViewInit {
 				vueInit = true;
 			}
 			if ((keyState[40] || keyState[83]) && (y < 850) && (!explode)) {
-				console.log(y)
 				bas();
 				y += 10;
 				vueInit = true;
