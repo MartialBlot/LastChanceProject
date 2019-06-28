@@ -136,7 +136,7 @@ export class SpaceRacing3Component implements AfterViewInit {
 
 		let exit;
 		function win() {
-			exit = setTimeout(function () { nav.navigateByUrl('exit-planet3') }, 20000);
+			exit = setTimeout(function () { nav.navigateByUrl('exit-planet3') }, 25000);
 		}
 
 		function loose() {

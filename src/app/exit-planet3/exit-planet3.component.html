@@ -3,14 +3,15 @@
     <div class="cockpit">
       <div class="player">
       </div>
-      <div class="eject" routerLink="/game-over"></div>
+      <div class="eject nes-pointer" routerLink="/game-over">
+      </div><audio src="../../assets/sounds/ambiance.wav" autoplay loop></audio>
       <img src="assets/bubbleDialogs/dialog3-1.gif" class="dialog1" [hidden]="!dialog1">
       <img src="assets/bubbleDialogs/dialog3-2.gif" class="dialog2" [hidden]="!dialog2">
       <img src="assets/bubbleDialogs/dialog3-3.gif" class="dialog3" [hidden]="!dialog3">
       <img src="assets/bubbleDialogs/dialog3-4.gif" class="dialog4" [hidden]="!dialog4">
       <img src="assets/bubbleDialogs/dialog3-5.gif" class="dialog5" [hidden]="!dialog5">
       <img src="assets/bubbleDialogs/dialog3-6.gif" class="dialog6" [hidden]="!dialog6">
-      <button routerLink="/planet3" class="passer">{{continuer}}</button>
+      <button routerLink="/arrive3" class="passer">{{continuer}}</button>
     </div>
   </div>
 </div>
