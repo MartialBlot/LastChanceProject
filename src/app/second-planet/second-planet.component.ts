@@ -345,6 +345,7 @@ export class SecondPlanetComponent implements AfterViewInit {
         if(ressource===4){
           confirm( "Quitter cette planète et repartir à l'aventure ?" );
           if(confirm){
+            
             return nav.navigateByUrl('racing3')
           }
         } else {
