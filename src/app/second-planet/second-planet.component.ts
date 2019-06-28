@@ -77,6 +77,10 @@ export class SecondPlanetComponent implements AfterViewInit {
     let speed = 3;
     let ressource = 0;
     let hearts = this.service;
+    let hideHeart1 = false;
+    let hideHart2 = false;
+    let justOneHeart = false;
+    let Death = false;
 
     //Sprite Ours
     let ours = new Image();
@@ -220,6 +224,12 @@ export class SecondPlanetComponent implements AfterViewInit {
         initHaut();
       } else if (vueInitBas){
         initBas();
+      }
+      if(hideHeart1){
+        hideHart2 = true
+      }
+      if(justOneHeart){
+        Death = true
       }
     },true);
 
@@ -518,8 +528,13 @@ export class SecondPlanetComponent implements AfterViewInit {
         nbDeplacementLoup+=1
         if(((bX < X) && (bX > X1)) && ((bY < Y) && (bY > Y1))){
           hearts.heart1.next(true);
-          hearts.heart2 = true
-          hearts.heart3 = true
+          hideHeart1 = true;
+          if(hideHart2){
+          hearts.heart2.next(true);
+          justOneHeart = true;
+          }
+          if(Death){
+            hearts.heart3.next(true);}
           console.log('collision', hearts.heart3)
         }
         if(nbDeplacementLoup === 50){
@@ -536,8 +551,14 @@ export class SecondPlanetComponent implements AfterViewInit {
         nbDeplacementLoup+=1
         if(((bX < X) && (bX > X1)) && ((bY < Y) && (bY > Y1))){
           hearts.heart1.next(true);
-          hearts.heart2 = true
-          hearts.heart3 = true
+          hideHeart1 = true;
+
+          if(hideHart2){
+          hearts.heart2.next(true);
+          justOneHeart = true;
+          }
+          if(justOneHeart){
+          hearts.heart3.next(true);}
           console.log('collision', hearts.heart3)
         }
         if(nbDeplacementLoup === 50){
@@ -658,12 +679,12 @@ export class SecondPlanetComponent implements AfterViewInit {
           }
         }
         //Décompte des coeurs (temporaire)
-        if(((bX < -1459) && (bX > -1594)) && ((bY > -727) && (bY < -637))){
+        // if(((bX < -1459) && (bX > -1594)) && ((bY > -727) && (bY < -637))){
           // hearts.heart1.next(true);
           // hearts.heart2 = true
           // hearts.heart3 = true
           // console.log('collision', hearts.heart3)
-        }
+        // }
     }
     setInterval(draw,70);
   }
