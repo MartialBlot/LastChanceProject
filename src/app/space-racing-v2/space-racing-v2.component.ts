@@ -20,6 +20,8 @@ export class SpaceRacingV2Component implements AfterViewInit {
 		let nav = this.router
 		let canvas: any = document.getElementById('racing');
 		let ctx = canvas.getContext("2d");
+		let impacts = 0;
+		let explode = false;
 
 		let background = new Image();
 		background.src = "assets/images/racingBackgound.png";
@@ -82,8 +84,8 @@ export class SpaceRacingV2Component implements AfterViewInit {
 		let aY = 0;
 		let aSrcX = 0;
 		let aSrcY = 0;
-		randomEnnemy(15);
-		randomAsteroids(15);
+		randomEnnemy(7);
+		randomAsteroids(10);
 
 
 		function updateFrame() {
@@ -140,6 +142,9 @@ export class SpaceRacingV2Component implements AfterViewInit {
 		win()
 
 
+	
+
+
 		let audio = new Audio('assets/sounds/SFB-explosion2.mp3');
 		let fire = new Audio('assets/sounds/fire.mp3');
 
@@ -169,15 +174,16 @@ export class SpaceRacingV2Component implements AfterViewInit {
 				stopRandom = true;
 			}
 		}
-
-
+		
+		if(!explode){
+		setInterval(detectCrash, 50);
+	}
 		function draw() {
 			updateFrame();
 			ctx.drawImage(background, bX, bY);
 			ctx.drawImage(asteroidMaker, srcX, srcY, width, height, x, y, 250, 300);
 			ctx.drawImage(ennemy, eSrcX, eSrcY, eWidth, eHeight, eX, eY, 200, 200);
 			ctx.drawImage(asteroids, aSrcX, aSrcY, aWidth, aHeight, aX, aY, 80, 70);
-			detectCrash();
 		}
 		setInterval(draw, 50);
 		//contrôles
@@ -297,7 +303,7 @@ export class SpaceRacingV2Component implements AfterViewInit {
 			srcX = 0;
 			srcY = 0;
 		}
-		let explode = false;
+
 
 		function explosion() {
 			spriteWidth = 4680;

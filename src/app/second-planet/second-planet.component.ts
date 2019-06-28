@@ -1,4 +1,5 @@
 import { Component, AfterViewInit } from '@angular/core';
+import { GameplayService } from '../gameplay.service';
 
 @Component({
   selector: 'app-second-planet',
@@ -7,7 +8,7 @@ import { Component, AfterViewInit } from '@angular/core';
 })
 export class SecondPlanetComponent implements AfterViewInit {
 
-  constructor() { }
+  constructor(private service: GameplayService) { }
 
   public ngAfterViewInit() {
     let canvas : any= document.getElementById('map');
@@ -75,6 +76,11 @@ export class SecondPlanetComponent implements AfterViewInit {
     let vueInitGauche = false;
     let speed = 3;
     let ressource = 0;
+    let hearts = this.service;
+    let hideHeart1 = false;
+    let hideHart2 = false;
+    let justOneHeart = false;
+    let Death = false;
 
     //Sprite Ours
     let ours = new Image();
@@ -218,6 +224,12 @@ export class SecondPlanetComponent implements AfterViewInit {
         initHaut();
       } else if (vueInitBas){
         initBas();
+      }
+      if(hideHeart1){
+        hideHart2 = true
+      }
+      if(justOneHeart){
+        Death = true
       }
     },true);
 
@@ -503,11 +515,28 @@ export class SecondPlanetComponent implements AfterViewInit {
     let nbDeplacementLoup = 0;
     let loupDirDroit = true;
     let loupDirGauche = false;
+        let X = -1459
+        let X1 = -1594
+        let Y = -637
+        let Y1= -727
     function animationLoup(){
       if(loupDirDroit){
         lSrcY= 40;
         lX+=12;
+        X -= 12
+        X1 -= 12
         nbDeplacementLoup+=1
+        if(((bX < X) && (bX > X1)) && ((bY < Y) && (bY > Y1))){
+          hearts.heart1.next(true);
+          hideHeart1 = true;
+          if(hideHart2){
+          hearts.heart2.next(true);
+          justOneHeart = true;
+          }
+          if(Death){
+            hearts.heart3.next(true);}
+          console.log('collision', hearts.heart3)
+        }
         if(nbDeplacementLoup === 50){
           loupDirDroit = false;
           loupDirGauche = true;
@@ -517,7 +546,21 @@ export class SecondPlanetComponent implements AfterViewInit {
       if(loupDirGauche){
         lSrcY= 0;
         lX-=12
+        X += 12
+        X1 += 12
         nbDeplacementLoup+=1
+        if(((bX < X) && (bX > X1)) && ((bY < Y) && (bY > Y1))){
+          hearts.heart1.next(true);
+          hideHeart1 = true;
+
+          if(hideHart2){
+          hearts.heart2.next(true);
+          justOneHeart = true;
+          }
+          if(justOneHeart){
+          hearts.heart3.next(true);}
+          console.log('collision', hearts.heart3)
+        }
         if(nbDeplacementLoup === 50){
           loupDirDroit = true;
           loupDirGauche = false;
@@ -635,6 +678,13 @@ export class SecondPlanetComponent implements AfterViewInit {
           ctx.fillText(`Appuyer sur E pour ramasser`, pX + 20, pY - 20);
           }
         }
+        //Décompte des coeurs (temporaire)
+        // if(((bX < -1459) && (bX > -1594)) && ((bY > -727) && (bY < -637))){
+          // hearts.heart1.next(true);
+          // hearts.heart2 = true
+          // hearts.heart3 = true
+          // console.log('collision', hearts.heart3)
+        // }
     }
     setInterval(draw,70);
   }
