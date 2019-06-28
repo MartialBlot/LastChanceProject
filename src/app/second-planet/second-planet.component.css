@@ -21,5 +21,6 @@
 #heart{
   position: fixed;
   top: 0px;
-  margin-left: 200px;
+  margin-left: 50%;
+  margin-top: 1%;
 }
