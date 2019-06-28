@@ -77,19 +77,19 @@ export class SecondPlanetComponent implements AfterViewInit {
 
     //Sprite Ours
     let ours = new Image();
-    ours.src = "assets/images/ours.png"
-    let oursWidth = 540;
-    let oursHeight = 60;
+    ours.src = "assets/images/yeti.png"
+    let oursWidth = 200;
+    let oursHeight = 50;
     let oRows = 1;
-    let oCols = 6;
+    let oCols = 5;
     let oWidth = oursWidth/oCols;
     let oHeight = oursHeight/oRows;
     let oCurFrame = 0;
-    let oFrameCount = 6;
+    let oFrameCount = 5;
     let oX=2400;
     let oY=840;
     let oSrcX= 0;
-    let oSrcY= 60;
+    let oSrcY= 50;
 
     //Sprite Loup
     let loup = new Image();
@@ -361,7 +361,7 @@ export class SecondPlanetComponent implements AfterViewInit {
     let oursDirGauche = false;
     function animationOurs(){
       if(oursDirDroit){
-        oSrcY= 60;
+        oSrcY= 50;
         oX+=9;
         nbDeplacementOurs+=1
         if(nbDeplacementOurs === 70){
@@ -371,7 +371,7 @@ export class SecondPlanetComponent implements AfterViewInit {
         }
       }
       if(oursDirGauche){
-        oSrcY= 135;
+        oSrcY= 0;
         oX-=9
         nbDeplacementOurs+=1
         if(nbDeplacementOurs === 70){
@@ -441,9 +441,9 @@ export class SecondPlanetComponent implements AfterViewInit {
       let posYOurs1 = oY;
       let posYOurs2 = oY+200;
       let posYOurs3 = oY-800;
-      ctx.drawImage(ours,oSrcX,oSrcY,oWidth,oHeight,posXOurs1,posYOurs1,170,100);
-      ctx.drawImage(ours,oSrcX,oSrcY,oWidth,oHeight,posXOurs2,posYOurs2,170,100);
-      ctx.drawImage(ours,oSrcX,oSrcY,oWidth,oHeight,posXOurs3,posYOurs3,170,100);
+      ctx.drawImage(ours,oSrcX,oSrcY,oWidth,oHeight,posXOurs1,posYOurs1,170,250);
+      ctx.drawImage(ours,oSrcX,oSrcY,oWidth,oHeight,posXOurs2,posYOurs2,170,250);
+      ctx.drawImage(ours,oSrcX,oSrcY,oWidth,oHeight,posXOurs3,posYOurs3,170,250);
       //Loup
       let posXLoup1 = lX-200;
       let posXLoup2 = lX+1100;
