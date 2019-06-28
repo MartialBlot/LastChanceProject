@@ -17,6 +17,7 @@ export class SpaceRacing2V2Component implements AfterViewInit {
 	) { }
 
 	public ngAfterViewInit() {
+		let explode = false;
 		let nav = this.router
 		let canvas: any = document.getElementById('racing');
 		let ctx = canvas.getContext("2d");
@@ -82,9 +83,12 @@ export class SpaceRacing2V2Component implements AfterViewInit {
 		let aY = 0;
 		let aSrcX = 0;
 		let aSrcY = 0;
-		randomEnnemy(15);
-		randomAsteroids(15);
+		randomEnnemy(7);
+		randomAsteroids(10);
 
+		if(!explode){
+			setInterval(detectCrash, 50);
+		}
 
 		function updateFrame() {
 			curFrame = ++curFrame % frameCount;
@@ -170,14 +174,13 @@ export class SpaceRacing2V2Component implements AfterViewInit {
 			}
 		}
 
-
+	
 		function draw() {
 			updateFrame();
 			ctx.drawImage(background, bX, bY);
 			ctx.drawImage(asteroidMaker, srcX, srcY, width, height, x, y, 250, 300);
 			ctx.drawImage(ennemy, eSrcX, eSrcY, eWidth, eHeight, eX, eY, 200, 200);
 			ctx.drawImage(asteroids, aSrcX, aSrcY, aWidth, aHeight, aX, aY, 80, 70);
-			detectCrash();
 		}
 		setInterval(draw, 50);
 		//contrôles
@@ -297,7 +300,7 @@ export class SpaceRacing2V2Component implements AfterViewInit {
 			srcX = 0;
 			srcY = 0;
 		}
-		let explode = false;
+	
 
 		function explosion() {
 			spriteWidth = 4680;
