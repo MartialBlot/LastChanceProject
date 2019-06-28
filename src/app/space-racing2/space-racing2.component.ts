@@ -20,6 +20,7 @@ export class SpaceRacing2Component implements AfterViewInit {
     let nav = this.router
 		let canvas: any = document.getElementById('racing');
 		let ctx = canvas.getContext("2d");
+		let explode = false;
 
 		let background = new Image();
 		background.src = "assets/images/star-wars-star-backgrounds-9.png";
@@ -82,8 +83,8 @@ export class SpaceRacing2Component implements AfterViewInit {
 		let aY = 0;
 		let aSrcX = 0;
 		let aSrcY = 0;
-		randomEnnemy(15);
-		randomAsteroids(15);
+		randomEnnemy(7);
+		randomAsteroids(10);
 
 
 		function updateFrame() {
@@ -104,34 +105,38 @@ export class SpaceRacing2Component implements AfterViewInit {
 		function randomEnnemy(max) {
 			if (stopRandom) return;
 			if (max < 0) return;
-			setInterval(function () {
-				eY += 10
-			}, 50);
-			setTimeout(function () {
-				eY = 0;
-				eX = Math.floor(Math.random() * (500 - 1500) + 1500);
-				max -= 1;
-				randomEnnemy(max);
-			}, 3000);
+			else {
+				setInterval(function () {
+					eY += 10
+				}, 50);
+				setTimeout(function () {
+					eY = 0;
+					eX = Math.floor(Math.random() * (0 - 1800) + 1500);
+					max -= 1;
+					randomEnnemy(max);
+				}, 3000);
+			}
 		}
 
 		function randomAsteroids(max) {
 			if (stopRandom) return;
 			if (max < 0) return;
-			setInterval(function () {
-				aY += 20
-			}, 50);
-			setTimeout(function () {
-				aY = 0;
-				aX = Math.floor(Math.random() * (500 - 1500) + 1500);
-				max -= 1;
-				randomAsteroids(max);
-			}, 2000);
+			else {
+				setInterval(function () {
+					aY += 20
+				}, 50);
+				setTimeout(function () {
+					aY = 0;
+					aX = Math.floor(Math.random() * (0 - 1800) + 1500);
+					max -= 1;
+					randomAsteroids(max);
+				}, 2000);
+			}
 		}
 
 		let exit;
 		function win() {
-			exit = setTimeout(function () { nav.navigateByUrl('exit-planet3') }, 10000);
+			exit = setTimeout(function () { nav.navigateByUrl('exit-planet3') }, 20000);
 		}
 
 		function loose() {
@@ -140,10 +145,13 @@ export class SpaceRacing2Component implements AfterViewInit {
 
 		win()
 
-
 		var audio = new Audio('assets/sounds/SFB-explosion2.mp3');
 
 		let stopRandom = false;
+
+		if(!explode){
+			setInterval(detectCrash, 50);
+		}
 
 		function detectCrash() {
 			const H = canvasHeight;
@@ -177,7 +185,6 @@ export class SpaceRacing2Component implements AfterViewInit {
 			ctx.drawImage(widowMaker, srcX, srcY, width, height, x, y, 280, 320);
 			ctx.drawImage(ennemy, eSrcX, eSrcY, eWidth, eHeight, eX, eY, 200, 200);
 			ctx.drawImage(asteroids, aSrcX, aSrcY, aWidth, aHeight, aX, aY, 80, 70);
-			detectCrash();
 		}
 		setInterval(draw, 50);
 		//contrôles
@@ -195,23 +202,24 @@ export class SpaceRacing2Component implements AfterViewInit {
 		function gameLoop() {
 			if ((keyState[39] || keyState[68]) && (x < 1800) && (!explode)) {
 				droit();
-				x += 8;
+				x += 10;
 				vueInit = true;
 			}
 			setTimeout(gameLoop, 10);
 			if ((keyState[37] || keyState[65]) && (x > 0) && (!explode)) {
-				x -= 8;
+				x -= 10;
 				gauche();
 				vueInit = true;
 			}
 			if ((keyState[38] || keyState[87]) && (y > 0) && (!explode)) {
 				haut();
-				y -= 3;
+				y -= 10;
 				vueInit = true;
 			}
-			if ((keyState[40] || keyState[83]) && (y < 900) && (!explode)) {
+			if ((keyState[40] || keyState[83]) && (y < 850) && (!explode)) {
+				console.log(y)
 				bas();
-				y += 3;
+				y += 10;
 				vueInit = true;
 			}
 		}
@@ -295,9 +303,9 @@ export class SpaceRacing2Component implements AfterViewInit {
 			srcX = 0;
 			srcY = 0;
 		}
-		let explode = false;
 
-		function explosion(){
+
+		function explosion() {
 			spriteWidth = 12000;
 			spriteHeight = 1000;
 			rows = 1;
@@ -308,9 +316,10 @@ export class SpaceRacing2Component implements AfterViewInit {
 			frameCount = 12;
 			srcX = 0;
 			srcY = 6500;
-		explode = true;
-		loose();
-      setTimeout(function () {nav.navigateByUrl('game-over')}, 2000)
+			explode = true;
+			loose();
+			setTimeout(function () { nav.navigateByUrl('game-over') }, 3000);
 		}
 	}
 }
+
