@@ -122,6 +122,8 @@ export class SecondPlanetComponent implements AfterViewInit {
     let mY=800;
     let mSrcX= 0;
     let mSrcY= 0;
+    let showMeat = true;
+
 
     //Sprite uranium
     let uranium = new Image();
@@ -138,6 +140,8 @@ export class SecondPlanetComponent implements AfterViewInit {
     let uY=20;
     let uSrcX= 0;
     let uSrcY= 0;
+    let showUranium = true;
+
 
     //Sprite metal
     let metal = new Image();
@@ -154,6 +158,7 @@ export class SecondPlanetComponent implements AfterViewInit {
     let mtY=1660;
     let mtSrcX= 0;
     let mtSrcY= 0;
+    let showMetal = true;
 
     //Sprite bois
     let bois = new Image();
@@ -170,6 +175,7 @@ export class SecondPlanetComponent implements AfterViewInit {
     let boY=160;
     let boSrcX= 0;
     let boSrcY= 0;
+    let showWood = true;
 
     canvas.width =  canvasWidth;
     canvas.height = canvasHeight;
@@ -225,7 +231,7 @@ export class SecondPlanetComponent implements AfterViewInit {
       let fps = 1000 / (fpsDiff - baseFps);
       baseFps = fpsDiff;
       valueFPS = fps;
-
+      console.log(bX,bY)
       //Control droit
       if ((keyState[39] || keyState[68]) && (bX > -4190)){
           bX-=speed;
@@ -320,7 +326,10 @@ export class SecondPlanetComponent implements AfterViewInit {
     //Décoller
     if(keyState[69] && (bX === -1168) && ((y<pY) && ((y+100)>pY))){
       confirm( "Quitter cette planète et repartir à l'aventure ?" );
+    }
 
+    if(keyState[69] && ((bY < -2230) && (bY > -2300)) && ((bX < -1450) && (bX > -1537))){
+      showMetal = false;
     }
 
       setTimeout(gameLoop, 10);
@@ -544,7 +553,9 @@ export class SecondPlanetComponent implements AfterViewInit {
       //Uranium
       ctx.drawImage(uranium,uSrcX,uSrcY,uWidth,uHeight,uX,uY,90,50);
       //Metal
+      if(showMetal){
       ctx.drawImage(metal,mtSrcX,mtSrcY,mtWidth,mtHeight,mtX,mtY,80,50);
+      }
       //Bois
       ctx.drawImage(bois,boSrcX,boSrcY,boWidth,boHeight,boX,boY,180,150);
       //Heroine
@@ -558,6 +569,13 @@ export class SecondPlanetComponent implements AfterViewInit {
       if((bX === -1168) && ((y<pY) && ((y+100)>pY))){
         ctx.font="18px helvetica";
         ctx.fillText(`Appuyer sur E pour interagir`, pX + 20, pY - 20);
+      }
+      //Ramasser metal
+      if(showMetal){
+      if(((bY < -2230) && (bY > -2300)) && ((bX < -1450) && (bX > -1537))){
+        ctx.font="18px helvetica";
+        ctx.fillText(`Appuyer sur E pour ramasser`, pX + 20, pY - 20);
+        }
       }
     }
     setInterval(draw,70);

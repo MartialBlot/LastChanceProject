@@ -1,4 +1,5 @@
 import { Component, AfterViewInit } from '@angular/core';
+import { by } from 'protractor';
 
 @Component({
   selector: 'app-third-planet',
