@@ -74,6 +74,7 @@ export class SecondPlanetComponent implements AfterViewInit {
     let vueInitDroite = false;
     let vueInitGauche = false;
     let speed = 3;
+    let ressource = 0;
 
     //Sprite Ours
     let ours = new Image();
@@ -327,11 +328,12 @@ export class SecondPlanetComponent implements AfterViewInit {
     if(keyState[69] && (bX === -1168) && ((y<pY) && ((y+100)>pY))){
       confirm( "Quitter cette planète et repartir à l'aventure ?" );
     }
-
+    if(showMetal){
     if(keyState[69] && ((bY < -2230) && (bY > -2300)) && ((bX < -1450) && (bX > -1537))){
       showMetal = false;
+      ressource++;
+      }
     }
-
       setTimeout(gameLoop, 10);
     }
     gameLoop();
@@ -565,6 +567,9 @@ export class SecondPlanetComponent implements AfterViewInit {
       ctx.font="20px helvetica";
       ctx.fillText(`FPS: ${valueFPS.toFixed(0)}`, 30, 70);
       }
+      //Ressources
+      ctx.font="20px helvetica";
+      ctx.fillText(`Ressource(s): ${ressource}`, 290, 35);
       //Invitation à décoller
       if((bX === -1168) && ((y<pY) && ((y+100)>pY))){
         ctx.font="18px helvetica";
