@@ -46,23 +46,24 @@ export class SpaceRacing2Component implements AfterViewInit {
 		let srcX = 0;
 		let srcY = 0;
 		let vueInit = false;
+		
 
 		let ennemy = new Image();
-		ennemy.src = "assets/images/vaisseauennemi.png"
+		ennemy.src = "assets/images/enemy_5.png"
 
 		// Sprite de ennemis
-		let ennemyWidth = 600;
-		let ennemyHeight = 260;
+		let ennemyWidth = 5100;
+		let ennemyHeight = 230;
 		let eRows = 1;
-		let eCols = 3;
+		let eCols = 16;
 		let eWidth = ennemyWidth / eCols;
 		let eHeight = ennemyHeight / eRows;
 		let eCurFrame = 0;
-		let eFrameCount = 3;
-		let eX = 800;
+		let eFrameCount = 12;
+		let eX = 0;
 		let eY = 0;
 		let eSrcX = 0;
-		let eSrcY = 90;
+		let eSrcY = 0;
 
 		canvas.width = canvasWidth;
 		canvas.height = canvasHeight;
@@ -83,8 +84,8 @@ export class SpaceRacing2Component implements AfterViewInit {
 		let aY = 0;
 		let aSrcX = 0;
 		let aSrcY = 0;
-		randomEnnemy(7);
-		randomAsteroids(10);
+		randomEnnemy(6);
+		randomAsteroids(9);
 
 
 		function updateFrame() {
