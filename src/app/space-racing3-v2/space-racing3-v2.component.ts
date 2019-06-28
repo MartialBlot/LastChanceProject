@@ -47,6 +47,23 @@ export class SpaceRacing3V2Component implements AfterViewInit {
 		let srcY = 0;
 		let vueInit = false;
 
+		let ennemy1 = new Image();
+		ennemy1.src = "assets/images/enemy_5.png"
+
+		// Sprite de ennemis
+		let ennemy1Width = 5100;
+		let ennemy1Height = 230;
+		let e1Rows = 1;
+		let e1Cols = 16;
+		let e1Width = ennemy1Width / e1Cols;
+		let e1Height = ennemy1Height / e1Rows;
+		let e1CurFrame = 0;
+		let e1FrameCount = 12;
+		let e1X = 0;
+		let e1Y = 0;
+		let e1SrcX = 0;
+		let e1SrcY = 0;
+
 		let ennemy = new Image();
 		ennemy.src = "assets/images/vaisseauennemi.png"
 
@@ -85,6 +102,7 @@ export class SpaceRacing3V2Component implements AfterViewInit {
 		let aSrcY = 0;
 		randomEnnemy(7);
 		randomAsteroids(10);
+		randomEnnemy1(5);
 
 
 		function updateFrame() {
@@ -105,30 +123,51 @@ export class SpaceRacing3V2Component implements AfterViewInit {
 		function randomEnnemy(max) {
 			if (stopRandom) return;
 			if (max < 0) return;
-			setInterval(function () {
-				eY += 10
-			}, 50);
-			setTimeout(function () {
-				eY = 0;
-				eX = Math.floor(Math.random() * (500 - 1500) + 1500);
-				max -= 1;
-				randomEnnemy(max);
-			}, 3000);
+			else {
+				setInterval(function () {
+					eY += 10
+				}, 50);
+				setTimeout(function () {
+					eY = 0;
+					eX = Math.floor(Math.random() * (0 - 1800) + 1500);
+					max -= 1;
+					randomEnnemy(max);
+				}, 3000);
+			}
+		}
+
+		function randomEnnemy1(max) {
+			if (stopRandom) return;
+			if (max < 0) return;
+			else {
+				setInterval(function () {
+					e1Y += 10
+				}, 50);
+				setTimeout(function () {
+					e1Y = 0;
+					e1X = Math.floor(Math.random() * (0 - 1800) + 1500);
+					max -= 1;
+					randomEnnemy(max);
+				}, 4000);
+			}
 		}
 
 		function randomAsteroids(max) {
 			if (stopRandom) return;
 			if (max < 0) return;
-			setInterval(function () {
-				aY += 20
-			}, 50);
-			setTimeout(function () {
-				aY = 0;
-				aX = Math.floor(Math.random() * (500 - 1500) + 1500);
-				max -= 1;
-				randomAsteroids(max);
-			}, 2000);
+			else {
+				setInterval(function () {
+					aY += 20
+				}, 50);
+				setTimeout(function () {
+					aY = 0;
+					aX = Math.floor(Math.random() * (0 - 1800) + 1500);
+					max -= 1;
+					randomAsteroids(max);
+				}, 2000);
+			}
 		}
+
 		let exit;
 		function win() {
 			exit = setTimeout(function () { nav.navigateByUrl('exit-planet3') }, 25000);
@@ -144,8 +183,7 @@ export class SpaceRacing3V2Component implements AfterViewInit {
 			setInterval(detectCrash, 50);
 		}
 
-		let audio = new Audio('assets/sounds/SFB-explosion2.mp3');
-		let fire = new Audio('assets/sounds/fire.mp3');
+		var audio = new Audio('assets/sounds/SFB-explosion2.mp3');
 
 		let stopRandom = false;
 
@@ -172,14 +210,22 @@ export class SpaceRacing3V2Component implements AfterViewInit {
 				explosion();
 				stopRandom = true;
 			}
+			if (Math.abs(mBottom) < Math.abs(e1Y) && Math.abs(mTop) > Math.abs((e1Y + e1Height - H)) &&
+			((Math.abs(mLeft) < Math.abs(e1X + 50)) && (Math.abs(mRight) > Math.abs(e1X + 50))) &&
+			((Math.abs(x + 200) > Math.abs(e1X)) && (Math.abs(x) < Math.abs(e1X)))) {
+			audio.play();
+			explosion();
+			stopRandom = true;
+		}
 		}
 
 
 		function draw() {
 			updateFrame();
 			ctx.drawImage(background, bX, bY);
-			ctx.drawImage(asteroidMaker, srcX, srcY, width, height, x, y, 250, 300);
+			ctx.drawImage(asteroidMaker, srcX, srcY, width, height, x, y, 280, 320);
 			ctx.drawImage(ennemy, eSrcX, eSrcY, eWidth, eHeight, eX, eY, 200, 200);
+			ctx.drawImage(ennemy1, e1SrcX, e1SrcY, e1Width, e1Height, e1X, e1Y, 200, 200);
 			ctx.drawImage(asteroids, aSrcX, aSrcY, aWidth, aHeight, aX, aY, 80, 70);
 		}
 		setInterval(draw, 50);
@@ -300,7 +346,7 @@ export class SpaceRacing3V2Component implements AfterViewInit {
 			srcX = 0;
 			srcY = 0;
 		}
-
+	
 
 		function explosion() {
 			spriteWidth = 4680;

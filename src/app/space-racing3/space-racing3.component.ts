@@ -47,6 +47,23 @@ export class SpaceRacing3Component implements AfterViewInit {
 		let srcY = 0;
 		let vueInit = false;
 
+		let ennemy1 = new Image();
+		ennemy1.src = "assets/images/enemy_5.png"
+
+		// Sprite de ennemis
+		let ennemy1Width = 5100;
+		let ennemy1Height = 230;
+		let e1Rows = 1;
+		let e1Cols = 16;
+		let e1Width = ennemy1Width / e1Cols;
+		let e1Height = ennemy1Height / e1Rows;
+		let e1CurFrame = 0;
+		let e1FrameCount = 12;
+		let e1X = 0;
+		let e1Y = 0;
+		let e1SrcX = 0;
+		let e1SrcY = 0;
+
 		let ennemy = new Image();
 		ennemy.src = "assets/images/vaisseauennemi.png"
 
@@ -85,6 +102,7 @@ export class SpaceRacing3Component implements AfterViewInit {
 		let aSrcY = 0;
 		randomEnnemy(7);
 		randomAsteroids(10);
+		randomEnnemy1(5);
 
 
 		function updateFrame() {
@@ -115,6 +133,22 @@ export class SpaceRacing3Component implements AfterViewInit {
 					max -= 1;
 					randomEnnemy(max);
 				}, 3000);
+			}
+		}
+
+		function randomEnnemy1(max) {
+			if (stopRandom) return;
+			if (max < 0) return;
+			else {
+				setInterval(function () {
+					e1Y += 10
+				}, 50);
+				setTimeout(function () {
+					e1Y = 0;
+					e1X = Math.floor(Math.random() * (0 - 1800) + 1500);
+					max -= 1;
+					randomEnnemy(max);
+				}, 4000);
 			}
 		}
 
@@ -176,6 +210,13 @@ export class SpaceRacing3Component implements AfterViewInit {
 				explosion();
 				stopRandom = true;
 			}
+			if (Math.abs(mBottom) < Math.abs(e1Y) && Math.abs(mTop) > Math.abs((e1Y + e1Height - H)) &&
+			((Math.abs(mLeft) < Math.abs(e1X + 50)) && (Math.abs(mRight) > Math.abs(e1X + 50))) &&
+			((Math.abs(x + 200) > Math.abs(e1X)) && (Math.abs(x) < Math.abs(e1X)))) {
+			audio.play();
+			explosion();
+			stopRandom = true;
+		}
 		}
 
 
@@ -184,6 +225,7 @@ export class SpaceRacing3Component implements AfterViewInit {
 			ctx.drawImage(background, bX, bY);
 			ctx.drawImage(widowMaker, srcX, srcY, width, height, x, y, 280, 320);
 			ctx.drawImage(ennemy, eSrcX, eSrcY, eWidth, eHeight, eX, eY, 200, 200);
+			ctx.drawImage(ennemy1, e1SrcX, e1SrcY, e1Width, e1Height, e1X, e1Y, 200, 200);
 			ctx.drawImage(asteroids, aSrcX, aSrcY, aWidth, aHeight, aX, aY, 80, 70);
 		}
 		setInterval(draw, 50);
@@ -225,21 +267,6 @@ export class SpaceRacing3Component implements AfterViewInit {
 		}
 		gameLoop();
 
-
-		let ennemy1 = {
-			ennemyWidth: 600,
-			ennemyHeight: 260,
-			eRows: 1,
-			eCols: 3,
-			eWidth: ennemyWidth / eCols,
-			eHeight: ennemyHeight / eRows,
-			eCurFrame: 0,
-			eFrameCount: 3,
-			eX: 145,
-			eY: 280,
-			eSrcX: 0,
-			eSrcY: 90,
-		}
 
 		//Animations
 
