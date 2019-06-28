@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-
+import { Location } from '@angular/common';
 @Component({
   selector: 'app-game-over',
   templateUrl: './game-over.component.html',
@@ -7,7 +7,13 @@ import { Component, OnInit } from '@angular/core';
 })
 export class GameOverComponent implements OnInit {
 
-  constructor() { }
+  constructor(private location: Location) { }
+
+  public vid = document.getElementById('dramatic');
+
+  backClicked() {
+    this.location.back();
+  }
 
   ngOnInit() {
   }
