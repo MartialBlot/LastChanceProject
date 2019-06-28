@@ -106,6 +106,70 @@ export class FirstPlanetComponent implements AfterViewInit {
     let lSrcX= 0;
     let lSrcY= 0;
 
+    //Sprite Meat
+    let meat = new Image();
+    meat.src = "assets/images/meat.png"
+    let meatWidth = 260;
+    let meatHeight = 130;
+    let mRows = 1;
+    let mCols = 1;
+    let mWidth = meatWidth/mCols;
+    let mHeight = meatHeight/mRows;
+    let mCurFrame = 0;
+    let mFrameCount = 1;
+    let mX=2500;
+    let mY=800;
+    let mSrcX= 0;
+    let mSrcY= 0;
+
+    //Sprite uranium
+    let uranium = new Image();
+    uranium.src = "assets/images/uranium.png"
+    let uraniumWidth = 260;
+    let uraniumHeight = 130;
+    let uRows = 1;
+    let uCols = 1;
+    let uWidth = uraniumWidth/uCols;
+    let uHeight = uraniumHeight/uRows;
+    let uCurFrame = 0;
+    let uFrameCount = 1;
+    let uX=1540;
+    let uY=20;
+    let uSrcX= 0;
+    let uSrcY= 0;
+
+    //Sprite metal
+    let metal = new Image();
+    metal.src = "assets/images/metal.png"
+    let metalWidth = 260;
+    let metalHeight = 130;
+    let mtRows = 1;
+    let mtCols = 1;
+    let mtWidth = metalWidth/mtCols;
+    let mtHeight = metalHeight/mtRows;
+    let mtCurFrame = 0;
+    let mtFrameCount = 1;
+    let mtX=540;
+    let mtY=1660;
+    let mtSrcX= 0;
+    let mtSrcY= 0;
+
+    //Sprite bois
+    let bois = new Image();
+    bois.src = "assets/images/wood.png"
+    let boisWidth = 260;
+    let boisHeight = 130;
+    let boRows = 1;
+    let boCols = 1;
+    let boWidth = boisWidth/boCols;
+    let boHeight = boisHeight/boRows;
+    let boCurFrame = 0;
+    let boFrameCount = 1;
+    let boX=3040;
+    let boY=160;
+    let boSrcX= 0;
+    let boSrcY= 0;
+
     canvas.width =  canvasWidth;
     canvas.height = canvasHeight;
 
@@ -168,6 +232,10 @@ export class FirstPlanetComponent implements AfterViewInit {
           aX-=speed;
           oX-=speed;
           lX-=speed;
+          mX-=speed;
+          uX-=speed;
+          mtX-=speed;
+          boX-=speed;
           droit();
           vueInitHaut = false;
           vueInitBas = false;
@@ -181,6 +249,10 @@ export class FirstPlanetComponent implements AfterViewInit {
         aX+=speed;
         oX+=speed;
         lX+=speed;
+        mX+=speed;
+        uX+=speed;
+        mtX+=speed;
+        boX+=speed;
         gauche();
         vueInitHaut = false;
         vueInitBas = false;
@@ -195,6 +267,10 @@ export class FirstPlanetComponent implements AfterViewInit {
         aY+=speed;
         oY+=speed;
         lY+=speed;
+        mY+=speed;
+        uY+=speed;
+        mtY+=speed;
+        boY+=speed;
         vueInitHaut = true;
         vueInitBas = false;
         vueInitDroite = false;
@@ -208,6 +284,10 @@ export class FirstPlanetComponent implements AfterViewInit {
         aY-=speed;
         oY-=speed;
         lY-=speed;
+        mY-=speed;
+        uY-=speed;
+        mtY-=speed;
+        boY-=speed;
         vueInitHaut = false;
         vueInitBas = true;
         vueInitDroite = false;
@@ -458,7 +538,14 @@ export class FirstPlanetComponent implements AfterViewInit {
       // if((((Math.abs(bX)-1000)>posXLoup1) && ((Math.abs(bX)-920)<posXLoup1+150)) && (((Math.abs(bX)-1000)<posXLoup1+150) && ((Math.abs(bX)-920)>posXLoup1)) && ((bY < -646)&&(bY > -716))){
       //   alert('collision')
       // }
-
+      //Meat
+      ctx.drawImage(meat,mSrcX,mSrcY,mWidth,mHeight,mX,mY,40,20);
+      //Uranium
+      ctx.drawImage(uranium,uSrcX,uSrcY,uWidth,uHeight,uX,uY,90,50);
+      //Metal
+      ctx.drawImage(metal,mtSrcX,mtSrcY,mtWidth,mtHeight,mtX,mtY,80,50);
+      //Bois
+      ctx.drawImage(bois,boSrcX,boSrcY,boWidth,boHeight,boX,boY,180,150);
       //Heroine
       ctx.drawImage(player,pSrcX,pSrcY,pWidth,pHeight,pX,pY,pWidth,pHeight);
       //dessine les FPS
