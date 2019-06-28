@@ -349,7 +349,7 @@ export class SecondPlanetComponent implements AfterViewInit {
           }
         } else {
           ctx.font="18px helvetica";
-          ctx.fillText(`"Vous n'avez pas tout découvert"`, pX + 20, pY - 50);
+          ctx.fillText(`"Vous n'avez pas tout découvert"`, pX + 20, pY - 80);
         }
       }
       //Recharge oxygene
