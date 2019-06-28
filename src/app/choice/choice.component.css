@@ -32,7 +32,7 @@ html {
     width:320px;
 }
 .card-body{
-    background-image: url('../../assets/stars.png');
+    background-image: url('/assets/stars.png');
 }
 
 .card-body1{

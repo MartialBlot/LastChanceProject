@@ -1,5 +1,5 @@
 .cockpit {
-    background-image: url("../../assets/images/cockpit.png");
+    background-image: url("/assets/images/cockpit.png");
     background-repeat: no-repeat;
     background-size: cover;
     position: fixed;
@@ -10,7 +10,7 @@
 }
 
 .planet {
-    background-image: url('../../assets/images/planet1.gif');
+    background-image: url('/assets/images/planet1.gif');
     background-repeat: no-repeat;
     background-size: contain;
     position: fixed;
@@ -21,7 +21,7 @@
 }
 
 .space {
-    background-image: url("../../assets/images/space-background.gif");
+    background-image: url("/assets/images/space-background.gif");
     background-repeat: no-repeat;
     background-size: cover;
     position: fixed;
@@ -32,7 +32,7 @@
 }
 
 .space2 {
-    background-image: url("../../assets/images/space-background3.jpg");
+    background-image: url("/assets/images/space-background3.jpg");
     background-repeat: no-repeat;
     background-size: cover;
     position: fixed;
@@ -51,7 +51,7 @@
 }
 
 .propulsion {
-    background-image: url("../../assets/images/space-test.gif");
+    background-image: url("/assets/images/space-test.gif");
     background-repeat: no-repeat;
     background-size: cover;
     background-position: center;

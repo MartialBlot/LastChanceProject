@@ -1,5 +1,5 @@
 .earth {
-    background-image: url("../../assets/images/game-over.png");
+    background-image: url("/assets/images/game-over.png");
     background-repeat: no-repeat;
     background-size: cover;
     position: fixed;

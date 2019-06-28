@@ -1,5 +1,5 @@
 .cockpit {
-    background-image: url("../../assets/images/cockpit.png");
+    background-image: url("/assets/images/cockpit.png");
     background-repeat: no-repeat;
     background-size: cover;
     position: fixed;
@@ -10,7 +10,7 @@
 }
 
 .earth {
-    background-image: url('../../assets/images/earth.gif');
+    background-image: url('/assets/images/earth.gif');
     background-repeat: no-repeat;
     background-size: contain;
     position: fixed;
@@ -29,7 +29,7 @@
 }
 
 .space {
-    background-image: url("../../assets/images/space-background3.jpg");
+    background-image: url("/assets/images/space-background3.jpg");
     background-repeat: no-repeat;
     background-size: cover;
     position: fixed;
