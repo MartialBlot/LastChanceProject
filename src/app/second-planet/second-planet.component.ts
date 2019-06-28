@@ -84,6 +84,7 @@ export class SecondPlanetComponent implements AfterViewInit {
     let hideHart2 = false;
     let justOneHeart = false;
     let Death = false;
+    let GameOver = false;
 
     //Sprite Ours
     let ours = new Image();
@@ -529,6 +530,7 @@ export class SecondPlanetComponent implements AfterViewInit {
             justOneHeart = true;
           }
           if(Death){
+            GameOver = true;
             hearts.heart3.next(true);}
             console.log('collision', hearts.heart3)
           }
@@ -540,6 +542,7 @@ export class SecondPlanetComponent implements AfterViewInit {
               justOneHeart = true;
             }
             if(Death){
+              GameOver = true;
               hearts.heart3.next(true);}
               console.log('collision', hearts.heart3)
             }
@@ -551,6 +554,7 @@ export class SecondPlanetComponent implements AfterViewInit {
               justOneHeart = true;
             }
             if(Death){
+              GameOver = true;
               hearts.heart3.next(true);}
               console.log('collision', hearts.heart3)
             }
@@ -578,6 +582,7 @@ export class SecondPlanetComponent implements AfterViewInit {
             justOneHeart = true;
           }
           if(Death){
+            GameOver = true;
             hearts.heart3.next(true);}
             console.log('collision', hearts.heart3)
           }
@@ -589,6 +594,7 @@ export class SecondPlanetComponent implements AfterViewInit {
               justOneHeart = true;
             }
             if(Death){
+              GameOver = true;
               hearts.heart3.next(true);}
               console.log('collision', hearts.heart3)
             }
@@ -600,6 +606,7 @@ export class SecondPlanetComponent implements AfterViewInit {
               justOneHeart = true;
             }
             if(Death){
+              GameOver = true;
               hearts.heart3.next(true);}
               console.log('collision', hearts.heart3)
             }
@@ -649,6 +656,7 @@ export class SecondPlanetComponent implements AfterViewInit {
             justOneHeart = true;
           }
           if(Death){
+            GameOver = true;
             hearts.heart3.next(true);}
             console.log('collision', hearts.heart3)
           }
@@ -660,6 +668,7 @@ export class SecondPlanetComponent implements AfterViewInit {
               justOneHeart = true;
             }
             if(Death){
+              GameOver = true;
               hearts.heart3.next(true);}
               console.log('collision', hearts.heart3)
             }
@@ -671,6 +680,7 @@ export class SecondPlanetComponent implements AfterViewInit {
               justOneHeart = true;
             }
             if(Death){
+              GameOver = true;
               hearts.heart3.next(true);}
               console.log('collision', hearts.heart3)
             }
@@ -685,10 +695,10 @@ export class SecondPlanetComponent implements AfterViewInit {
           lX-=12
           X += 12
           X1 += 12
-          xX -= 12
-        xX1 -= 12
-        xxX -= 12
-        xxX1 -= 12
+          xX += 12
+          xX1 += 12
+          xxX += 12
+          xxX1 += 12
           nbDeplacementLoup+=1
           if(((bX < xX) && (bX > xX1)) && ((bY < yY) && (bY > yY1))){
             hearts.heart1.next(true);
@@ -698,6 +708,7 @@ export class SecondPlanetComponent implements AfterViewInit {
               justOneHeart = true;
             }
             if(Death){
+              GameOver = true;
               hearts.heart3.next(true);}
               console.log('collision', hearts.heart3)
             }
@@ -709,6 +720,7 @@ export class SecondPlanetComponent implements AfterViewInit {
                 justOneHeart = true;
               }
               if(Death){
+                GameOver = true;
                 hearts.heart3.next(true);}
                 console.log('collision', hearts.heart3)
               }
@@ -720,6 +732,7 @@ export class SecondPlanetComponent implements AfterViewInit {
                 justOneHeart = true;
               }
               if(Death){
+                GameOver = true;
                 hearts.heart3.next(true);}
                 console.log('collision', hearts.heart3)
               }
@@ -839,6 +852,9 @@ export class SecondPlanetComponent implements AfterViewInit {
               ctx.font="18px helvetica";
               ctx.fillText(`Appuyer sur E pour ramasser`, pX + 20, pY - 20);
             }
+          }
+          if(GameOver){
+            nav.navigateByUrl('game-over')
           }
         }
         setInterval(draw,70);
