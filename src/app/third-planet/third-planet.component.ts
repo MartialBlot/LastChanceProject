@@ -1,6 +1,7 @@
 import { Component, AfterViewInit } from '@angular/core';
 import { by } from 'protractor';
 
+
 @Component({
   selector: 'app-third-planet',
   templateUrl: './third-planet.component.html',
@@ -331,11 +332,14 @@ export class ThirdPlanetComponent implements AfterViewInit {
     //Décoller
     if(keyState[69] && (bX === -1168) && ((y<pY) && ((y+100)>pY))){
       if(ressource===4){
-        confirm( "Quitter cette planète et repartir à l'aventure ?" );
-        } else {
-          alert("Vous n'avez pas encore découvert toutes les ressources")
-        }
+        (confirm( "Quitter cette planète et repartir à l'aventure ?"));
+          alert("Bonne chance ...")
+            } else {
+              alert("Vous n'avez pas encore découvert toutes les ressources ") 
     }
+  }
+
+
     //Action ramasser Metal
     if(showMetal){
       if(keyState[69] && ((bY < -2230) && (bY > -2300)) && ((bX < -1450) && (bX > -1537))){
@@ -605,7 +609,7 @@ export class ThirdPlanetComponent implements AfterViewInit {
       }
       //Ressources
       ctx.font="20px helvetica";
-      ctx.fillText(`Ressource(s): ${ressource}`, 290, 35);
+      ctx.fillText(`Ressource(s): ${ressource}/4`, 290, 35);
       //Invitation à décoller
       if((bX === -1168) && ((y<pY) && ((y+100)>pY))){
         ctx.font="18px helvetica";

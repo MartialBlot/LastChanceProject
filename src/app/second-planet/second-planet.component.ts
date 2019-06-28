@@ -644,7 +644,7 @@ export class SecondPlanetComponent implements AfterViewInit {
       }
       //Ressources
       ctx.font="20px helvetica";
-      ctx.fillText(`Ressource(s): ${ressource}`, 290, 35);
+      ctx.fillText(`Ressource(s): ${ressource}/4`, 290, 35);
       //Invitation à décoller
       if((bX === -1168) && ((y<pY) && ((y+100)>pY))){
         ctx.font="18px helvetica";
