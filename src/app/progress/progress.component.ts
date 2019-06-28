@@ -27,7 +27,7 @@ export class ProgressComponent implements OnInit {
         clearTimeout(counterBack);
         alertBox.classList.remove('hide');
         alertBox.classList.add('show');
-        exit = setTimeout(function () { nav.navigateByUrl('') }, 2500)
+        exit = setTimeout(function () { nav.navigateByUrl('/game-over') }, 2500)
       }
 
     }, 500);
