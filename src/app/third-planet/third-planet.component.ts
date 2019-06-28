@@ -330,7 +330,11 @@ export class ThirdPlanetComponent implements AfterViewInit {
     }
     //Décoller
     if(keyState[69] && (bX === -1168) && ((y<pY) && ((y+100)>pY))){
-      confirm( "Quitter cette planète et repartir à l'aventure ?" );
+      if(ressource===4){
+        confirm( "Quitter cette planète et repartir à l'aventure ?" );
+        } else {
+          alert("Vous n'avez pas encore découvert toutes les ressources")
+        }
     }
     //Action ramasser Metal
     if(showMetal){
@@ -348,7 +352,7 @@ export class ThirdPlanetComponent implements AfterViewInit {
         }
       //Action ramasser Uranium
       if(showUranium){
-        if(keyState[69] && ((bX < -2359) && (bX > -2419)) && ((bY < -598) && (bY > -682))){
+        if(keyState[69] && ((bX < -2459) && (bX > -2519)) && ((bY < -598) && (bY > -682))){
           showUranium = false;
           ressource++;
           }
@@ -623,7 +627,7 @@ export class ThirdPlanetComponent implements AfterViewInit {
           }
           //Ramasser Uranium
       if(showUranium){
-          if(((bX < -2359) && (bX > -2419)) && ((bY < -598) && (bY > -682))){
+          if(((bX < -2459) && (bX > -2519)) && ((bY < -598) && (bY > -682))){
             ctx.font="18px helvetica";
             ctx.fillText(`Appuyer sur E pour ramasser`, pX + 20, pY - 20);
             }

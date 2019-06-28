@@ -326,7 +326,11 @@ export class SecondPlanetComponent implements AfterViewInit {
     }
     //Décoller
     if(keyState[69] && (bX === -1168) && ((y<pY) && ((y+100)>pY))){
-      confirm( "Quitter cette planète et repartir à l'aventure ?" );
+      if(ressource===4){
+        confirm( "Quitter cette planète et repartir à l'aventure ?" );
+        } else {
+          alert("Vous n'avez pas encore découvert toutes les ressources")
+        }
     }
     //Action ramasser Metal
     if(showMetal){
