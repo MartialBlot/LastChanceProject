@@ -11,7 +11,9 @@ export class ProgressComponent implements OnInit {
 
 
   constructor(public router: Router,
-              private service: GameplayService) { }
+    private service: GameplayService) { }
+
+  public counterBack;
 
   ngOnInit() {
     this.service.i.subscribe(res => i = res);
@@ -22,13 +24,13 @@ export class ProgressComponent implements OnInit {
     const nav = this.router;
     let exit;
 
-    const counterBack = setInterval(function () {
+    this.counterBack = setInterval(function () {
       i--;
       if (i > 0) {
         document.getElementById('theBar').style.width = i + 1 + '%';
         document.getElementById('theBar').innerHTML = i + 1 + '%';
       } else {
-        clearTimeout(counterBack);
+        clearInterval(this.counterBack);
         alertBox.classList.remove('hide');
         alertBox.classList.add('show');
         exit = setTimeout(function () { nav.navigateByUrl('/game-over') }, 2500)
@@ -37,6 +39,9 @@ export class ProgressComponent implements OnInit {
     }, 500);
   }
 
+  ngOnDestroy() {
+      clearInterval(this.counterBack);
+  }
 
 
 }
