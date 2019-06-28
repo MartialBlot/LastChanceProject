@@ -194,29 +194,29 @@ export class SecondPlanetComponent implements AfterViewInit {
       ctx.clearRect(x,y,width,height);
 
       oCurFrame = ++oCurFrame % oFrameCount;
-        oSrcX = oCurFrame * oWidth;
-        ctx.clearRect(oX,oY,oWidth,oHeight);
-        animationOurs();
+      oSrcX = oCurFrame * oWidth;
+      ctx.clearRect(oX,oY,oWidth,oHeight);
+      animationOurs();
 
       lCurFrame = ++lCurFrame % lFrameCount;
-        lSrcX = lCurFrame * lWidth;
-        ctx.clearRect(lX,lY,lWidth,lHeight);
-        animationLoup()
+      lSrcX = lCurFrame * lWidth;
+      ctx.clearRect(lX,lY,lWidth,lHeight);
+      animationLoup()
 
       pCurFrame = ++pCurFrame % pFrameCount;
-        pSrcX = pCurFrame * pWidth;
-        ctx.clearRect(pX,pY,pWidth,pHeight);
+      pSrcX = pCurFrame * pWidth;
+      ctx.clearRect(pX,pY,pWidth,pHeight);
     }
 
     //contrôles
     let keyState = {};
     document.addEventListener('keydown',function(e){
-        keyState[e.keyCode || e.which] = true;
+      keyState[e.keyCode || e.which] = true;
     },true);
     document.addEventListener('keyup',function(e){
-        keyState[e.keyCode || e.which] = false;
-        speed = 3;
-        if(vueInitGauche){
+      keyState[e.keyCode || e.which] = false;
+      speed = 3;
+      if(vueInitGauche){
         initGauche();
       } else if (vueInitDroite){
         initDroite();
@@ -247,20 +247,20 @@ export class SecondPlanetComponent implements AfterViewInit {
       console.log(bX,bY)
       //Control droit
       if ((keyState[39] || keyState[68]) && (bX > -4190)){
-          bX-=speed;
-          x-=speed;
-          aX-=speed;
-          oX-=speed;
-          lX-=speed;
-          mX-=speed;
-          uX-=speed;
-          mtX-=speed;
-          boX-=speed;
-          droit();
-          vueInitHaut = false;
-          vueInitBas = false;
-          vueInitDroite = true;
-          vueInitGauche = false;
+        bX-=speed;
+        x-=speed;
+        aX-=speed;
+        oX-=speed;
+        lX-=speed;
+        mX-=speed;
+        uX-=speed;
+        mtX-=speed;
+        boX-=speed;
+        droit();
+        vueInitHaut = false;
+        vueInitBas = false;
+        vueInitDroite = true;
+        vueInitGauche = false;
       }
       //Control gauche
       if ((keyState[37] || keyState[65]) && (bX < -1170)){
@@ -321,55 +321,55 @@ export class SecondPlanetComponent implements AfterViewInit {
       if ((keyState[38] || keyState[87]) && (keyState[37] || keyState[65])){
         diagoGauche();
       }
-    //diagoBasDroit
-    if ((keyState[40] || keyState[83]) && (keyState[39] || keyState[68])){
-      diagoBasDroit();
-    }
-    if ((keyState[16])){
-      speed=9
-    }
-    //diagoBasGauche
-    if ((keyState[40] || keyState[83]) && (keyState[37] || keyState[65])){
-      diagoBasGauche();
-    }
-    //ShowFPS
-    if (keyState[73]){
-      showFPS = !showFPS;
-    }
-    //Décoller
-    if(keyState[69] && (bX === -1168) && ((y<pY) && ((y+100)>pY))){
-      if(ressource===4){
-        confirm( "Quitter cette planète et repartir à l'aventure ?" );
+      //diagoBasDroit
+      if ((keyState[40] || keyState[83]) && (keyState[39] || keyState[68])){
+        diagoBasDroit();
+      }
+      if ((keyState[16])){
+        speed=9
+      }
+      //diagoBasGauche
+      if ((keyState[40] || keyState[83]) && (keyState[37] || keyState[65])){
+        diagoBasGauche();
+      }
+      //ShowFPS
+      if (keyState[73]){
+        showFPS = !showFPS;
+      }
+      //Décoller
+      if(keyState[69] && (bX === -1168) && ((y<pY) && ((y+100)>pY))){
+        if(ressource===4){
+          confirm( "Quitter cette planète et repartir à l'aventure ?" );
         } else {
           alert("Vous n'avez pas encore découvert toutes les ressources")
         }
-    }
-    //Action ramasser Metal
-    if(showMetal){
-    if(keyState[69] && ((bY < -2230) && (bY > -2300)) && ((bX < -1450) && (bX > -1537))){
-      showMetal = false;
-      ressource++;
       }
-    }
-    //Action ramasser Meat
-    if(showMeat){
-      if(keyState[69] && ((bX < -3415) && (bX > -3484)) && ((bY < -1378) && (bY > -1432))){
-        showMeat = false;
-        ressource++;
+      //Action ramasser Metal
+      if(showMetal){
+        if(keyState[69] && ((bY < -2230) && (bY > -2300)) && ((bX < -1450) && (bX > -1537))){
+          showMetal = false;
+          ressource++;
         }
       }
-    //Action ramasser Uranium
-    if(showUranium){
-      if(keyState[69] && ((bX < -2359) && (bX > -2419)) && ((bY < -598) && (bY > -682))){
-        showUranium = false;
-        ressource++;
+      //Action ramasser Meat
+      if(showMeat){
+        if(keyState[69] && ((bX < -3415) && (bX > -3484)) && ((bY < -1378) && (bY > -1432))){
+          showMeat = false;
+          ressource++;
+        }
+      }
+      //Action ramasser Uranium
+      if(showUranium){
+        if(keyState[69] && ((bX < -2359) && (bX > -2419)) && ((bY < -598) && (bY > -682))){
+          showUranium = false;
+          ressource++;
         }
       }
       //Action ramasser Bois
-    if(showWood){
-      if(keyState[69] && ((bX < -3952) && (bX > -4030)) && ((bY < -742) && (bY > -805))){
-        showWood = false;
-        ressource++;
+      if(showWood){
+        if(keyState[69] && ((bX < -3952) && (bX > -4030)) && ((bY < -742) && (bY > -805))){
+          showWood = false;
+          ressource++;
         }
       }
       setTimeout(gameLoop, 10);
@@ -377,16 +377,16 @@ export class SecondPlanetComponent implements AfterViewInit {
     gameLoop();
     //Animations
     function initBas(){
-    playerWidth = 100;
-    playerHeight = 100;
-    pRows = 1;
-    pCols = 1;
-    pWidth = playerWidth/pCols;
-    pHeight = playerHeight/pRows;
-    pCurFrame = 0;
-    pFrameCount = 1;
-    pSrcX= 0;
-    pSrcY= 800;
+      playerWidth = 100;
+      playerHeight = 100;
+      pRows = 1;
+      pCols = 1;
+      pWidth = playerWidth/pCols;
+      pHeight = playerHeight/pRows;
+      pCurFrame = 0;
+      pFrameCount = 1;
+      pSrcX= 0;
+      pSrcY= 800;
     }
 
     function initHaut(){
@@ -400,33 +400,33 @@ export class SecondPlanetComponent implements AfterViewInit {
       pFrameCount = 1;
       pSrcX= 0;
       pSrcY= 1150;
-      }
+    }
 
-      function initDroite(){
-        playerWidth = 100;
-        playerHeight = 100;
-        pRows = 1;
-        pCols = 1;
-        pWidth = playerWidth/pCols;
-        pHeight = playerHeight/pRows;
-        pCurFrame = 0;
-        pFrameCount = 1;
-        pSrcX= 0;
-        pSrcY= 920;
-        }
+    function initDroite(){
+      playerWidth = 100;
+      playerHeight = 100;
+      pRows = 1;
+      pCols = 1;
+      pWidth = playerWidth/pCols;
+      pHeight = playerHeight/pRows;
+      pCurFrame = 0;
+      pFrameCount = 1;
+      pSrcX= 0;
+      pSrcY= 920;
+    }
 
-        function initGauche(){
-          playerWidth = 100;
-          playerHeight = 100;
-          pRows = 1;
-          pCols = 1;
-          pWidth = playerWidth/pCols;
-          pHeight = playerHeight/pRows;
-          pCurFrame = 0;
-          pFrameCount = 1;
-          pSrcX= 0;
-          pSrcY= 1035;
-          }
+    function initGauche(){
+      playerWidth = 100;
+      playerHeight = 100;
+      pRows = 1;
+      pCols = 1;
+      pWidth = playerWidth/pCols;
+      pHeight = playerHeight/pRows;
+      pCurFrame = 0;
+      pFrameCount = 1;
+      pSrcX= 0;
+      pSrcY= 1035;
+    }
 
     function droit(){
       playerWidth = 800;
@@ -440,21 +440,21 @@ export class SecondPlanetComponent implements AfterViewInit {
       pCols = 8;
       pFrameCount = 8;
       pSrcY= 100;
-      }
+    }
 
     function haut(){
       playerWidth = 800;
       pCols = 8;
       pFrameCount = 8;
       pSrcY= 300;
-      }
+    }
 
     function bas(){
       playerWidth = 800;
       pCols = 8;
       pFrameCount = 8;
       pSrcY= 0;
-      }
+    }
 
     function diagoDroit(){
       playerWidth = 800;
@@ -485,14 +485,68 @@ export class SecondPlanetComponent implements AfterViewInit {
     }
 
     //Deplacement ours
+    //Ours1
+    let Xo = -2209;
+    let Xo1 = -2368;
+    let Yo = -1633;
+    let Yo1= -1885;
+    //Ours2
+    let xXo = -3304;
+    let xXo1 = -3475;
+    let yYo = -1420;
+    let yYo1= -1684;
+    //Ours3
+    let xxXo = -3112;
+    let xxXo1 = -3274;
+    let yyYo = -625;
+    let yyYo1= -889;
     let nbDeplacementOurs = 0;
     let oursDirDroit = true;
     let oursDirGauche = false;
     function animationOurs(){
       if(oursDirDroit){
         oSrcY= 50;
-        oX+=9;
+        oX+=12;
+        Xo -= 12
+        Xo1 -= 12
+        xXo -= 12
+        xXo1 -= 12
+        xxXo -= 12
+        xxXo1 -= 12
         nbDeplacementOurs+=1
+        if(((bX < xXo) && (bX > xXo1)) && ((bY < yYo) && (bY > yYo1))){
+          hearts.heart1.next(true);
+          hideHeart1 = true;
+          if(hideHart2){
+            hearts.heart2.next(true);
+            justOneHeart = true;
+          }
+          if(Death){
+            hearts.heart3.next(true);}
+            console.log('collision', hearts.heart3)
+          }
+          if(((bX < xxXo) && (bX > xxXo1)) && ((bY < yyYo) && (bY > yyYo1))){
+            hearts.heart1.next(true);
+            hideHeart1 = true;
+            if(hideHart2){
+              hearts.heart2.next(true);
+              justOneHeart = true;
+            }
+            if(Death){
+              hearts.heart3.next(true);}
+              console.log('collision', hearts.heart3)
+            }
+          if(((bX < Xo) && (bX > Xo1)) && ((bY < Yo) && (bY > Yo1))){
+            hearts.heart1.next(true);
+            hideHeart1 = true;
+            if(hideHart2){
+              hearts.heart2.next(true);
+              justOneHeart = true;
+            }
+            if(Death){
+              hearts.heart3.next(true);}
+              console.log('collision', hearts.heart3)
+            }
         if(nbDeplacementOurs === 70){
           oursDirDroit = false;
           oursDirGauche = true;
@@ -501,8 +555,47 @@ export class SecondPlanetComponent implements AfterViewInit {
       }
       if(oursDirGauche){
         oSrcY= 0;
-        oX-=9
-        nbDeplacementOurs+=1
+        oX-=12
+        Xo += 12
+        Xo1 += 12
+        xXo += 12
+        xXo1 += 12
+        xxXo += 12
+        xxXo1 += 12
+        nbDeplacementOurs+=1;
+        if(((bX < xXo) && (bX > xXo1)) && ((bY < yYo) && (bY > yYo1))){
+          hearts.heart1.next(true);
+          hideHeart1 = true;
+          if(hideHart2){
+            hearts.heart2.next(true);
+            justOneHeart = true;
+          }
+          if(Death){
+            hearts.heart3.next(true);}
+            console.log('collision', hearts.heart3)
+          }
+          if(((bX < xxXo) && (bX > xxXo1)) && ((bY < yyYo) && (bY > yyYo1))){
+            hearts.heart1.next(true);
+            hideHeart1 = true;
+            if(hideHart2){
+              hearts.heart2.next(true);
+              justOneHeart = true;
+            }
+            if(Death){
+              hearts.heart3.next(true);}
+              console.log('collision', hearts.heart3)
+            }
+          if(((bX < Xo) && (bX > Xo1)) && ((bY < Yo) && (bY > Yo1))){
+            hearts.heart1.next(true);
+            hideHeart1 = true;
+            if(hideHart2){
+              hearts.heart2.next(true);
+              justOneHeart = true;
+            }
+            if(Death){
+              hearts.heart3.next(true);}
+              console.log('collision', hearts.heart3)
+            }
         if(nbDeplacementOurs === 70){
           oursDirDroit = true;
           oursDirGauche = false;
@@ -515,178 +608,233 @@ export class SecondPlanetComponent implements AfterViewInit {
     let nbDeplacementLoup = 0;
     let loupDirDroit = true;
     let loupDirGauche = false;
-        let X = -1459
-        let X1 = -1594
-        let Y = -637
-        let Y1= -727
+    //Loup1
+    let X = -1459;
+    let X1 = -1594;
+    let Y = -637;
+    let Y1= -727;
+    //Loup2
+    let xX = -1252;
+    let xX1 = -1393;
+    let yY = -2305;
+    let yY1= -2404;
+    //Loup3
+    let xxX = -2758;
+    let xxX1 = -2890;
+    let yyY = -2113;
+    let yyY1= -2219;
     function animationLoup(){
       if(loupDirDroit){
         lSrcY= 40;
         lX+=12;
         X -= 12
         X1 -= 12
+        xX -= 12
+        xX1 -= 12
+        xxX -= 12
+        xxX1 -= 12
         nbDeplacementLoup+=1
-        if(((bX < X) && (bX > X1)) && ((bY < Y) && (bY > Y1))){
+        if(((bX < xX) && (bX > xX1)) && ((bY < yY) && (bY > yY1))){
           hearts.heart1.next(true);
           hideHeart1 = true;
           if(hideHart2){
-          hearts.heart2.next(true);
-          justOneHeart = true;
+            hearts.heart2.next(true);
+            justOneHeart = true;
           }
           if(Death){
             hearts.heart3.next(true);}
-          console.log('collision', hearts.heart3)
-        }
-        if(nbDeplacementLoup === 50){
-          loupDirDroit = false;
-          loupDirGauche = true;
-          nbDeplacementLoup = 0;
-        }
-      }
-      if(loupDirGauche){
-        lSrcY= 0;
-        lX-=12
-        X += 12
-        X1 += 12
-        nbDeplacementLoup+=1
-        if(((bX < X) && (bX > X1)) && ((bY < Y) && (bY > Y1))){
-          hearts.heart1.next(true);
-          hideHeart1 = true;
-
-          if(hideHart2){
-          hearts.heart2.next(true);
-          justOneHeart = true;
+            console.log('collision', hearts.heart3)
           }
-          if(justOneHeart){
-          hearts.heart3.next(true);}
-          console.log('collision', hearts.heart3)
+          if(((bX < xxX) && (bX > xxX1)) && ((bY < yyY) && (bY > yyY1))){
+            hearts.heart1.next(true);
+            hideHeart1 = true;
+            if(hideHart2){
+              hearts.heart2.next(true);
+              justOneHeart = true;
+            }
+            if(Death){
+              hearts.heart3.next(true);}
+              console.log('collision', hearts.heart3)
+            }
+          if(((bX < X) && (bX > X1)) && ((bY < Y) && (bY > Y1))){
+            hearts.heart1.next(true);
+            hideHeart1 = true;
+            if(hideHart2){
+              hearts.heart2.next(true);
+              justOneHeart = true;
+            }
+            if(Death){
+              hearts.heart3.next(true);}
+              console.log('collision', hearts.heart3)
+            }
+          if(nbDeplacementLoup === 50){
+            loupDirDroit = false;
+            loupDirGauche = true;
+            nbDeplacementLoup = 0;
+          }
         }
-        if(nbDeplacementLoup === 50){
-          loupDirDroit = true;
-          loupDirGauche = false;
-          nbDeplacementLoup = 0;
+        if(loupDirGauche){
+          lSrcY= 0;
+          lX-=12
+          X += 12
+          X1 += 12
+          xX -= 12
+        xX1 -= 12
+        xxX -= 12
+        xxX1 -= 12
+          nbDeplacementLoup+=1
+          if(((bX < xX) && (bX > xX1)) && ((bY < yY) && (bY > yY1))){
+            hearts.heart1.next(true);
+            hideHeart1 = true;
+            if(hideHart2){
+              hearts.heart2.next(true);
+              justOneHeart = true;
+            }
+            if(Death){
+              hearts.heart3.next(true);}
+              console.log('collision', hearts.heart3)
+            }
+            if(((bX < xxX) && (bX > xxX1)) && ((bY < yyY) && (bY > yyY1))){
+              hearts.heart1.next(true);
+              hideHeart1 = true;
+              if(hideHart2){
+                hearts.heart2.next(true);
+                justOneHeart = true;
+              }
+              if(Death){
+                hearts.heart3.next(true);}
+                console.log('collision', hearts.heart3)
+              }
+            if(((bX < X) && (bX > X1)) && ((bY < Y) && (bY > Y1))){
+              hearts.heart1.next(true);
+              hideHeart1 = true;
+              if(hideHart2){
+                hearts.heart2.next(true);
+                justOneHeart = true;
+              }
+              if(Death){
+                hearts.heart3.next(true);}
+                console.log('collision', hearts.heart3)
+              }
+            if(nbDeplacementLoup === 50){
+              loupDirDroit = true;
+              loupDirGauche = false;
+              nbDeplacementLoup = 0;
+            }
+          }
         }
+
+        function draw(){
+          //Rafraichissement
+          updateFrame();
+          //Map
+          ctx.drawImage(background,bX,bY);
+          //Arbres
+          ctx.drawImage(arbre,aSrcX,aSrcY,aWidth,aHeight,aX,aY-400,480,520);
+          ctx.drawImage(arbre,aSrcX,aSrcY,aWidth,aHeight,aX+190,aY+580,480,520);
+          ctx.drawImage(arbre,aSrcX,aSrcY,aWidth,aHeight,aX+590,aY+380,480,520);
+          ctx.drawImage(arbre,aSrcX,aSrcY,aWidth,aHeight,aX+290,aY+980,480,520);
+          ctx.drawImage(arbre,aSrcX,aSrcY,aWidth,aHeight,aX+890,aY+280,480,520);
+          ctx.drawImage(arbre,aSrcX,aSrcY,aWidth,aHeight,aX+990,aY-100,480,520);
+          ctx.drawImage(arbre,aSrcX,aSrcY,aWidth,aHeight,aX+790,aY+1200,480,520);
+          ctx.drawImage(arbre,aSrcX,aSrcY,aWidth,aHeight,aX+1000,aY-400,480,520);
+          ctx.drawImage(arbre,aSrcX,aSrcY,aWidth,aHeight,aX+1900,aY+580,480,520);
+          ctx.drawImage(arbre,aSrcX,aSrcY,aWidth,aHeight,aX+1590,aY+380,480,520);
+          ctx.drawImage(arbre,aSrcX,aSrcY,aWidth,aHeight,aX+1290,aY+980,480,520);
+          ctx.drawImage(arbre,aSrcX,aSrcY,aWidth,aHeight,aX+1890,aY+280,480,520);
+          ctx.drawImage(arbre,aSrcX,aSrcY,aWidth,aHeight,aX+1790,aY-100,480,520);
+          ctx.drawImage(arbre,aSrcX,aSrcY,aWidth,aHeight,aX+1290,aY+1200,480,520);
+          ctx.drawImage(arbre,aSrcX,aSrcY,aWidth,aHeight,aX+2190,aY+680,480,520);
+          ctx.drawImage(arbre,aSrcX,aSrcY,aWidth,aHeight,aX+2390,aY-100,480,520);
+          ctx.drawImage(arbre,aSrcX,aSrcY,aWidth,aHeight,aX+2490,aY+1200,480,520);
+          //Vaisseau
+          ctx.drawImage(widowMaker,srcX,srcY,width,height,x,y,280,320);
+          //Ours
+          let posXOurs1 = oX;
+          let posXOurs2 = oX-1100;
+          let posXOurs3 = oX-200;
+          let posYOurs1 = oY;
+          let posYOurs2 = oY+200;
+          let posYOurs3 = oY-800;
+          ctx.drawImage(ours,oSrcX,oSrcY,oWidth,oHeight,posXOurs1,posYOurs1,170,250);
+          ctx.drawImage(ours,oSrcX,oSrcY,oWidth,oHeight,posXOurs2,posYOurs2,170,250);
+          ctx.drawImage(ours,oSrcX,oSrcY,oWidth,oHeight,posXOurs3,posYOurs3,170,250);
+          //Loup
+          let posXLoup1 = lX-200;
+          let posXLoup2 = lX+1100;
+          let posXLoup3 = lX-400;
+          let posYLoup1 = lY-280;
+          let posYLoup2 = lY+1200;
+          let posYLoup3 = lY+1400;
+          ctx.drawImage(loup,lSrcX,lSrcY,lWidth,lHeight,posXLoup1,posYLoup1,120,90);
+          ctx.drawImage(loup,lSrcX,lSrcY,lWidth,lHeight,posXLoup2,posYLoup2,120,90);
+          ctx.drawImage(loup,lSrcX,lSrcY,lWidth,lHeight,posXLoup3,posYLoup3,120,90);
+
+          //Essai Collision loup
+          // if((((Math.abs(bX)-1000)>posXLoup1) && ((Math.abs(bX)-920)<posXLoup1+150)) && (((Math.abs(bX)-1000)<posXLoup1+150) && ((Math.abs(bX)-920)>posXLoup1)) && ((bY < -646)&&(bY > -716))){
+          //   alert('collision')
+          // }
+          //Meat
+          if(showMeat){
+            ctx.drawImage(meat,mSrcX,mSrcY,mWidth,mHeight,mX,mY,40,20);
+          }
+          //Uranium
+          if(showUranium){
+            ctx.drawImage(uranium,uSrcX,uSrcY,uWidth,uHeight,uX,uY,90,50);
+          }
+          //Metal
+          if(showMetal){
+            ctx.drawImage(metal,mtSrcX,mtSrcY,mtWidth,mtHeight,mtX,mtY,80,50);
+          }
+          //Bois
+          if(showWood){
+            ctx.drawImage(bois,boSrcX,boSrcY,boWidth,boHeight,boX,boY,180,150);
+          }
+          //Heroine
+          ctx.drawImage(player,pSrcX,pSrcY,pWidth,pHeight,pX,pY,pWidth,pHeight);
+          //dessine les FPS
+          if(showFPS){
+            ctx.font="20px helvetica";
+            ctx.fillText(`FPS: ${valueFPS.toFixed(0)}`, 30, 70);
+          }
+          //Ressources
+          ctx.font="20px helvetica";
+          ctx.fillText(`Ressource(s): ${ressource}`, 290, 35);
+          //Invitation à décoller
+          if((bX === -1168) && ((y<pY) && ((y+100)>pY))){
+            ctx.font="18px helvetica";
+            ctx.fillText(`Appuyer sur E pour interagir`, pX + 20, pY - 20);
+          }
+          //Ramasser Metal
+          if(showMetal){
+            if(((bY < -2230) && (bY > -2300)) && ((bX < -1450) && (bX > -1537))){
+              ctx.font="18px helvetica";
+              ctx.fillText(`Appuyer sur E pour ramasser`, pX + 20, pY - 20);
+            }
+          }
+          //Ramasser Meat
+          if(showMeat){
+            if(((bX < -3415) && (bX > -3484)) && ((bY < -1378) && (bY > -1432))){
+              ctx.font="18px helvetica";
+              ctx.fillText(`Appuyer sur E pour ramasser`, pX + 20, pY - 20);
+            }
+          }
+          //Ramasser Uranium
+          if(showUranium){
+            if(((bX < -2359) && (bX > -2419)) && ((bY < -598) && (bY > -682))){
+              ctx.font="18px helvetica";
+              ctx.fillText(`Appuyer sur E pour ramasser`, pX + 20, pY - 20);
+            }
+          }
+          //Ramasser Bois
+          if(showWood){
+            if(((bX < -3952) && (bX > -4030)) && ((bY < -742) && (bY > -805))){
+              ctx.font="18px helvetica";
+              ctx.fillText(`Appuyer sur E pour ramasser`, pX + 20, pY - 20);
+            }
+          }
+        }
+        setInterval(draw,70);
       }
     }
-
-    function draw(){
-      //Rafraichissement
-      updateFrame();
-      //Map
-      ctx.drawImage(background,bX,bY);
-      //Arbres
-      ctx.drawImage(arbre,aSrcX,aSrcY,aWidth,aHeight,aX,aY-400,480,520);
-      ctx.drawImage(arbre,aSrcX,aSrcY,aWidth,aHeight,aX+190,aY+580,480,520);
-      ctx.drawImage(arbre,aSrcX,aSrcY,aWidth,aHeight,aX+590,aY+380,480,520);
-      ctx.drawImage(arbre,aSrcX,aSrcY,aWidth,aHeight,aX+290,aY+980,480,520);
-      ctx.drawImage(arbre,aSrcX,aSrcY,aWidth,aHeight,aX+890,aY+280,480,520);
-      ctx.drawImage(arbre,aSrcX,aSrcY,aWidth,aHeight,aX+990,aY-100,480,520);
-      ctx.drawImage(arbre,aSrcX,aSrcY,aWidth,aHeight,aX+790,aY+1200,480,520);
-      ctx.drawImage(arbre,aSrcX,aSrcY,aWidth,aHeight,aX+1000,aY-400,480,520);
-      ctx.drawImage(arbre,aSrcX,aSrcY,aWidth,aHeight,aX+1900,aY+580,480,520);
-      ctx.drawImage(arbre,aSrcX,aSrcY,aWidth,aHeight,aX+1590,aY+380,480,520);
-      ctx.drawImage(arbre,aSrcX,aSrcY,aWidth,aHeight,aX+1290,aY+980,480,520);
-      ctx.drawImage(arbre,aSrcX,aSrcY,aWidth,aHeight,aX+1890,aY+280,480,520);
-      ctx.drawImage(arbre,aSrcX,aSrcY,aWidth,aHeight,aX+1790,aY-100,480,520);
-      ctx.drawImage(arbre,aSrcX,aSrcY,aWidth,aHeight,aX+1290,aY+1200,480,520);
-      ctx.drawImage(arbre,aSrcX,aSrcY,aWidth,aHeight,aX+2190,aY+680,480,520);
-      ctx.drawImage(arbre,aSrcX,aSrcY,aWidth,aHeight,aX+2390,aY-100,480,520);
-      ctx.drawImage(arbre,aSrcX,aSrcY,aWidth,aHeight,aX+2490,aY+1200,480,520);
-      //Vaisseau
-      ctx.drawImage(widowMaker,srcX,srcY,width,height,x,y,280,320);
-      //Ours
-      let posXOurs1 = oX;
-      let posXOurs2 = oX-1100;
-      let posXOurs3 = oX-200;
-      let posYOurs1 = oY;
-      let posYOurs2 = oY+200;
-      let posYOurs3 = oY-800;
-      ctx.drawImage(ours,oSrcX,oSrcY,oWidth,oHeight,posXOurs1,posYOurs1,170,250);
-      ctx.drawImage(ours,oSrcX,oSrcY,oWidth,oHeight,posXOurs2,posYOurs2,170,250);
-      ctx.drawImage(ours,oSrcX,oSrcY,oWidth,oHeight,posXOurs3,posYOurs3,170,250);
-      //Loup
-      let posXLoup1 = lX-200;
-      let posXLoup2 = lX+1100;
-      let posXLoup3 = lX-400;
-      let posYLoup1 = lY-280;
-      let posYLoup2 = lY+1200;
-      let posYLoup3 = lY+1400;
-      ctx.drawImage(loup,lSrcX,lSrcY,lWidth,lHeight,posXLoup1,posYLoup1,120,90);
-      ctx.drawImage(loup,lSrcX,lSrcY,lWidth,lHeight,posXLoup2,posYLoup2,120,90);
-      ctx.drawImage(loup,lSrcX,lSrcY,lWidth,lHeight,posXLoup3,posYLoup3,120,90);
-
-      //Essai Collision loup
-      // if((((Math.abs(bX)-1000)>posXLoup1) && ((Math.abs(bX)-920)<posXLoup1+150)) && (((Math.abs(bX)-1000)<posXLoup1+150) && ((Math.abs(bX)-920)>posXLoup1)) && ((bY < -646)&&(bY > -716))){
-      //   alert('collision')
-      // }
-      //Meat
-      if(showMeat){
-      ctx.drawImage(meat,mSrcX,mSrcY,mWidth,mHeight,mX,mY,40,20);
-      }
-      //Uranium
-      if(showUranium){
-      ctx.drawImage(uranium,uSrcX,uSrcY,uWidth,uHeight,uX,uY,90,50);
-      }
-      //Metal
-      if(showMetal){
-      ctx.drawImage(metal,mtSrcX,mtSrcY,mtWidth,mtHeight,mtX,mtY,80,50);
-      }
-      //Bois
-      if(showWood){
-      ctx.drawImage(bois,boSrcX,boSrcY,boWidth,boHeight,boX,boY,180,150);
-      }
-      //Heroine
-      ctx.drawImage(player,pSrcX,pSrcY,pWidth,pHeight,pX,pY,pWidth,pHeight);
-      //dessine les FPS
-      if(showFPS){
-      ctx.font="20px helvetica";
-      ctx.fillText(`FPS: ${valueFPS.toFixed(0)}`, 30, 70);
-      }
-      //Ressources
-      ctx.font="20px helvetica";
-      ctx.fillText(`Ressource(s): ${ressource}`, 290, 35);
-      //Invitation à décoller
-      if((bX === -1168) && ((y<pY) && ((y+100)>pY))){
-        ctx.font="18px helvetica";
-        ctx.fillText(`Appuyer sur E pour interagir`, pX + 20, pY - 20);
-      }
-      //Ramasser Metal
-      if(showMetal){
-      if(((bY < -2230) && (bY > -2300)) && ((bX < -1450) && (bX > -1537))){
-        ctx.font="18px helvetica";
-        ctx.fillText(`Appuyer sur E pour ramasser`, pX + 20, pY - 20);
-        }
-      }
-      //Ramasser Meat
-      if(showMeat){
-        if(((bX < -3415) && (bX > -3484)) && ((bY < -1378) && (bY > -1432))){
-          ctx.font="18px helvetica";
-          ctx.fillText(`Appuyer sur E pour ramasser`, pX + 20, pY - 20);
-          }
-        }
-        //Ramasser Uranium
-      if(showUranium){
-        if(((bX < -2359) && (bX > -2419)) && ((bY < -598) && (bY > -682))){
-          ctx.font="18px helvetica";
-          ctx.fillText(`Appuyer sur E pour ramasser`, pX + 20, pY - 20);
-          }
-        }
-        //Ramasser Bois
-      if(showWood){
-        if(((bX < -3952) && (bX > -4030)) && ((bY < -742) && (bY > -805))){
-          ctx.font="18px helvetica";
-          ctx.fillText(`Appuyer sur E pour ramasser`, pX + 20, pY - 20);
-          }
-        }
-        //Décompte des coeurs (temporaire)
-        // if(((bX < -1459) && (bX > -1594)) && ((bY > -727) && (bY < -637))){
-          // hearts.heart1.next(true);
-          // hearts.heart2 = true
-          // hearts.heart3 = true
-          // console.log('collision', hearts.heart3)
-        // }
-    }
-    setInterval(draw,70);
-  }
-}
 
