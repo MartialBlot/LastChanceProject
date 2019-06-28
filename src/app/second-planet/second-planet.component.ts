@@ -1,5 +1,6 @@
 import { Component, AfterViewInit } from '@angular/core';
 import { GameplayService } from '../gameplay.service';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-second-planet',
@@ -8,11 +9,13 @@ import { GameplayService } from '../gameplay.service';
 })
 export class SecondPlanetComponent implements AfterViewInit {
 
-  constructor(private service: GameplayService) { }
+  constructor(private service: GameplayService,
+              public route: Router) { }
 
   public ngAfterViewInit() {
     let canvas : any= document.getElementById('map');
     let ctx = canvas.getContext("2d");
+    let nav = this.route;
 
     //Background
     let background = new Image();
@@ -81,6 +84,7 @@ export class SecondPlanetComponent implements AfterViewInit {
     let hideHart2 = false;
     let justOneHeart = false;
     let Death = false;
+    let GameOver = false;
 
     //Sprite Ours
     let ours = new Image();
@@ -340,8 +344,12 @@ export class SecondPlanetComponent implements AfterViewInit {
       if(keyState[69] && (bX === -1168) && ((y<pY) && ((y+100)>pY))){
         if(ressource===4){
           confirm( "Quitter cette planète et repartir à l'aventure ?" );
+          if(confirm){
+            return nav.navigateByUrl('racing3')
+          }
         } else {
-          alert("Vous n'avez pas encore découvert toutes les ressources")
+          ctx.font="18px helvetica";
+          ctx.fillText(`"Vous n'avez pas tout découvert"`, pX + 20, pY - 50);
         }
       }
       //Action ramasser Metal
@@ -522,6 +530,7 @@ export class SecondPlanetComponent implements AfterViewInit {
             justOneHeart = true;
           }
           if(Death){
+            GameOver = true;
             hearts.heart3.next(true);}
             console.log('collision', hearts.heart3)
           }
@@ -533,6 +542,7 @@ export class SecondPlanetComponent implements AfterViewInit {
               justOneHeart = true;
             }
             if(Death){
+              GameOver = true;
               hearts.heart3.next(true);}
               console.log('collision', hearts.heart3)
             }
@@ -544,6 +554,7 @@ export class SecondPlanetComponent implements AfterViewInit {
               justOneHeart = true;
             }
             if(Death){
+              GameOver = true;
               hearts.heart3.next(true);}
               console.log('collision', hearts.heart3)
             }
@@ -571,6 +582,7 @@ export class SecondPlanetComponent implements AfterViewInit {
             justOneHeart = true;
           }
           if(Death){
+            GameOver = true;
             hearts.heart3.next(true);}
             console.log('collision', hearts.heart3)
           }
@@ -582,6 +594,7 @@ export class SecondPlanetComponent implements AfterViewInit {
               justOneHeart = true;
             }
             if(Death){
+              GameOver = true;
               hearts.heart3.next(true);}
               console.log('collision', hearts.heart3)
             }
@@ -593,6 +606,7 @@ export class SecondPlanetComponent implements AfterViewInit {
               justOneHeart = true;
             }
             if(Death){
+              GameOver = true;
               hearts.heart3.next(true);}
               console.log('collision', hearts.heart3)
             }
@@ -642,6 +656,7 @@ export class SecondPlanetComponent implements AfterViewInit {
             justOneHeart = true;
           }
           if(Death){
+            GameOver = true;
             hearts.heart3.next(true);}
             console.log('collision', hearts.heart3)
           }
@@ -653,6 +668,7 @@ export class SecondPlanetComponent implements AfterViewInit {
               justOneHeart = true;
             }
             if(Death){
+              GameOver = true;
               hearts.heart3.next(true);}
               console.log('collision', hearts.heart3)
             }
@@ -664,6 +680,7 @@ export class SecondPlanetComponent implements AfterViewInit {
               justOneHeart = true;
             }
             if(Death){
+              GameOver = true;
               hearts.heart3.next(true);}
               console.log('collision', hearts.heart3)
             }
@@ -678,10 +695,10 @@ export class SecondPlanetComponent implements AfterViewInit {
           lX-=12
           X += 12
           X1 += 12
-          xX -= 12
-        xX1 -= 12
-        xxX -= 12
-        xxX1 -= 12
+          xX += 12
+          xX1 += 12
+          xxX += 12
+          xxX1 += 12
           nbDeplacementLoup+=1
           if(((bX < xX) && (bX > xX1)) && ((bY < yY) && (bY > yY1))){
             hearts.heart1.next(true);
@@ -691,6 +708,7 @@ export class SecondPlanetComponent implements AfterViewInit {
               justOneHeart = true;
             }
             if(Death){
+              GameOver = true;
               hearts.heart3.next(true);}
               console.log('collision', hearts.heart3)
             }
@@ -702,6 +720,7 @@ export class SecondPlanetComponent implements AfterViewInit {
                 justOneHeart = true;
               }
               if(Death){
+                GameOver = true;
                 hearts.heart3.next(true);}
                 console.log('collision', hearts.heart3)
               }
@@ -713,6 +732,7 @@ export class SecondPlanetComponent implements AfterViewInit {
                 justOneHeart = true;
               }
               if(Death){
+                GameOver = true;
                 hearts.heart3.next(true);}
                 console.log('collision', hearts.heart3)
               }
@@ -832,6 +852,9 @@ export class SecondPlanetComponent implements AfterViewInit {
               ctx.font="18px helvetica";
               ctx.fillText(`Appuyer sur E pour ramasser`, pX + 20, pY - 20);
             }
+          }
+          if(GameOver){
+            nav.navigateByUrl('game-over')
           }
         }
         setInterval(draw,70);
