@@ -328,12 +328,34 @@ export class SecondPlanetComponent implements AfterViewInit {
     if(keyState[69] && (bX === -1168) && ((y<pY) && ((y+100)>pY))){
       confirm( "Quitter cette planète et repartir à l'aventure ?" );
     }
+    //Action ramasser Metal
     if(showMetal){
     if(keyState[69] && ((bY < -2230) && (bY > -2300)) && ((bX < -1450) && (bX > -1537))){
       showMetal = false;
       ressource++;
       }
     }
+    //Action ramasser Meat
+    if(showMeat){
+      if(keyState[69] && ((bX < -3415) && (bX > -3484)) && ((bY < -1378) && (bY > -1432))){
+        showMeat = false;
+        ressource++;
+        }
+      }
+    //Action ramasser Uranium
+    if(showUranium){
+      if(keyState[69] && ((bX < -2359) && (bX > -2419)) && ((bY < -598) && (bY > -682))){
+        showUranium = false;
+        ressource++;
+        }
+      }
+      //Action ramasser Bois
+    if(showWood){
+      if(keyState[69] && ((bX < -3952) && (bX > -4030)) && ((bY < -742) && (bY > -805))){
+        showWood = false;
+        ressource++;
+        }
+      }
       setTimeout(gameLoop, 10);
     }
     gameLoop();
@@ -551,15 +573,21 @@ export class SecondPlanetComponent implements AfterViewInit {
       //   alert('collision')
       // }
       //Meat
+      if(showMeat){
       ctx.drawImage(meat,mSrcX,mSrcY,mWidth,mHeight,mX,mY,40,20);
+      }
       //Uranium
+      if(showUranium){
       ctx.drawImage(uranium,uSrcX,uSrcY,uWidth,uHeight,uX,uY,90,50);
+      }
       //Metal
       if(showMetal){
       ctx.drawImage(metal,mtSrcX,mtSrcY,mtWidth,mtHeight,mtX,mtY,80,50);
       }
       //Bois
+      if(showWood){
       ctx.drawImage(bois,boSrcX,boSrcY,boWidth,boHeight,boX,boY,180,150);
+      }
       //Heroine
       ctx.drawImage(player,pSrcX,pSrcY,pWidth,pHeight,pX,pY,pWidth,pHeight);
       //dessine les FPS
@@ -575,13 +603,34 @@ export class SecondPlanetComponent implements AfterViewInit {
         ctx.font="18px helvetica";
         ctx.fillText(`Appuyer sur E pour interagir`, pX + 20, pY - 20);
       }
-      //Ramasser metal
+      //Ramasser Metal
       if(showMetal){
       if(((bY < -2230) && (bY > -2300)) && ((bX < -1450) && (bX > -1537))){
         ctx.font="18px helvetica";
         ctx.fillText(`Appuyer sur E pour ramasser`, pX + 20, pY - 20);
         }
       }
+      //Ramasser Meat
+      if(showMeat){
+        if(((bX < -3415) && (bX > -3484)) && ((bY < -1378) && (bY > -1432))){
+          ctx.font="18px helvetica";
+          ctx.fillText(`Appuyer sur E pour ramasser`, pX + 20, pY - 20);
+          }
+        }
+        //Ramasser Uranium
+      if(showUranium){
+        if(((bX < -2359) && (bX > -2419)) && ((bY < -598) && (bY > -682))){
+          ctx.font="18px helvetica";
+          ctx.fillText(`Appuyer sur E pour ramasser`, pX + 20, pY - 20);
+          }
+        }
+        //Ramasser Bois
+      if(showWood){
+        if(((bX < -3952) && (bX > -4030)) && ((bY < -742) && (bY > -805))){
+          ctx.font="18px helvetica";
+          ctx.fillText(`Appuyer sur E pour ramasser`, pX + 20, pY - 20);
+          }
+        }
     }
     setInterval(draw,70);
   }
