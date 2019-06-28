@@ -551,7 +551,7 @@ export class FirstPlanetComponent implements AfterViewInit {
       //dessine les FPS
       if(showFPS){
       ctx.font="20px helvetica";
-      ctx.fillText(`FPS: ${valueFPS.toFixed(0)}`, 10, 20);
+      ctx.fillText(`FPS: ${valueFPS.toFixed(0)}`, 30, 70);
       }
       //Invitation à décoller
       if((bX === -1168) && ((y<pY) && ((y+100)>pY))){
