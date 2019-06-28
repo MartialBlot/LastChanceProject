@@ -73,6 +73,8 @@ export class FirstPlanetComponent implements AfterViewInit {
     let vueInitDroite = false;
     let vueInitGauche = false;
     let speed = 3;
+    let ressource = 0;
+
 
     //Sprite Ours
     let ours = new Image();
@@ -121,6 +123,8 @@ export class FirstPlanetComponent implements AfterViewInit {
     let mY=800;
     let mSrcX= 0;
     let mSrcY= 0;
+    let showMeat = true;
+
 
     //Sprite uranium
     let uranium = new Image();
@@ -137,6 +141,8 @@ export class FirstPlanetComponent implements AfterViewInit {
     let uY=20;
     let uSrcX= 0;
     let uSrcY= 0;
+    let showUranium = true;
+
 
     //Sprite metal
     let metal = new Image();
@@ -153,6 +159,8 @@ export class FirstPlanetComponent implements AfterViewInit {
     let mtY=1660;
     let mtSrcX= 0;
     let mtSrcY= 0;
+    let showMetal = true;
+
 
     //Sprite bois
     let bois = new Image();
@@ -169,6 +177,8 @@ export class FirstPlanetComponent implements AfterViewInit {
     let boY=160;
     let boSrcX= 0;
     let boSrcY= 0;
+    let showWood = true;
+
 
     canvas.width =  canvasWidth;
     canvas.height = canvasHeight;
@@ -319,9 +329,35 @@ export class FirstPlanetComponent implements AfterViewInit {
     //Décoller
     if(keyState[69] && (bX === -1168) && ((y<pY) && ((y+100)>pY))){
       confirm( "Quitter cette planète et repartir à l'aventure ?" );
-
     }
-
+    //Action ramasser Metal
+    if(showMetal){
+      if(keyState[69] && ((bY < -2230) && (bY > -2300)) && ((bX < -1450) && (bX > -1537))){
+        showMetal = false;
+        ressource++;
+        }
+      }
+      //Action ramasser Meat
+      if(showMeat){
+        if(keyState[69] && ((bX < -3415) && (bX > -3484)) && ((bY < -1378) && (bY > -1432))){
+          showMeat = false;
+          ressource++;
+          }
+        }
+      //Action ramasser Uranium
+      if(showUranium){
+        if(keyState[69] && ((bX < -2459) && (bX > -2519)) && ((bY < -598) && (bY > -682))){
+          showUranium = false;
+          ressource++;
+          }
+        }
+        //Action ramasser Bois
+      if(showWood){
+        if(keyState[69] && ((bX < -3952) && (bX > -4030)) && ((bY < -742) && (bY > -805))){
+          showWood = false;
+          ressource++;
+          }
+        }
       setTimeout(gameLoop, 10);
     }
     gameLoop();
@@ -539,13 +575,21 @@ export class FirstPlanetComponent implements AfterViewInit {
       //   alert('collision')
       // }
       //Meat
-      ctx.drawImage(meat,mSrcX,mSrcY,mWidth,mHeight,mX,mY,40,20);
-      //Uranium
-      ctx.drawImage(uranium,uSrcX,uSrcY,uWidth,uHeight,uX,uY,90,50);
-      //Metal
-      ctx.drawImage(metal,mtSrcX,mtSrcY,mtWidth,mtHeight,mtX,mtY,80,50);
-      //Bois
-      ctx.drawImage(bois,boSrcX,boSrcY,boWidth,boHeight,boX,boY,180,150);
+      if(showMeat){
+        ctx.drawImage(meat,mSrcX,mSrcY,mWidth,mHeight,mX,mY,40,20);
+        }
+        //Uranium
+      if(showUranium){
+        ctx.drawImage(uranium,uSrcX,uSrcY,uWidth,uHeight,uX,uY,90,50);
+        }
+        //Metal
+      if(showMetal){
+        ctx.drawImage(metal,mtSrcX,mtSrcY,mtWidth,mtHeight,mtX,mtY,80,50);
+        }
+        //Bois
+      if(showWood){
+        ctx.drawImage(bois,boSrcX,boSrcY,boWidth,boHeight,boX,boY,180,150);
+        }
       //Heroine
       ctx.drawImage(player,pSrcX,pSrcY,pWidth,pHeight,pX,pY,pWidth,pHeight);
       //dessine les FPS
@@ -553,11 +597,42 @@ export class FirstPlanetComponent implements AfterViewInit {
       ctx.font="20px helvetica";
       ctx.fillText(`FPS: ${valueFPS.toFixed(0)}`, 30, 70);
       }
+      //Ressources
+      ctx.font="20px helvetica";
+      ctx.fillText(`Ressource(s): ${ressource}`, 290, 35);
       //Invitation à décoller
       if((bX === -1168) && ((y<pY) && ((y+100)>pY))){
         ctx.font="18px helvetica";
         ctx.fillText(`Appuyer sur E pour interagir`, pX + 20, pY - 20);
       }
+      //Ramasser Metal
+      if(showMetal){
+        if(((bY < -2230) && (bY > -2300)) && ((bX < -1450) && (bX > -1537))){
+          ctx.font="18px helvetica";
+          ctx.fillText(`Appuyer sur E pour ramasser`, pX + 20, pY - 20);
+          }
+        }
+        //Ramasser Meat
+      if(showMeat){
+          if(((bX < -3415) && (bX > -3484)) && ((bY < -1378) && (bY > -1432))){
+            ctx.font="18px helvetica";
+            ctx.fillText(`Appuyer sur E pour ramasser`, pX + 20, pY - 20);
+            }
+          }
+          //Ramasser Uranium
+      if(showUranium){
+          if(((bX < -2459) && (bX > -2519)) && ((bY < -598) && (bY > -682))){
+            ctx.font="18px helvetica";
+            ctx.fillText(`Appuyer sur E pour ramasser`, pX + 20, pY - 20);
+            }
+          }
+          //Ramasser Bois
+      if(showWood){
+          if(((bX < -3952) && (bX > -4030)) && ((bY < -742) && (bY > -805))){
+            ctx.font="18px helvetica";
+            ctx.fillText(`Appuyer sur E pour ramasser`, pX + 20, pY - 20);
+            }
+          }
     }
     setInterval(draw,70);
   }
