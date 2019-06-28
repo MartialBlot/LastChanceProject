@@ -132,7 +132,7 @@ export class SpaceRacingV2Component implements AfterViewInit {
 		}
 		let exit;
 		function win() {
-			exit = setTimeout(function () { nav.navigateByUrl('exit-planet3') }, 10000);
+			exit = setTimeout(function () { nav.navigateByUrl('exit-planet') }, 10000);
 		}
 
 		function loose() {
@@ -174,7 +174,7 @@ export class SpaceRacingV2Component implements AfterViewInit {
 				stopRandom = true;
 			}
 		}
-		
+
 		if(!explode){
 		setInterval(detectCrash, 50);
 	}
