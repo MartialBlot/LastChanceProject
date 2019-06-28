@@ -267,21 +267,6 @@ export class SpaceRacing3V2Component implements AfterViewInit {
 		gameLoop();
 
 
-		let ennemy1 = {
-			ennemyWidth: 600,
-			ennemyHeight: 260,
-			eRows: 1,
-			eCols: 3,
-			eWidth: ennemyWidth / eCols,
-			eHeight: ennemyHeight / eRows,
-			eCurFrame: 0,
-			eFrameCount: 3,
-			eX: 145,
-			eY: 280,
-			eSrcX: 0,
-			eSrcY: 90,
-		}
-
 		//Animations
 
 
