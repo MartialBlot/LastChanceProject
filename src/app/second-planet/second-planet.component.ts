@@ -1,4 +1,5 @@
 import { Component, AfterViewInit } from '@angular/core';
+import { GameplayService } from '../gameplay.service';
 
 @Component({
   selector: 'app-second-planet',
@@ -7,7 +8,7 @@ import { Component, AfterViewInit } from '@angular/core';
 })
 export class SecondPlanetComponent implements AfterViewInit {
 
-  constructor() { }
+  constructor(private service: GameplayService) { }
 
   public ngAfterViewInit() {
     let canvas : any= document.getElementById('map');
@@ -75,6 +76,7 @@ export class SecondPlanetComponent implements AfterViewInit {
     let vueInitGauche = false;
     let speed = 3;
     let ressource = 0;
+    let hearts = this.service;
 
     //Sprite Ours
     let ours = new Image();
@@ -634,6 +636,13 @@ export class SecondPlanetComponent implements AfterViewInit {
           ctx.font="18px helvetica";
           ctx.fillText(`Appuyer sur E pour ramasser`, pX + 20, pY - 20);
           }
+        }
+        //Décompte des coeurs (temporaire)
+        if(((bX < -1837) && (bX > -1981)) && ((bY > -715) && (bY < -658))){
+          hearts.heart1.next(true);
+          hearts.heart2 = true
+          hearts.heart3 = true
+          console.log('collision', hearts.heart3)
         }
     }
     setInterval(draw,70);
