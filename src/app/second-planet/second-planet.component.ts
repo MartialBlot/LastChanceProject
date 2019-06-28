@@ -860,6 +860,13 @@ export class SecondPlanetComponent implements AfterViewInit {
           }
           if(GameOver){
             nav.navigateByUrl('/game-over')
+            hearts.heart1.next(false);
+            hearts.heart2.next(false);
+            hearts.heart3.next(false);
+            hideHeart1 = false;
+            hideHart2 = false;
+            Death = false;
+            GameOver = false;
           }
         }
         setInterval(draw,70);
