@@ -258,7 +258,7 @@ export class FirstPlanetComponent implements AfterViewInit {
           vueInitGauche = false;
       }
       //Control gauche
-      if ((keyState[37] || keyState[65]) && (bX < -1170)){
+      if ((keyState[37] || keyState[65] || keyState[81]) && (bX < -1170)){
         bX+=speed;
         x+=speed;
         aX+=speed;
@@ -275,7 +275,7 @@ export class FirstPlanetComponent implements AfterViewInit {
         vueInitGauche = true;
       }
       //Control haut
-      if ((keyState[38] || keyState[87]) && (bY < -600)){
+      if ((keyState[38] || keyState[87] || keyState[90]) && (bY < -600)){
         haut();
         y+=speed;
         bY+=speed;
@@ -309,11 +309,11 @@ export class FirstPlanetComponent implements AfterViewInit {
         vueInitGauche = false;
       }
       //diagoDroit
-      if ((keyState[38] || keyState[87]) && (keyState[39] || keyState[68])){
+      if ((keyState[38] || keyState[87]|| keyState[90]) && (keyState[39] || keyState[68])){
         diagoDroit();
       }
       //diagoGauche
-      if ((keyState[38] || keyState[87]) && (keyState[37] || keyState[65])){
+      if ((keyState[38] || keyState[87] || keyState[90]) && (keyState[37] || keyState[65] || keyState[81])){
         diagoGauche();
       }
     //diagoBasDroit
@@ -324,7 +324,7 @@ export class FirstPlanetComponent implements AfterViewInit {
       speed=9
     }
     //diagoBasGauche
-    if ((keyState[40] || keyState[83]) && (keyState[37] || keyState[65])){
+    if ((keyState[40] || keyState[83]) && (keyState[37] || keyState[65] || keyState[81])){
       diagoBasGauche();
     }
     //ShowFPS
