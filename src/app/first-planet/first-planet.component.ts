@@ -612,7 +612,7 @@ export class FirstPlanetComponent implements AfterViewInit {
       //dessine les FPS
       if(showFPS){
       ctx.font="20px helvetica";
-      ctx.fillText(`FPS: ${valueFPS.toFixed(0)}`, 30, 70);
+      ctx.fillText(`FPS: ${valueFPS.toFixed(0)}`, 290, 70);
       }
       //Ressources
       ctx.font="20px helvetica";
