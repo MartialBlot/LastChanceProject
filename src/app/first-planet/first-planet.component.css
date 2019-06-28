@@ -15,7 +15,9 @@
 #progress{
   position: fixed;
   margin: 0px;
-  top: 650px;
+  top: 60px;
+  width: 154px;
+  padding: 5px;
 }
 
 #heart{
