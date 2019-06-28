@@ -23,7 +23,7 @@ export class SpaceRacing3V2Component implements AfterViewInit {
 		let ctx = canvas.getContext("2d");
 
 		let background = new Image();
-		background.src = "assets/images/racingBackgound.png";
+		background.src = "assets/images/backRacing3.png";
 		let bX = 0;
 		let bY = 0;
 
